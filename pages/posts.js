@@ -1,6 +1,6 @@
 import { Container, Heading, SimpleGrid } from "@chakra-ui/react";
 import { GridItem } from "../components/grid-item";
-import Layout from "../components/layouts/Article";
+import Layout from "../components/layouts/article";
 import Section from "../components/Section";
 
 import thumbPortfolio from "../public/images/contents/youtube-how-to-build-portfolio.jpg";

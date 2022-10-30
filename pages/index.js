@@ -2,9 +2,9 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, SimpleGrid, Container, Heading, Image, useColorModeValue, Link, Button, List, ListItem, Icon } from "@chakra-ui/react";
 import { BioSection, BioYear } from "../components/Bio";
 import NextLink from 'next/link'
-import Paragraph from "../components/Paragraph";
+import Paragraph from "../components/paragraph"; 
 import Section from "../components/Section";
-import Layout from "../components/layouts/Article";
+import Layout from "../components/layouts/article";
 import { GridItem } from "../components/grid-item";
 import { IoLogoTwitter, IoLogoGithub, IoMailOutline } from 'react-icons/io5'
 
