@@ -50,7 +50,7 @@ export default function Home() {
 
       <Section delay={0.3}>
         <Heading as='h3' variant='section-title'>Work</Heading>
-        <Paragraph>
+        <Paragraph as='p'>
           Moch Fathurrozi is a full-stack developer based on Yogjakarta with a passion for building digital services/stuff he wants. currently product called{' '}
           <NextLink href='/works/inkdrop'><Link>...</Link></NextLink>
         </Paragraph>

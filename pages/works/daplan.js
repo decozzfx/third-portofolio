@@ -13,7 +13,7 @@ import {
 import Layout from '../../components/layouts/article'
 import { ArrowForwardIcon, ExternalLinkIcon } from '@chakra-ui/icons'
 import { Title, WorkImage, Meta } from '../../components/work'
-import P from '../../components/paragraph'
+import Paragraph from '../../components/paragraph'
 
 const Work = () => (
   <Layout title="Cutton Beach">
@@ -24,9 +24,9 @@ const Work = () => (
       <Center my={6}>
         <Image src="/images/works/daplan01.png" alt="icon" />
       </Center>
-      <P>
+      <Paragraph>
       Little slicing landing page ui from fixma mock design to code
-      </P>
+      </Paragraph>
 
       <List ml={4} my={4}>
         <ListItem>
