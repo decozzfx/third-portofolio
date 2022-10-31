@@ -69,6 +69,9 @@ const VoxelDog = () => {
 
       const controls = new OrbitControls(camera, renderer.domElement)
       controls.autoRotate = true
+      controls.enablePan = false
+      controls.enableRotate = false
+      controls.enableZoom = false
       controls.target = target
 
       loadGLTFModel(scene, urlDogGLB, {
