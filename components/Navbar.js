@@ -35,30 +35,30 @@ const Navbar = props => {
         zIndex={1}
         {...props}
         >
-            <Container display='flex' p={2} maxW='container.md' wrap='wrap' align='center' justify='space-between' >
-                <Flex align='center' mr={5}>
+            <Container display='flex' p={2} maxW='container.md' wrap='wrap' align='center' justifyContent='space-between' >
+                <Flex align='center' >
                     <Heading  size='lg' cursor='pointer'>
                         <Logo/>
                     </Heading>
                 </Flex>
-                <Box flex={1} align="right">
-                <Stack
-                    direction={{ base: 'column', md: 'row' }}
-                    display={{ base: 'none', md: 'flex'}}
-                    width={{ base: 'full', md: 'auto'}}
-                    justifyContent='right'
-                    flexGrow={1}
-                    mt={{base: 4, md:0}}
-                >
-                    <LinkItem href="/works" path={path}>
-                        Works
-                    </LinkItem>
-                    <LinkItem href="/posts" path={path}>
-                        Posts
-                    </LinkItem>
-                </Stack>
+                <Box display='flex' align="right">
+                    <Stack
+                        direction={{ base: 'column', md: 'row' }}
+                        display={{ base: 'none', md: 'flex'}}
+                        width={{ base: 'full', md: 'auto'}}
+                        justifyContent='right'
+                        flexGrow={1}
+                        mt={{base: 4, md:0}}
+                    >
+                        <LinkItem href="/works" path={path}>
+                            Works
+                        </LinkItem>
+                        <LinkItem href="/posts" path={path}>
+                            Posts
+                        </LinkItem>
+                    </Stack>
+                    <ThemeToggleButton/>
 
-                {/* <ThemeToggleButton/> */}
                     <Box ml={2} display={{ base: 'inline-blok', md: 'none'}}>
                         <Menu autoSelect={false}>
                             <MenuButton as={IconButton} icon={<HamburgerIcon />} variant='outline' aria-label='Options' />

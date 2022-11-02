@@ -2,14 +2,14 @@ import { Button, IconButton, useColorMode, useColorModeValue } from "@chakra-ui/
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 
 const ThemeToggleButton = () => {
-    const { toogleColorMode } = useColorMode()
+    const { toggleColorMode, colorMode } = useColorMode()
 
     return ( 
-        <IconButton 
+        <IconButton ml={2}
          arial-label="Toogle theme"   
          colorScheme={useColorModeValue('purple', 'orange')}
          icon={useColorModeValue(<MoonIcon/>, <SunIcon/>)}
-         onClick={toogleColorMode}
+         onClick={toggleColorMode}
         >
         </IconButton>
     )

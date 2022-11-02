@@ -70,7 +70,7 @@ const VoxelDog = () => {
       const controls = new OrbitControls(camera, renderer.domElement)
       controls.autoRotate = true
       controls.enablePan = false
-      controls.enableRotate = false
+      controls.enableRotate = true
       controls.enableZoom = false
       controls.target = target
 

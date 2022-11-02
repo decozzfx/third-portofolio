@@ -10,7 +10,6 @@ display: inline-flex;
 align-items: center;
 height: 30px;
 line-height: 20px;
-padding: 10px;
 
 &.hover img {
     transform: rotate(20deg);
@@ -18,17 +17,16 @@ padding: 10px;
 `
 
 const Logo = () => {
-    const footPrintImg = `/images/footprint${useColorModeValue('', '-dark')}.jpg`
+    const footPrintImg = `/images/${useColorModeValue('decoz-logo-black', 'decoz-logo-gray')}.png`
     return (
         <Link href='/'>
                 <LogoBox>
-                    <Image src={footPrintImg} width={20} height={20} alt='logo' />
+                    <Image src={footPrintImg} width={30} height={30} alt='logo' />
                     <Text
                         color={useColorModeValue('gray.800', 'whiteAlpha.900')}
                         fontWeight='bold'
-                        ml={3}
                     >
-                    Moch Fathurrozi
+                    Decoz
                     </Text>
                 </LogoBox>
         </Link>
