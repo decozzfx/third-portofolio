@@ -7,6 +7,7 @@ import Section from "../components/Section";
 import Layout from "../components/layouts/article";
 import { GridItem } from "../components/grid-item";
 import { IoLogoTwitter, IoLogoGithub, IoMailOutline } from 'react-icons/io5'
+import Typewriter from 'typewriter-effect'
 
 export default function Home() {
   return (
@@ -20,7 +21,17 @@ export default function Home() {
         bg={useColorModeValue('whiteAlpha.500','whiteAlpha.200')}
         borderRadius="lg"
       >
-        Hello I&apos;m a Fullstack Developer based in Yogyakarta, Indonesia!
+      <Typewriter onInit={(type) => {
+            type.typeString("Hello I'm a Fullstack Developer based in Yogyakarta, Indonesia!")
+            .pauseFor(2000)
+            .deleteAll()
+            .start()
+          }}
+          options={{
+            autoStart : true,
+            loop: true
+          }}
+          />
       </Box>
 
       <Box display={{ md: "flex" }}>

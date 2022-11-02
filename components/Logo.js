@@ -17,7 +17,7 @@ line-height: 20px;
 `
 
 const Logo = () => {
-    const footPrintImg = `/images/${useColorModeValue('decoz-logo-black', 'decoz-logo-gray')}.png`
+    const footPrintImg = `/images/${useColorModeValue('decoz-logo-red', 'decoz-logo-gray')}.png`
     return (
         <Link href='/'>
                 <LogoBox>
