@@ -11,7 +11,8 @@ export default function Main({children, router}) {
         <title>Decozzfx - Homepage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-
+      
+      {/* header */}
       <Navbar path={router.asPath} />
 
       <Container maxW="container.md" pt={16}>
