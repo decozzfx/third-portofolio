@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { loadGLTFModel } from '../libs/model' 
-import { DogSpinner, DogContainer } from './voxel-dog-loader.js'
+import { DogSpinner, DogContainer } from './3d-frame-loader.js'
 
 function easeOutCirc(x) {
   return Math.sqrt(1 - Math.pow(x - 1, 4))
@@ -12,7 +12,7 @@ const VoxelDog = () => {
     const [loading, setLoading] = useState(true)
   const refContainer = useRef()
   const refRenderer = useRef()
-  const urlDogGLB = '/dog.glb'
+  const urlDogGLB = '/kirby.glb'
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer
@@ -43,7 +43,7 @@ const VoxelDog = () => {
       refRenderer.current = renderer
       const scene = new THREE.Scene()
 
-      const target = new THREE.Vector3(-0.5, 1.2, 0)
+      const target = new THREE.Vector3(0, 0, 0)
       const initialCameraPosition = new THREE.Vector3(
         20 * Math.sin(0.2 * Math.PI),
         10,
@@ -52,7 +52,7 @@ const VoxelDog = () => {
 
       // 640 -> 240
       // 8   -> 6
-      const scale = scH * 0.005 + 4.8
+      const scale = scW * 0.00020
       const camera = new THREE.OrthographicCamera(
         -scale,
         scale,
