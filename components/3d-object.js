@@ -12,7 +12,7 @@ const VoxelDog = () => {
     const [loading, setLoading] = useState(true)
   const refContainer = useRef()
   const refRenderer = useRef()
-  const urlDogGLB = '/kirby.glb'
+  const urlDogGLB = '/pochita.glb'
 
   const handleWindowResize = useCallback(() => {
     const { current: renderer } = refRenderer
@@ -43,7 +43,7 @@ const VoxelDog = () => {
       refRenderer.current = renderer
       const scene = new THREE.Scene()
 
-      const target = new THREE.Vector3(0, 0, 0)
+      const target = new THREE.Vector3(0, 0.2, -0.5)
       const initialCameraPosition = new THREE.Vector3(
         20 * Math.sin(0.2 * Math.PI),
         10,
@@ -52,7 +52,7 @@ const VoxelDog = () => {
 
       // 640 -> 240
       // 8   -> 6
-      const scale = scW * 0.00020
+      const scale = scW * 0.002
       const camera = new THREE.OrthographicCamera(
         -scale,
         scale,
@@ -64,9 +64,27 @@ const VoxelDog = () => {
       camera.position.copy(initialCameraPosition)
       camera.lookAt(target)
 
-      const ambientLight = new THREE.AmbientLight(0xcccccc, 1)
-      scene.add(ambientLight)
+      // lighting
+      const hemiLight = new THREE.HemisphereLight( 0xffffff, 0xffffff, 0.6 );
+      hemiLight.color.setHSL( 0.6, 0.2, 0.2 );
+      hemiLight.groundColor.setHSL( 0.095, 1, 0.75 );
+      hemiLight.position.set( 0, -50, 0 );
+      scene.add( hemiLight );
+      
+      var dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+      dirLight.position.set( -1, 0.75, 1 );
+      dirLight.position.multiplyScalar( 50);
+      dirLight.name = "dirlight";
+      dirLight.shadowCameraVisible = true;
 
+      scene.add( dirLight );
+
+      dirLight.castShadow = true;
+
+      const hemiLightHelper = new THREE.HemisphereLightHelper( hemiLight, 1 );
+      scene.add( hemiLightHelper );
+
+      // control target
       const controls = new OrbitControls(camera, renderer.domElement)
       controls.autoRotate = true
       controls.enablePan = false
@@ -91,7 +109,7 @@ const VoxelDog = () => {
 
         if (frame <= 100) {
           const p = initialCameraPosition
-          const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 20
+          const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 26
 
           camera.position.y = 10
           camera.position.x =
