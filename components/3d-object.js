@@ -52,14 +52,17 @@ const VoxelDog = () => {
 
       // 640 -> 240
       // 8   -> 6
-      const scale = scW * 0.002
+      const scale = scW <= 480 ? 
+        scW <=280 ? scW * 0.0038 
+        : scW * 0.0025
+        : scW * 0.002 
       const camera = new THREE.OrthographicCamera(
         -scale,
         scale,
         scale,
         -scale,
         0.01,
-        50000
+        5000
       )
       camera.position.copy(initialCameraPosition)
       camera.lookAt(target)
