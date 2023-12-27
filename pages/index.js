@@ -78,16 +78,20 @@ export default function Home() {
           Bio 
         </Heading>
         <BioSection>
-          <BioYear>1995</BioYear>
-          Born in Magetan, Indonesia
-        </BioSection>
-        <BioSection>
           <BioYear>2017</BioYear>
           Complete Diploma degree Komputerisasi Akuntasi in Politeknik Negeri Madiun 
         </BioSection>
         <BioSection>
-          <BioYear>2022 to present</BioYear>
+          <BioYear>2022</BioYear>
           Works as a Web Developer ReactJs in PT Infosys Solusi Terpadu
+        </BioSection>
+        <BioSection>
+          <BioYear>2022</BioYear>
+          Works as a Frontend Developer in PT Javan Cipta Solusi
+        </BioSection>
+        <BioSection>
+          <BioYear>2023 to Present</BioYear>
+          Works as a Frontend React Developer in Legit Group
         </BioSection>
       </Section>
       <Section delay={0.3}>
