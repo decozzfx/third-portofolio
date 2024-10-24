@@ -59,6 +59,11 @@ const Work = () => (
       <SimpleGrid columns={2} gap={2}>
         <WorkImage
           height="500"
+          src="/images/works/iconvert07.png"
+          alt="amembo"
+        />
+        <WorkImage
+          height="500"
           src="/images/works/iconvert02.png"
           alt="amembo"
         />
@@ -80,11 +85,6 @@ const Work = () => (
         <WorkImage
           height="500"
           src="/images/works/iconvert06.png"
-          alt="amembo"
-        />
-        <WorkImage
-          height="500"
-          src="/images/works/iconvert07.png"
           alt="amembo"
         />
       </SimpleGrid>
