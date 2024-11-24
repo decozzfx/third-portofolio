@@ -13,22 +13,40 @@ import thumbFirstPorto from "../public/images/works/first-porto01.png";
 import thumbGulugulu from "../public/images/works/gulugulu01.png";
 import thumbTravelAdvisor from "../public/images/works/traveladvisor01.png";
 import thumbSecondPorto from "../public/images/works/secondporto01.png";
+import thumbUshop from "../public/images/works/ushop/youshop-web-01.png";
 
 const Works = () => {
   return (
     <Layout>
       <Container>
-        <Heading as="h3" fontSize={20} mb={4}>
-          Works
-        </Heading>
+        <Section delay={0.1}>
+          <Heading as="h3" fontSize={20} mb={4}>
+            Freelance Projects
+          </Heading>
+        </Section>
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
-          <Section delay={0.1}>
+          <Section delay={0.4}>
+            <WorkGridItem id="ushopid" title="USHOP ID" thumbnail={thumbUshop}>
+              Ushopid is a top up gaming website for all game online in
+              Indonesia
+            </WorkGridItem>
+          </Section>
+          <Section delay={0.8}>
             <WorkGridItem id="supree" title="Supree" thumbnail={thumbSupree}>
               Supree is a attendance management app for workers in sukolilo
               vilage goverment.
             </WorkGridItem>
           </Section>
-          <Section delay={0.1}>
+          <Section delay={1.2}>
+            <WorkGridItem
+              id="iconvert"
+              title="IConvert Web"
+              thumbnail={thumbIConvert}
+            >
+              Convert and Transfer Pulsa for all operator in Indonesia
+            </WorkGridItem>
+          </Section>
+          <Section delay={1.8}>
             <WorkGridItem
               id="iconvert"
               title="IConvert"
@@ -37,6 +55,17 @@ const Works = () => {
               Convert and Transfer Pulsa for all operator in Indonesia
             </WorkGridItem>
           </Section>
+        </SimpleGrid>
+
+        {/* Learning Projects */}
+        <Section delay={2.7}>
+          <Divider my={6} />
+          <Heading as="h3" fontSize={20} mb={4}>
+            Learning Projects
+          </Heading>
+        </Section>
+
+        <SimpleGrid columns={[1, 1, 2]} gap={6}>
           <Section delay={0.3}>
             <WorkGridItem
               id="cuttonbeach"

@@ -31,17 +31,52 @@ const Work = () => (
       <List ml={4} my={4}>
         <ListItem>
           <Meta>Platform</Meta>
-          <span>Android</span>
+          <span>Web</span>
         </ListItem>
         <ListItem>
           <Meta>Stack</Meta>
-          <span>React Native </span>
-          <span>Supabase </span>
+          <span>React Js</span>
         </ListItem>
       </List>
 
       <Heading as="h3" fontSize={16} mb={4}>
-        Mobile
+        Web
+      </Heading>
+      <SimpleGrid columns={2} gap={2}>
+        <WorkImage
+          height="500"
+          src="/images/works/iconvert07.png"
+          alt="amembo"
+        />
+        <WorkImage
+          height="500"
+          src="/images/works/iconvert02.png"
+          alt="amembo"
+        />
+        <WorkImage
+          height="500"
+          src="/images/works/iconvert03.png"
+          alt="amembo"
+        />
+        <WorkImage
+          height="500"
+          src="/images/works/iconvert04.png"
+          alt="amembo"
+        />
+        <WorkImage
+          height="500"
+          src="/images/works/iconvert05.png"
+          alt="amembo"
+        />
+        <WorkImage
+          height="500"
+          src="/images/works/iconvert06.png"
+          alt="amembo"
+        />
+      </SimpleGrid>
+
+      <Heading as="h3" fontSize={16} mb={4}>
+        Mobile View
       </Heading>
       <SimpleGrid columns={2} gap={2}>
         <WorkImage

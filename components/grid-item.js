@@ -22,7 +22,7 @@ export const GridItem = ({ children, href, title, thumbnail }) => (
 );
 
 export const WorkGridItem = ({ children, id, title, thumbnail }) => (
-  <Box w="100%" align="center">
+  <Box align="center">
     <NextLink href={`/works/${id}`}>
       <LinkBox cursor="pointer">
         <Image
@@ -31,7 +31,6 @@ export const WorkGridItem = ({ children, id, title, thumbnail }) => (
           className="grid-item-thumbnail"
           placeholder="blur"
           loading="lazy"
-          fill={true}
         />
         <Text mt={2} fontSize={20}>
           {title}

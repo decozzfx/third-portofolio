@@ -3,14 +3,14 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Main from "../components/layouts/Main";
 import theme from "../libs/theme";
 import Fonts from "../components/Fonts";
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from "framer-motion";
 
 function MyApp({ Component, pageProps, router }) {
   return (
     <ChakraProvider theme={theme}>
-    <Fonts />
+      <Fonts />
       <Main router={router}>
-        <AnimatePresence mode="wait" initial={true}>
+        <AnimatePresence mode="popLayout" initial={true}>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
       </Main>
