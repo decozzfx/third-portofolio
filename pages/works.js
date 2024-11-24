@@ -14,6 +14,7 @@ import thumbGulugulu from "../public/images/works/gulugulu01.png";
 import thumbTravelAdvisor from "../public/images/works/traveladvisor01.png";
 import thumbSecondPorto from "../public/images/works/secondporto01.png";
 import thumbUshop from "../public/images/works/ushop/youshop-web-01.png";
+import thumbIconvertWeb from "../public/images/works/iconvert-web/iconvert-web-01.png";
 
 const Works = () => {
   return (
@@ -39,9 +40,9 @@ const Works = () => {
           </Section>
           <Section delay={1.2}>
             <WorkGridItem
-              id="iconvert"
+              id="iconvert-web"
               title="IConvert Web"
-              thumbnail={thumbIConvert}
+              thumbnail={thumbIconvertWeb}
             >
               Convert and Transfer Pulsa for all operator in Indonesia
             </WorkGridItem>

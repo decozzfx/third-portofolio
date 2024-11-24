@@ -1,17 +1,14 @@
 import {
   Container,
   Badge,
-  Link,
   List,
   ListItem,
   SimpleGrid,
-  UnorderedList,
   Heading,
   Center,
   Image,
 } from "@chakra-ui/react";
 import Layout from "../../components/layouts/article";
-import { ArrowForwardIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import { Title, WorkImage, Meta } from "../../components/work";
 import Paragraph from "../../components/paragraph";
 
@@ -22,7 +19,10 @@ const Work = () => (
         IConvert <Badge>2024</Badge>
       </Title>
       <Center my={6}>
-        <Image height="500" src="/images/works/iconvert01.png" alt="icon" />
+        <Image
+          src="/images/works/iconvert-web/iconvert-web-01.png"
+          alt="icon"
+        />
       </Center>
       <Paragraph>
         Convert and Transfer Pulsa for all operator in Indonesia
@@ -44,33 +44,27 @@ const Work = () => (
       </Heading>
       <SimpleGrid columns={2} gap={2}>
         <WorkImage
+          isFullModal
           height="500"
-          src="/images/works/iconvert07.png"
+          src="/images/works/iconvert-web/iconvert-web-02.png"
           alt="amembo"
         />
         <WorkImage
+          isFullModal
           height="500"
-          src="/images/works/iconvert02.png"
+          src="/images/works/iconvert-web/iconvert-web-03.png"
           alt="amembo"
         />
         <WorkImage
+          isFullModal
           height="500"
-          src="/images/works/iconvert03.png"
+          src="/images/works/iconvert-web/iconvert-web-04.png"
           alt="amembo"
         />
         <WorkImage
+          isFullModal
           height="500"
-          src="/images/works/iconvert04.png"
-          alt="amembo"
-        />
-        <WorkImage
-          height="500"
-          src="/images/works/iconvert05.png"
-          alt="amembo"
-        />
-        <WorkImage
-          height="500"
-          src="/images/works/iconvert06.png"
+          src="/images/works/iconvert-web/iconvert-web-05.png"
           alt="amembo"
         />
       </SimpleGrid>
@@ -81,32 +75,27 @@ const Work = () => (
       <SimpleGrid columns={2} gap={2}>
         <WorkImage
           height="500"
-          src="/images/works/iconvert07.png"
+          src="/images/works/iconvert-web/iconvert-web-mobile-01.png"
           alt="amembo"
         />
         <WorkImage
           height="500"
-          src="/images/works/iconvert02.png"
+          src="/images/works/iconvert-web/iconvert-web-mobile-02.png"
           alt="amembo"
         />
         <WorkImage
           height="500"
-          src="/images/works/iconvert03.png"
+          src="/images/works/iconvert-web/iconvert-web-mobile-03.png"
           alt="amembo"
         />
         <WorkImage
           height="500"
-          src="/images/works/iconvert04.png"
+          src="/images/works/iconvert-web/iconvert-web-mobile-04.png"
           alt="amembo"
         />
         <WorkImage
           height="500"
-          src="/images/works/iconvert05.png"
-          alt="amembo"
-        />
-        <WorkImage
-          height="500"
-          src="/images/works/iconvert06.png"
+          src="/images/works/iconvert-web/iconvert-web-mobile-05.png"
           alt="amembo"
         />
       </SimpleGrid>

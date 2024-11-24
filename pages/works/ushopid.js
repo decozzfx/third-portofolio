@@ -21,7 +21,7 @@ const Work = () => (
         USHOP ID <Badge>2024</Badge>
       </Title>
       <Center my={6}>
-        <Image src="/images/works/cryptoticks01.png" alt="icon" />
+        <Image src="/images/works/ushop/youshop-web-01.png" alt="icon" />
       </Center>
       <Paragraph>
         Ushopid is a top up gaming website for all game online in Indonesia
