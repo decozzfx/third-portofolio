@@ -22,6 +22,43 @@ const Works = () => {
       <Container>
         <Section delay={0.1}>
           <Heading as="h3" fontSize={20} mb={4}>
+            Working Projects
+          </Heading>
+        </Section>
+        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          <Section delay={0.4}>
+            <WorkGridItem id="ushopid" title="USHOP ID" thumbnail={thumbUshop}>
+              Ushopid is a top up gaming website for all game online in
+              Indonesia
+            </WorkGridItem>
+          </Section>
+          <Section delay={0.8}>
+            <WorkGridItem id="supree" title="Supree" thumbnail={thumbSupree}>
+              Supree is a attendance management app for workers in sukolilo
+              vilage goverment.
+            </WorkGridItem>
+          </Section>
+          <Section delay={1.2}>
+            <WorkGridItem
+              id="iconvert-web"
+              title="IConvert Web"
+              thumbnail={thumbIconvertWeb}
+            >
+              Convert and Transfer Pulsa for all operator in Indonesia
+            </WorkGridItem>
+          </Section>
+          <Section delay={1.8}>
+            <WorkGridItem
+              id="iconvert"
+              title="IConvert"
+              thumbnail={thumbIConvert}
+            >
+              Convert and Transfer Pulsa for all operator in Indonesia
+            </WorkGridItem>
+          </Section>
+        </SimpleGrid>
+        <Section delay={0.1}>
+          <Heading as="h3" fontSize={20} mb={4}>
             Freelance Projects
           </Heading>
         </Section>

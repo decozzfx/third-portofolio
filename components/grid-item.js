@@ -45,7 +45,9 @@ export const GridItemStyle = () => (
   <Global
     styles={`
         .grid-item-thumbnail{
-            border-radius: 12px;
+            border-radius: 15px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease-in-out;
         }
     `}
   />

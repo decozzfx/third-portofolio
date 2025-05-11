@@ -1,10 +1,8 @@
 import Head from "next/head";
 import Navbar from "../Navbar";
 import { Box, Container } from "@chakra-ui/react";
-import VoxelDog from "../3d-object";
-import NoSsr from "../No-ssr";
 
-export default function Main({ children, router }) {
+export default function CvLayout({ children, router }) {
   return (
     <Box as="main" pb={8}>
       <Head>
@@ -15,10 +13,7 @@ export default function Main({ children, router }) {
       {/* header */}
       <Navbar path={router.asPath} />
 
-      <Container maxW="container.md" pt={16}>
-        <NoSsr>
-          <VoxelDog />
-        </NoSsr>
+      <Container maxW="container.2xl" pt={16}>
         {children}
       </Container>
     </Box>
