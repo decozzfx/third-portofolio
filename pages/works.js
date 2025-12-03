@@ -15,6 +15,8 @@ import thumbTravelAdvisor from "../public/images/works/traveladvisor01.png";
 import thumbSecondPorto from "../public/images/works/secondporto01.png";
 import thumbUshop from "../public/images/works/ushop/youshop-web-01.png";
 import thumbIconvertWeb from "../public/images/works/iconvert-web/iconvert-web-01.png";
+import thumbSolidarirun from "../public/images/works/solidarirun-2025/1.png";
+import thumbPendekarun from "../public/images/works/pendekarun-2025/1.png";
 
 const Works = () => {
   return (
@@ -27,18 +29,38 @@ const Works = () => {
         </Section>
         <SimpleGrid columns={[1, 1, 2]} gap={6}>
           <Section delay={0.4}>
+            <WorkGridItem
+              id="solidarirun-2025"
+              title="Solidarirun 2025"
+              thumbnail={thumbSolidarirun}
+            >
+              A running event website for registration, information, and event
+              management for annual solidarity run in Ponorogo
+            </WorkGridItem>
+          </Section>
+          <Section delay={0.8}>
+            <WorkGridItem
+              id="pendekarun-2025"
+              title="PendekaRun 2025"
+              thumbnail={thumbPendekarun}
+            >
+              A national running event website for Madiun City with 10K and 5K
+              categories organized by HIPMI
+            </WorkGridItem>
+          </Section>
+          <Section delay={1.2}>
             <WorkGridItem id="ushopid" title="USHOP ID" thumbnail={thumbUshop}>
               Ushopid is a top up gaming website for all game online in
               Indonesia
             </WorkGridItem>
           </Section>
-          <Section delay={0.8}>
+          <Section delay={1.6}>
             <WorkGridItem id="supree" title="Supree" thumbnail={thumbSupree}>
               Supree is a attendance management app for workers in sukolilo
               vilage goverment.
             </WorkGridItem>
           </Section>
-          <Section delay={1.2}>
+          <Section delay={2.0}>
             <WorkGridItem
               id="iconvert-web"
               title="IConvert Web"
@@ -47,7 +69,7 @@ const Works = () => {
               Convert and Transfer Pulsa for all operator in Indonesia
             </WorkGridItem>
           </Section>
-          <Section delay={1.8}>
+          <Section delay={2.4}>
             <WorkGridItem
               id="iconvert"
               title="IConvert"
