@@ -81,7 +81,7 @@ const Works = () => {
         </SimpleGrid>
 
         {/* Learning Projects */}
-        <Section delay={2.7}>
+        {/* <Section delay={2.7}>
           <Divider my={6} />
           <Heading as="h3" fontSize={20} mb={4}>
             Learning Projects
@@ -161,10 +161,10 @@ const Works = () => {
               My second Portofolio
             </WorkGridItem>
           </Section>
-        </SimpleGrid>
+        </SimpleGrid> */}
 
         {/* OLD WORKS */}
-        <Section delay={2.7}>
+        {/* <Section delay={2.7}>
           <Divider my={6} />
           <Heading as="h3" fontSize={20} mb={4}>
             Old works
@@ -177,7 +177,7 @@ const Works = () => {
               first project about blog-site from free news API
             </WorkGridItem>
           </Section>
-        </SimpleGrid>
+        </SimpleGrid> */}
       </Container>
     </Layout>
   );
