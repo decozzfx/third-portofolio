@@ -15,6 +15,10 @@ interface WorkCardProps {
 export function WorkCard({ work }: WorkCardProps) {
   const borderColor = useColorModeValue('#E5E5E5', '#262626')
   const hoverBg = useColorModeValue('#F5F5F5', '#171717')
+  const imageBg = useColorModeValue('#F5F5F5', '#171717')
+
+  // Check if this is a mobile app (portrait images)
+  const isMobileApp = work.platform === 'Android' || work.platform === 'iOS'
 
   return (
     <Link href={`/works/${work.slug}`} passHref>
@@ -32,13 +36,22 @@ export function WorkCard({ work }: WorkCardProps) {
         }}
       >
         {/* Image */}
-        <Box position="relative" overflow="hidden" aspectRatio="16/10">
+        <Box
+          position="relative"
+          overflow="hidden"
+          aspectRatio="16/10"
+          bg={imageBg}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
           <Image
             src={work.images[0]}
             alt={work.title}
-            objectFit="cover"
-            w="100%"
+            objectFit={isMobileApp ? 'contain' : 'cover'}
+            w={isMobileApp ? 'auto' : '100%'}
             h="100%"
+            maxH="100%"
             transition="transform 0.3s ease"
             _groupHover={{ transform: 'scale(1.05)' }}
           />

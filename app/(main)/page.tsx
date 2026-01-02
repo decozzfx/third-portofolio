@@ -2,7 +2,6 @@
 
 import {
   Box,
-  Container,
   Flex,
   Heading,
   Text,
@@ -12,7 +11,7 @@ import {
   Image,
 } from '@chakra-ui/react'
 import Link from 'next/link'
-import { IoArrowForward, IoLogoGithub, IoLogoTwitter, IoMail } from 'react-icons/io5'
+import { IoArrowForward, IoLogoGithub, IoLogoLinkedin, IoMail } from 'react-icons/io5'
 import Typewriter from 'typewriter-effect'
 
 import { HeroAnimation } from '@/components/layout/hero-animation'
@@ -25,7 +24,7 @@ import { getFeaturedWorks } from '@/lib/works'
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/decozzfx', icon: IoLogoGithub },
-  { label: 'Twitter', href: 'https://twitter.com/decozzfx', icon: IoLogoTwitter },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/decozzfx', icon: IoLogoLinkedin },
   { label: 'Email', href: 'mailto:decozzfx@gmail.com', icon: IoMail },
 ]
 
@@ -55,19 +54,25 @@ export default function HomePage() {
             fontSize={{ base: 'h2', md: 'h1' }}
             fontFamily="heading"
             fontWeight="black"
-            mb={4}
+            mb={2}
             lineHeight="tight"
           >
             Moch Fathurrozi
           </Heading>
-          <Text fontSize="lg" color="textMuted" fontFamily="mono">
+          <Text fontFamily="mono" fontSize="md" color="textMuted" mb={4}>
+            Fullstack & Frontend Engineer
+          </Text>
+          <Box fontSize="lg" color="textMuted" fontFamily="mono">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter
-                  .typeString('Fullstack Developer based in Yogyakarta, Indonesia')
+                  .typeString('Based in Semarang, Indonesia')
                   .pauseFor(2000)
                   .deleteAll()
-                  .typeString('Building digital experiences with modern web tech')
+                  .typeString('4+ years professional experience')
+                  .pauseFor(2000)
+                  .deleteAll()
+                  .typeString('React.js | Next.js | React Native')
                   .pauseFor(2000)
                   .deleteAll()
                   .start()
@@ -77,7 +82,7 @@ export default function HomePage() {
                 loop: true,
               }}
             />
-          </Text>
+          </Box>
         </Box>
 
         {/* Profile Image */}
@@ -114,10 +119,12 @@ export default function HomePage() {
           About
         </Heading>
         <Paragraph>
-          I am a full-stack developer with a passion for building digital services and
-          products. Currently working on various freelance projects including event
-          management platforms and mobile applications. I specialize in React, Next.js,
-          React Native, and Node.js.
+          A Fullstack Developer specializing in Frontend Development with React.js, Next.js,
+          React-Native, Express.js, NestJs and AdonisJs. Skilled in creating responsive,
+          user-friendly web interfaces with 4+ years professional experience. Proficient in
+          frontend and backend development with RESTful APIs and database management
+          (PostgreSQL, MySQL, MongoDB). Experience working and integrating with AI and LLM.
+          Strong communicator and team player, dedicated to delivering high-quality results.
         </Paragraph>
       </Section>
 
@@ -138,22 +145,89 @@ export default function HomePage() {
         </Heading>
         <BioContainer>
           <BioSection>
-            <BioYear>2023-2024</BioYear>
-            <Text>Frontend Engineer at Ismaya Group</Text>
+            <BioYear>2025 - Now</BioYear>
+            <Box>
+              <Text fontWeight="medium">Frontend Engineer at PT Veritask</Text>
+              <Text fontSize="sm" color="textMuted">Legal AI Platform, Next.js 15, React 19, TypeScript</Text>
+            </Box>
+          </BioSection>
+          <BioSection>
+            <BioYear>2025</BioYear>
+            <Box>
+              <Text fontWeight="medium">Frontend Engineer at PT Xprogroup</Text>
+              <Text fontSize="sm" color="textMuted">NextJs, Tailwind CSS, Rizzui</Text>
+            </Box>
+          </BioSection>
+          <BioSection>
+            <BioYear>2024 - 2025</BioYear>
+            <Box>
+              <Text fontWeight="medium">Frontend Engineer at PT MFI</Text>
+              <Text fontSize="sm" color="textMuted">React Native, NextJs, Tailwind CSS</Text>
+            </Box>
+          </BioSection>
+          <BioSection>
+            <BioYear>2023 - 2024</BioYear>
+            <Box>
+              <Text fontWeight="medium">Frontend Engineer at Ismaya Group</Text>
+              <Text fontSize="sm" color="textMuted">React Native, NextJs, Material UI</Text>
+            </Box>
+          </BioSection>
+          <BioSection>
+            <BioYear>2022 - 2023</BioYear>
+            <Box>
+              <Text fontWeight="medium">Frontend Engineer at PT Javan Cipta Solusi</Text>
+              <Text fontSize="sm" color="textMuted">NextJs, Tailwind CSS, Material UI</Text>
+            </Box>
           </BioSection>
           <BioSection>
             <BioYear>2022</BioYear>
-            <Text>Frontend Engineer at PT Javan Cipta Solusi</Text>
-          </BioSection>
-          <BioSection>
-            <BioYear>2022</BioYear>
-            <Text>Frontend Engineer at PT Infosys Solusi Terpadu</Text>
+            <Box>
+              <Text fontWeight="medium">Frontend Engineer at PT Infosys Solusi Terpadu</Text>
+              <Text fontSize="sm" color="textMuted">ReactJs, Tailwind CSS, Material UI</Text>
+            </Box>
           </BioSection>
         </BioContainer>
       </Section>
 
-      {/* Education Section */}
+      {/* Skills Section */}
       <Section delay={0.25}>
+        <Heading
+          as="h2"
+          fontSize="h3"
+          fontFamily="heading"
+          fontWeight="bold"
+          mb={4}
+          display="flex"
+          alignItems="center"
+          gap={2}
+        >
+          <Box w="24px" h="3px" bg="accent" />
+          Skills
+        </Heading>
+        <Flex gap={2} flexWrap="wrap">
+          {[
+            'React.js', 'Next.js', 'React Native', 'TypeScript', 'JavaScript',
+            'Express.js', 'NestJs', 'AdonisJs', 'Tailwind CSS',
+            'PostgreSQL', 'MySQL', 'MongoDB', 'Git', 'AI/LLM Integration'
+          ].map((skill) => (
+            <Box
+              key={skill}
+              border="1px solid"
+              borderColor={borderColor}
+              px={3}
+              py={1}
+              fontFamily="mono"
+              fontSize="xs"
+              textTransform="uppercase"
+            >
+              {skill}
+            </Box>
+          ))}
+        </Flex>
+      </Section>
+
+      {/* Education Section */}
+      <Section delay={0.3}>
         <Heading
           as="h2"
           fontSize="h3"
@@ -169,14 +243,17 @@ export default function HomePage() {
         </Heading>
         <BioContainer>
           <BioSection>
-            <BioYear>2017</BioYear>
-            <Text>Diploma in Computerized Accounting, Politeknik Negeri Madiun</Text>
+            <BioYear>2014 - 2017</BioYear>
+            <Box>
+              <Text fontWeight="medium">Politeknik Negeri Madiun</Text>
+              <Text fontSize="sm" color="textMuted">Computing Accountant</Text>
+            </Box>
           </BioSection>
         </BioContainer>
       </Section>
 
       {/* Featured Works */}
-      <Section delay={0.3}>
+      <Section delay={0.35}>
         <Flex justify="space-between" align="center" mb={6}>
           <Heading
             as="h2"

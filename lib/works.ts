@@ -72,7 +72,7 @@ export const works: Work[] = [
       '/images/works/supree05.png',
     ],
     category: 'freelance',
-    featured: true,
+    featured: false,
   },
   {
     slug: 'iconvert-web',
