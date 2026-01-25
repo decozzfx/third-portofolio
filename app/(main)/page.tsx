@@ -141,46 +141,40 @@ export default function HomePage() {
           gap={2}
         >
           <Box w="24px" h="3px" bg="accent" />
-          Experience
+          Partnerships
         </Heading>
         <BioContainer>
           <BioSection>
-            <BioYear>2025 - Now</BioYear>
             <Box>
               <Text fontWeight="medium">Frontend Engineer at PT Veritask</Text>
               <Text fontSize="sm" color="textMuted">Legal AI Platform, Next.js 15, React 19, TypeScript</Text>
             </Box>
           </BioSection>
           <BioSection>
-            <BioYear>2025</BioYear>
-            <Box>
-              <Text fontWeight="medium">Frontend Engineer at PT Xprogroup</Text>
-              <Text fontSize="sm" color="textMuted">NextJs, Tailwind CSS, Rizzui</Text>
-            </Box>
-          </BioSection>
-          <BioSection>
-            <BioYear>2024 - 2025</BioYear>
             <Box>
               <Text fontWeight="medium">Frontend Engineer at PT MFI</Text>
               <Text fontSize="sm" color="textMuted">React Native, NextJs, Tailwind CSS</Text>
             </Box>
           </BioSection>
           <BioSection>
-            <BioYear>2023 - 2024</BioYear>
+            <Box>
+              <Text fontWeight="medium">Frontend Engineer at PT Xprogroup</Text>
+              <Text fontSize="sm" color="textMuted">NextJs, Tailwind CSS, Rizzui</Text>
+            </Box>
+          </BioSection>
+          <BioSection>
             <Box>
               <Text fontWeight="medium">Frontend Engineer at Ismaya Group</Text>
               <Text fontSize="sm" color="textMuted">React Native, NextJs, Material UI</Text>
             </Box>
           </BioSection>
           <BioSection>
-            <BioYear>2022 - 2023</BioYear>
             <Box>
               <Text fontWeight="medium">Frontend Engineer at PT Javan Cipta Solusi</Text>
               <Text fontSize="sm" color="textMuted">NextJs, Tailwind CSS, Material UI</Text>
             </Box>
           </BioSection>
           <BioSection>
-            <BioYear>2022</BioYear>
             <Box>
               <Text fontWeight="medium">Frontend Engineer at PT Infosys Solusi Terpadu</Text>
               <Text fontSize="sm" color="textMuted">ReactJs, Tailwind CSS, Material UI</Text>
