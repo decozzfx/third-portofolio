@@ -1,145 +1,162 @@
 'use client'
 
-import { Box, Flex } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
-import { useColorModeValue } from '@/components/ui/color-mode'
+import { Box, Spinner } from '@chakra-ui/react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { loadGLTFModel } from '@/lib/load-model'
 
-const MotionBox = motion.create(Box)
+function easeOutCirc(x: number) {
+  return Math.sqrt(1 - Math.pow(x - 1, 4))
+}
 
 export function HeroAnimation() {
-  const bgColor = useColorModeValue('#E5E5E5', '#262626')
-  const accentColor = '#FF3D00'
+  const [loading, setLoading] = useState(true)
+  const refContainer = useRef<HTMLDivElement>(null)
+  const refRenderer = useRef<THREE.WebGLRenderer | null>(null)
+
+  const handleResize = useCallback(() => {
+    const renderer = refRenderer.current
+    const container = refContainer.current
+    if (container && renderer) {
+      renderer.setSize(container.clientWidth, container.clientHeight)
+    }
+  }, [])
+
+  useEffect(() => {
+    const container = refContainer.current
+    if (!container) return
+
+    const scW = container.clientWidth
+    const scH = container.clientHeight
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.setSize(scW, scH)
+    renderer.outputColorSpace = THREE.SRGBColorSpace
+    container.appendChild(renderer.domElement)
+    refRenderer.current = renderer
+
+    const scene = new THREE.Scene()
+    const target = new THREE.Vector3(0, 0.2, -0.5)
+    const initialCameraPosition = new THREE.Vector3(
+      20 * Math.sin(0.2 * Math.PI),
+      10,
+      20 * Math.cos(0.2 * Math.PI)
+    )
+
+    const scale =
+      scW <= 480
+        ? scW <= 280
+          ? scW * 0.0038
+          : scW * 0.0025
+        : scW * 0.002
+    const camera = new THREE.OrthographicCamera(
+      -scale,
+      scale,
+      scale,
+      -scale,
+      0.01,
+      5000
+    )
+    camera.position.copy(initialCameraPosition)
+    camera.lookAt(target)
+
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6)
+    hemiLight.color.setHSL(0.6, 0.2, 0.2)
+    hemiLight.groundColor.setHSL(0.095, 1, 0.75)
+    hemiLight.position.set(0, -50, 0)
+    scene.add(hemiLight)
+
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1)
+    dirLight.position.set(-1, 0.75, 1)
+    dirLight.position.multiplyScalar(50)
+    dirLight.castShadow = true
+    scene.add(dirLight)
+
+    const controls = new OrbitControls(camera, renderer.domElement)
+    controls.autoRotate = true
+    controls.enablePan = false
+    controls.enableRotate = true
+    controls.enableZoom = false
+    controls.enableDamping = true
+    controls.dampingFactor = 0.1
+    controls.rotateSpeed = 0.8
+    controls.target = target
+
+    const stopAutoRotate = () => {
+      controls.autoRotate = false
+    }
+    renderer.domElement.addEventListener('pointerdown', stopAutoRotate)
+
+    let req = 0
+    let frame = 0
+    const animate = () => {
+      req = requestAnimationFrame(animate)
+      frame = frame <= 100 ? frame + 1 : frame
+      if (frame <= 100) {
+        const p = initialCameraPosition
+        const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 26
+        camera.position.y = 10
+        camera.position.x =
+          p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed)
+        camera.position.z =
+          p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed)
+        camera.lookAt(target)
+      } else {
+        controls.update()
+      }
+      renderer.render(scene, camera)
+    }
+
+    loadGLTFModel(scene, '/pochita.glb', {
+      receiveShadow: false,
+      castShadow: false,
+    })
+      .then(() => {
+        animate()
+        setLoading(false)
+      })
+      .catch((err) => {
+        console.error('GLB load failed', err)
+      })
+
+    return () => {
+      cancelAnimationFrame(req)
+      renderer.domElement.removeEventListener('pointerdown', stopAutoRotate)
+      controls.dispose()
+      renderer.domElement.remove()
+      renderer.dispose()
+    }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize, false)
+    return () => window.removeEventListener('resize', handleResize, false)
+  }, [handleResize])
 
   return (
-    <Flex
+    <Box
+      ref={refContainer}
       position="relative"
-      width="100%"
-      height={{ base: '200px', md: '280px' }}
-      align="center"
-      justify="center"
-      overflow="hidden"
-      mb={8}
+      mx="auto"
+      mt={['-20px', '-50px', '-90px']}
+      mb={['-80px', '-160px', '-200px']}
+      w={['280px', '480px', '640px']}
+      h={['280px', '480px', '640px']}
+      cursor="grab"
+      _active={{ cursor: 'grabbing' }}
+      css={{ '& canvas': { touchAction: 'none' } }}
     >
-      {/* Grid background */}
-      <Box
-        position="absolute"
-        inset={0}
-        opacity={0.5}
-        backgroundImage={`
-          linear-gradient(${bgColor} 1px, transparent 1px),
-          linear-gradient(90deg, ${bgColor} 1px, transparent 1px)
-        `}
-        backgroundSize="40px 40px"
-      />
-
-      {/* Animated geometric shapes */}
-      <Box position="relative" width="200px" height="200px">
-        {/* Main rotating square */}
-        <MotionBox
+      {loading && (
+        <Spinner
+          size="xl"
           position="absolute"
-          top="50%"
           left="50%"
-          width="120px"
-          height="120px"
-          border="3px solid"
-          borderColor={accentColor}
-          animate={{
-            rotate: [0, 90, 180, 270, 360],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          style={{ x: '-50%', y: '-50%' }}
-        />
-
-        {/* Inner pulsing square */}
-        <MotionBox
-          position="absolute"
           top="50%"
-          left="50%"
-          width="80px"
-          height="80px"
-          bg={accentColor}
-          animate={{
-            scale: [1, 1.1, 1],
-            rotate: [0, -45, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          style={{ x: '-50%', y: '-50%' }}
+          transform="translate(-50%, -50%)"
         />
-
-        {/* Outer rotating frame */}
-        <MotionBox
-          position="absolute"
-          top="50%"
-          left="50%"
-          width="160px"
-          height="160px"
-          border="1px solid"
-          borderColor={bgColor}
-          animate={{
-            rotate: [360, 0],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          style={{ x: '-50%', y: '-50%' }}
-        />
-
-        {/* Corner accents */}
-        {[0, 1, 2, 3].map((i) => (
-          <MotionBox
-            key={i}
-            position="absolute"
-            width="12px"
-            height="12px"
-            bg={accentColor}
-            animate={{
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-              delay: i * 0.5,
-            }}
-            style={{
-              top: i < 2 ? '10px' : 'auto',
-              bottom: i >= 2 ? '10px' : 'auto',
-              left: i % 2 === 0 ? '10px' : 'auto',
-              right: i % 2 === 1 ? '10px' : 'auto',
-            }}
-          />
-        ))}
-
-        {/* Center dot */}
-        <MotionBox
-          position="absolute"
-          top="50%"
-          left="50%"
-          width="8px"
-          height="8px"
-          borderRadius="full"
-          bg="white"
-          animate={{
-            scale: [1, 1.5, 1],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          style={{ x: '-50%', y: '-50%' }}
-        />
-      </Box>
-    </Flex>
+      )}
+    </Box>
   )
 }
