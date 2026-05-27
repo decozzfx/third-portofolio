@@ -2,6 +2,45 @@ import { Work } from '@/types'
 
 export const works: Work[] = [
   {
+    slug: 'veritask-ai',
+    title: 'Veritask AI',
+    year: '2025',
+    description:
+      'Legal AI platform for Indonesian compliance-focused enterprises. Combines a regulatory database of 300,000+ regulations, 3,000,000+ clauses, and 1,000,000+ court decisions with AI-powered legal research, document drafting, document review, compliance tracking, and risk scoring in a single workspace.',
+    platform: 'Website',
+    stack: ['Remix', 'React', 'TypeScript', 'Tailwind CSS', 'React Query', 'i18next'],
+    website: 'https://veritask.ai/id',
+    images: [
+      '/images/works/veritask-ai/1.png',
+      '/images/works/veritask-ai/2.png',
+      '/images/works/veritask-ai/3.png',
+      '/images/works/veritask-ai/4.png',
+    ],
+    category: 'freelance',
+    featured: true,
+  },
+  {
+    slug: 'maha-job',
+    title: 'Maha-Job Ecosystem',
+    year: '2025',
+    description:
+      'Indonesia–Japan workforce ecosystem with three integrated products: Maha-Job employer portal for job placement, MahaEvent for event ticketing across music, sports, seminars, and community events, and Maha Gakkou for Japanese-language school and training management. Built as a multi-product SaaS for staffing agencies and event organizers.',
+    platform: 'Website',
+    stack: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    website: [
+      { label: 'Employer', url: 'https://maha-job.com/employer' },
+      { label: 'Events', url: 'https://events.maha-job.com/' },
+      { label: 'Gakkou', url: 'https://gakkou.maha-job.com/id' },
+    ],
+    images: [
+      '/images/works/maha-job/1.png',
+      '/images/works/maha-job/2.png',
+      '/images/works/maha-job/3.png',
+    ],
+    category: 'freelance',
+    featured: true,
+  },
+  {
     slug: 'solidarirun-2025',
     title: 'Solidarirun 2025',
     year: '2025',

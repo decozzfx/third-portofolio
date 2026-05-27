@@ -201,23 +201,54 @@ export default function WorkDetailPage() {
                   color="accent"
                   textTransform="uppercase"
                   letterSpacing="0.1em"
-                  mb={1}
+                  mb={2}
                 >
-                  Website
+                  {Array.isArray(work.website) ? 'Websites' : 'Website'}
                 </Text>
-                <ChakraLink
-                  href={work.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  color="text"
-                  _hover={{ color: 'accent' }}
-                  transition="color 0.2s"
-                >
-                  <Flex align="center" gap={2}>
-                    <Text fontWeight="medium">{work.website}</Text>
-                    <IoArrowForward />
+                {Array.isArray(work.website) ? (
+                  <Flex direction="column" gap={2}>
+                    {work.website.map((site) => (
+                      <ChakraLink
+                        key={site.url}
+                        href={site.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        color="text"
+                        _hover={{ color: 'accent' }}
+                        transition="color 0.2s"
+                      >
+                        <Flex align="center" gap={3} flexWrap="wrap">
+                          <Text
+                            fontFamily="mono"
+                            fontSize="xs"
+                            color="textMuted"
+                            textTransform="uppercase"
+                            letterSpacing="0.05em"
+                            minW="100px"
+                          >
+                            {site.label}
+                          </Text>
+                          <Text fontWeight="medium">{site.url}</Text>
+                          <IoArrowForward />
+                        </Flex>
+                      </ChakraLink>
+                    ))}
                   </Flex>
-                </ChakraLink>
+                ) : (
+                  <ChakraLink
+                    href={work.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color="text"
+                    _hover={{ color: 'accent' }}
+                    transition="color 0.2s"
+                  >
+                    <Flex align="center" gap={2}>
+                      <Text fontWeight="medium">{work.website}</Text>
+                      <IoArrowForward />
+                    </Flex>
+                  </ChakraLink>
+                )}
               </Box>
             )}
           </SimpleGrid>

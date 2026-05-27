@@ -5,7 +5,7 @@ export interface Work {
   description: string
   platform: string
   stack: string[]
-  website?: string
+  website?: string | { label: string; url: string }[]
   images: string[]
   category: 'freelance' | 'learning'
   featured: boolean
