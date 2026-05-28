@@ -120,11 +120,13 @@ export default function HomePage() {
         </Heading>
         <Paragraph>
           A Fullstack Developer specializing in Frontend Development with React.js, Next.js,
-          React-Native, Express.js, NestJs and AdonisJs. Skilled in creating responsive,
-          user-friendly web interfaces with 4+ years professional experience. Proficient in
-          frontend and backend development with RESTful APIs and database management
-          (PostgreSQL, MySQL, MongoDB). Experience working and integrating with AI and LLM.
-          Strong communicator and team player, dedicated to delivering high-quality results.
+          Astro, Remix, Solid, and Svelte. Experienced in mobile development with React-Native
+          and Flutter, and backend with Express.js, NestJs, AdonisJs, and Hono. Skilled in
+          creating responsive, user-friendly web interfaces with 4+ years professional
+          experience. Proficient in frontend and backend development with RESTful APIs and
+          database management (PostgreSQL, MySQL, MongoDB). Experience working and integrating
+          with AI and LLM. Strong communicator and team player, dedicated to delivering
+          high-quality results.
         </Paragraph>
       </Section>
 
@@ -200,8 +202,10 @@ export default function HomePage() {
         </Heading>
         <Flex gap={2} flexWrap="wrap">
           {[
-            'React.js', 'Next.js', 'React Native', 'TypeScript', 'JavaScript',
-            'Express.js', 'NestJs', 'AdonisJs', 'Tailwind CSS',
+            'React.js', 'Next.js', 'Astro', 'Remix', 'Solid', 'Svelte',
+            'React Native', 'Flutter',
+            'Express.js', 'NestJs', 'AdonisJs', 'Hono',
+            'TypeScript', 'JavaScript', 'Tailwind CSS',
             'PostgreSQL', 'MySQL', 'MongoDB', 'Git', 'AI/LLM Integration'
           ].map((skill) => (
             <Box

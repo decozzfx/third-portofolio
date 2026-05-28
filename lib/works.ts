@@ -149,6 +149,30 @@ export const works: Work[] = [
     category: 'freelance',
     featured: true,
   },
+  {
+    slug: 'grip-os',
+    title: 'Grip OS',
+    year: '2023',
+    description:
+      'Operations and supply chain reporting system for Ismaya Group, supporting inventory management, stock transfers, demand forecasting, anomaly detection, and task monitoring. Contributed as Frontend Engineer building dashboard interfaces and data visualization for restaurant operations.',
+    platform: 'Website',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'TanStack React Query', 'Material UI'],
+    images: ['/images/works/grip-os/1.jpg'],
+    category: 'freelance',
+    featured: false,
+  },
+  {
+    slug: 'grip-force',
+    title: 'Grip Force',
+    year: '2023',
+    description:
+      'Mobile app for operational checklists and real-time inventory tracking at Ismaya Group, ensuring SOP compliance and seamless integration with Grip OS. Contributed as Frontend Engineer to inventory features including goods receipt, production tracking, and location-based pick recommendations.',
+    platform: 'Mobile App',
+    stack: ['React Native', 'TypeScript', 'TanStack React Query', 'React Redux'],
+    images: ['/images/works/grip-force/1.jpg'],
+    category: 'freelance',
+    featured: false,
+  },
 ]
 
 export function getWorkBySlug(slug: string): Work | undefined {
