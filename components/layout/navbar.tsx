@@ -1,12 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { ShinyCTA } from "@/components/motion/shiny-cta";
+import { Magnetic } from "@/components/motion/magnetic";
 import { MenuOverlay } from "./menu-overlay";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
     <>
       <nav
@@ -36,9 +51,11 @@ export function Navbar() {
           Moch Fathurrozi
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          <a href="mailto:decozzfx@gmail.com">
-            <ShinyCTA>Start a project &nbsp;→</ShinyCTA>
-          </a>
+          <Magnetic>
+            <a href="mailto:decozzfx@gmail.com">
+              <ShinyCTA>Start a project &nbsp;→</ShinyCTA>
+            </a>
+          </Magnetic>
           <button
             aria-label="Toggle menu"
             aria-expanded={open}

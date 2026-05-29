@@ -11,18 +11,21 @@ export function RevealWords({ children }: { children: React.ReactNode }) {
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const words = el.querySelectorAll("[data-word]");
-    gsap.fromTo(
-      words,
-      { yPercent: 110, opacity: 0 },
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.08,
-        delay: 0.1,
-      },
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        words,
+        { yPercent: 110, opacity: 0 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.08,
+          delay: 0.1,
+        },
+      );
+    }, el);
+    return () => ctx.revert();
   }, []);
   return <div ref={ref}>{children}</div>;
 }

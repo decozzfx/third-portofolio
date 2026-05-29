@@ -11,7 +11,7 @@ const LINKS = [
 export function ContactCTA() {
   return (
     <section className={styles.cta}>
-      <SectionEyebrow num="06" label="Contact" />
+      <SectionEyebrow num="07" label="Contact" />
       <DisplayHeading as="h2" text="Let's *talk.*" className={styles.title} />
       <div className={styles.links}>
         {LINKS.map((l) => (

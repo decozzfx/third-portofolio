@@ -23,14 +23,18 @@ export function ShaderBg() {
     const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    const resize = () => renderer.setSize(el.clientWidth, el.clientHeight);
-    resize();
-    el.appendChild(renderer.domElement);
 
     const uniforms = {
       u_time: { value: 0 },
       u_res: { value: new THREE.Vector2(el.clientWidth, el.clientHeight) },
     };
+
+    const resize = () => {
+      renderer.setSize(el.clientWidth, el.clientHeight);
+      uniforms.u_res.value.set(el.clientWidth, el.clientHeight);
+    };
+    resize();
+    el.appendChild(renderer.domElement);
     const mat = new THREE.ShaderMaterial({
       uniforms,
       transparent: true,

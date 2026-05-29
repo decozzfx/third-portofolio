@@ -22,6 +22,7 @@ export function MenuOverlay({
     <div
       className={`${styles.overlay} ${open ? styles.open : ""}`}
       aria-hidden={!open}
+      inert={!open ? true : undefined}
     >
       <ul className={styles.list}>
         {ITEMS.map((it) => (

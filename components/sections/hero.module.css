@@ -4,6 +4,9 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: -2rem;
 }
 .glow {
   position: absolute;
