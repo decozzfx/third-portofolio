@@ -1,331 +1,91 @@
 'use client'
 
-import {
-  Box,
-  Flex,
-  Heading,
-  Text,
-  Button,
-  SimpleGrid,
-  Link as ChakraLink,
-  Image,
-} from '@chakra-ui/react'
-import Link from 'next/link'
-import { IoArrowForward, IoLogoGithub, IoLogoLinkedin, IoMail } from 'react-icons/io5'
-import Typewriter from 'typewriter-effect'
-
+import { Box } from '@chakra-ui/react'
 import { Hero } from '@/components/sections/hero'
-import { Section } from '@/components/common/section'
-import { Paragraph } from '@/components/common/paragraph'
-import { BioSection, BioYear, BioContainer } from '@/components/sections/bio-section'
-import { WorkCard } from '@/components/cards/work-card'
-import { useColorModeValue } from '@/components/ui/color-mode'
+import { SectionEyebrow } from '@/components/common/section-eyebrow'
+import { DisplayHeading } from '@/components/common/display-heading'
+import { WorksList } from '@/components/sections/works-list'
+import { HowIWork } from '@/components/sections/how-i-work'
+import { ContactCTA } from '@/components/sections/contact-cta'
+import { useScrollReveal } from '@/lib/motion/use-scroll-reveal'
 import { getFeaturedWorks } from '@/lib/works'
 
-const socialLinks = [
-  { label: 'GitHub', href: 'https://github.com/decozzfx', icon: IoLogoGithub },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/decozzfx', icon: IoLogoLinkedin },
-  { label: 'Email', href: 'mailto:decozzfx@gmail.com', icon: IoMail },
+const PARTNERSHIPS = [
+  { role: 'Frontend Engineer · PT Veritask', detail: 'Legal AI Platform — Next.js 15, React 19, TypeScript' },
+  { role: 'Frontend Engineer · PT MFI', detail: 'React Native, Next.js, Tailwind CSS' },
+  { role: 'Frontend Engineer · PT Xprogroup', detail: 'Next.js, Tailwind CSS, Rizzui' },
+  { role: 'Frontend Engineer · Ismaya Group', detail: 'React Native, Next.js, Material UI' },
+  { role: 'Frontend Engineer · PT Javan Cipta Solusi', detail: 'Next.js, Tailwind CSS, Material UI' },
+  { role: 'Frontend Engineer · PT Infosys Solusi Terpadu', detail: 'React.js, Tailwind CSS, Material UI' },
+]
+
+const SKILLS = [
+  'React.js','Next.js','Astro','Remix','Solid','Svelte','React Native','Flutter',
+  'Express.js','NestJs','AdonisJs','Hono','TypeScript','JavaScript','Tailwind CSS',
+  'PostgreSQL','MySQL','MongoDB','Git','AI/LLM Integration',
 ]
 
 export default function HomePage() {
-  const borderColor = useColorModeValue('#E5E5E5', '#262626')
-  const featuredWorks = getFeaturedWorks().slice(0, 4)
+  const aboutRef = useScrollReveal<HTMLDivElement>()
+  const expRef = useScrollReveal<HTMLDivElement>({ selector: '[data-row]' })
+  const skillRef = useScrollReveal<HTMLDivElement>({ selector: '[data-chip]', stagger: 0.03 })
+  const featured = getFeaturedWorks().slice(0, 4)
 
   return (
     <>
-      {/* Hero Section */}
       <Hero />
-      <Section delay={0}>
 
-        {/* Intro Box */}
-        <Box
-          border="1px solid"
-          borderColor={borderColor}
-          p={6}
-          mb={8}
-          textAlign="center"
-        >
-          <Box fontFamily="mono" fontSize="sm" color="accent" mb={2}>
-            HELLO, I AM
-          </Box>
-          <Heading
-            as="h1"
-            fontSize={{ base: 'h2', md: 'h1' }}
-            fontFamily="heading"
-            fontWeight="black"
-            mb={2}
-            lineHeight="tight"
-          >
-            Moch Fathurrozi
-          </Heading>
-          <Text fontFamily="mono" fontSize="md" color="textMuted" mb={4}>
-            Fullstack & Frontend Engineer
-          </Text>
-          <Box fontSize="lg" color="textMuted" fontFamily="mono">
-            <Typewriter
-              onInit={(typewriter) => {
-                typewriter
-                  .typeString('Based in Semarang, Indonesia')
-                  .pauseFor(2000)
-                  .deleteAll()
-                  .typeString('4+ years professional experience')
-                  .pauseFor(2000)
-                  .deleteAll()
-                  .typeString('React.js | Next.js | React Native')
-                  .pauseFor(2000)
-                  .deleteAll()
-                  .start()
+      <Box as="section" py="6rem" ref={aboutRef}>
+        <SectionEyebrow num="02" label="About" />
+        <DisplayHeading as="h2" text="A developer who *cares* about the last pixel." style={{ fontSize: 'clamp(2rem,4vw,3.25rem)', marginBottom: '1.5rem' }} />
+        <p style={{ color: 'var(--text-muted)', maxWidth: '60ch', fontSize: '1.0625rem', lineHeight: 1.7 }}>
+          A Fullstack Developer specializing in Frontend with React.js, Next.js, Astro,
+          Remix, Solid and Svelte. Mobile with React Native and Flutter; backend with
+          Express.js, NestJs, AdonisJs and Hono. 4+ years building responsive,
+          user-friendly interfaces, REST APIs and database-backed apps, with hands-on
+          AI/LLM integration experience.
+        </p>
+      </Box>
+
+      <Box as="section" py="6rem">
+        <SectionEyebrow num="03" label="Partnerships" />
+        <div ref={expRef}>
+          {PARTNERSHIPS.map((p) => (
+            <div key={p.role} data-row style={{ padding: '1.1rem 0', borderTop: '1px solid var(--border)' }}>
+              <p style={{ fontWeight: 600 }}>{p.role}</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{p.detail}</p>
+            </div>
+          ))}
+        </div>
+      </Box>
+
+      <Box as="section" py="6rem">
+        <SectionEyebrow num="04" label="Skills" />
+        <div ref={skillRef} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          {SKILLS.map((s) => (
+            <span
+              key={s}
+              data-chip
+              style={{
+                border: '1px solid var(--border)', padding: '0.4rem 0.8rem',
+                fontFamily: 'var(--font-jetbrains-mono)', fontSize: '0.72rem',
+                textTransform: 'uppercase', letterSpacing: '0.05em',
               }}
-              options={{
-                autoStart: true,
-                loop: true,
-              }}
-            />
-          </Box>
-        </Box>
-
-        {/* Profile Image */}
-        <Flex justify="center" mb={8}>
-          <Box
-            border="3px solid"
-            borderColor="accent"
-            p={1}
-          >
-            <Image
-              src="/images/footprint.jpg"
-              alt="Moch Fathurrozi"
-              width="120px"
-              height="120px"
-              objectFit="cover"
-            />
-          </Box>
-        </Flex>
-      </Section>
-
-      {/* About Section */}
-      <Section delay={0.1}>
-        <Heading
-          as="h2"
-          fontSize="h3"
-          fontFamily="heading"
-          fontWeight="bold"
-          mb={4}
-          display="flex"
-          alignItems="center"
-          gap={2}
-        >
-          <Box w="24px" h="3px" bg="accent" />
-          About
-        </Heading>
-        <Paragraph>
-          A Fullstack Developer specializing in Frontend Development with React.js, Next.js,
-          Astro, Remix, Solid, and Svelte. Experienced in mobile development with React-Native
-          and Flutter, and backend with Express.js, NestJs, AdonisJs, and Hono. Skilled in
-          creating responsive, user-friendly web interfaces with 4+ years professional
-          experience. Proficient in frontend and backend development with RESTful APIs and
-          database management (PostgreSQL, MySQL, MongoDB). Experience working and integrating
-          with AI and LLM. Strong communicator and team player, dedicated to delivering
-          high-quality results.
-        </Paragraph>
-      </Section>
-
-      {/* Experience Section */}
-      <Section delay={0.2}>
-        <Heading
-          as="h2"
-          fontSize="h3"
-          fontFamily="heading"
-          fontWeight="bold"
-          mb={4}
-          display="flex"
-          alignItems="center"
-          gap={2}
-        >
-          <Box w="24px" h="3px" bg="accent" />
-          Partnerships
-        </Heading>
-        <BioContainer>
-          <BioSection>
-            <Box>
-              <Text fontWeight="medium">Frontend Engineer at PT Veritask</Text>
-              <Text fontSize="sm" color="textMuted">Legal AI Platform, Next.js 15, React 19, TypeScript</Text>
-            </Box>
-          </BioSection>
-          <BioSection>
-            <Box>
-              <Text fontWeight="medium">Frontend Engineer at PT MFI</Text>
-              <Text fontSize="sm" color="textMuted">React Native, NextJs, Tailwind CSS</Text>
-            </Box>
-          </BioSection>
-          <BioSection>
-            <Box>
-              <Text fontWeight="medium">Frontend Engineer at PT Xprogroup</Text>
-              <Text fontSize="sm" color="textMuted">NextJs, Tailwind CSS, Rizzui</Text>
-            </Box>
-          </BioSection>
-          <BioSection>
-            <Box>
-              <Text fontWeight="medium">Frontend Engineer at Ismaya Group</Text>
-              <Text fontSize="sm" color="textMuted">React Native, NextJs, Material UI</Text>
-            </Box>
-          </BioSection>
-          <BioSection>
-            <Box>
-              <Text fontWeight="medium">Frontend Engineer at PT Javan Cipta Solusi</Text>
-              <Text fontSize="sm" color="textMuted">NextJs, Tailwind CSS, Material UI</Text>
-            </Box>
-          </BioSection>
-          <BioSection>
-            <Box>
-              <Text fontWeight="medium">Frontend Engineer at PT Infosys Solusi Terpadu</Text>
-              <Text fontSize="sm" color="textMuted">ReactJs, Tailwind CSS, Material UI</Text>
-            </Box>
-          </BioSection>
-        </BioContainer>
-      </Section>
-
-      {/* Skills Section */}
-      <Section delay={0.25}>
-        <Heading
-          as="h2"
-          fontSize="h3"
-          fontFamily="heading"
-          fontWeight="bold"
-          mb={4}
-          display="flex"
-          alignItems="center"
-          gap={2}
-        >
-          <Box w="24px" h="3px" bg="accent" />
-          Skills
-        </Heading>
-        <Flex gap={2} flexWrap="wrap">
-          {[
-            'React.js', 'Next.js', 'Astro', 'Remix', 'Solid', 'Svelte',
-            'React Native', 'Flutter',
-            'Express.js', 'NestJs', 'AdonisJs', 'Hono',
-            'TypeScript', 'JavaScript', 'Tailwind CSS',
-            'PostgreSQL', 'MySQL', 'MongoDB', 'Git', 'AI/LLM Integration'
-          ].map((skill) => (
-            <Box
-              key={skill}
-              border="1px solid"
-              borderColor={borderColor}
-              px={3}
-              py={1}
-              fontFamily="mono"
-              fontSize="xs"
-              textTransform="uppercase"
             >
-              {skill}
-            </Box>
+              {s}
+            </span>
           ))}
-        </Flex>
-      </Section>
+        </div>
+      </Box>
 
-      {/* Education Section */}
-      <Section delay={0.3}>
-        <Heading
-          as="h2"
-          fontSize="h3"
-          fontFamily="heading"
-          fontWeight="bold"
-          mb={4}
-          display="flex"
-          alignItems="center"
-          gap={2}
-        >
-          <Box w="24px" h="3px" bg="accent" />
-          Education
-        </Heading>
-        <BioContainer>
-          <BioSection>
-            <BioYear>2014 - 2017</BioYear>
-            <Box>
-              <Text fontWeight="medium">Politeknik Negeri Madiun</Text>
-              <Text fontSize="sm" color="textMuted">Computing Accountant</Text>
-            </Box>
-          </BioSection>
-        </BioContainer>
-      </Section>
+      <Box as="section" py="6rem">
+        <SectionEyebrow num="05" label="Selected Work" />
+        <WorksList works={featured} />
+      </Box>
 
-      {/* Featured Works */}
-      <Section delay={0.35}>
-        <Flex justify="space-between" align="center" mb={6}>
-          <Heading
-            as="h2"
-            fontSize="h3"
-            fontFamily="heading"
-            fontWeight="bold"
-            display="flex"
-            alignItems="center"
-            gap={2}
-          >
-            <Box w="24px" h="3px" bg="accent" />
-            Featured Works
-          </Heading>
-          <Link href="/works" passHref>
-            <Button
-              variant="ghost"
-              size="sm"
-              fontFamily="mono"
-              textTransform="uppercase"
-              letterSpacing="0.05em"
-              _hover={{ color: 'accent' }}
-            >
-              View All <IoArrowForward style={{ marginLeft: '8px' }} />
-            </Button>
-          </Link>
-        </Flex>
-        <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
-          {featuredWorks.map((work) => (
-            <WorkCard key={work.slug} work={work} />
-          ))}
-        </SimpleGrid>
-      </Section>
+      <HowIWork />
 
-      {/* Contact Section */}
-      <Section delay={0.4}>
-        <Heading
-          as="h2"
-          fontSize="h3"
-          fontFamily="heading"
-          fontWeight="bold"
-          mb={4}
-          display="flex"
-          alignItems="center"
-          gap={2}
-        >
-          <Box w="24px" h="3px" bg="accent" />
-          Let&apos;s Connect
-        </Heading>
-        <Flex gap={4} flexWrap="wrap">
-          {socialLinks.map((link) => (
-            <ChakraLink
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="outline"
-                borderColor={borderColor}
-                fontFamily="mono"
-                textTransform="uppercase"
-                letterSpacing="0.05em"
-                _hover={{
-                  borderColor: 'accent',
-                  color: 'accent',
-                }}
-              >
-                <link.icon style={{ marginRight: '8px' }} />
-                {link.label}
-              </Button>
-            </ChakraLink>
-          ))}
-        </Flex>
-      </Section>
+      <ContactCTA />
     </>
   )
 }
