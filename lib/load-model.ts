@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 
 export interface LoadOptions {
   receiveShadow?: boolean;
@@ -14,6 +15,11 @@ export function loadGLTFModel(
   const { receiveShadow = true, castShadow = true } = options;
   return new Promise((resolve, reject) => {
     const loader = new GLTFLoader();
+    const draco = new DRACOLoader();
+    draco.setDecoderPath(
+      "https://www.gstatic.com/draco/versioned/decoders/1.5.7/",
+    );
+    loader.setDRACOLoader(draco);
     loader.load(
       glbPath,
       (gltf) => {

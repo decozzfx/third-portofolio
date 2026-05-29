@@ -37,6 +37,7 @@ export function Hero() {
     <header className={styles.hero}>
       <ShaderBg />
       <div className={styles.glow} aria-hidden="true" />
+      <HeroModel />
       <div className={styles.grid}>
         <div className={styles.content}>
           <SectionEyebrow num="01" label="Fullstack & Frontend Engineer" />

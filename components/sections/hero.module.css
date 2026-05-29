@@ -23,36 +23,12 @@
 .grid {
   position: relative;
   z-index: 1;
-  max-width: 1480px;
   width: 100%;
-  margin-inline: auto;
-  padding: 0 1.5rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 1.75rem;
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
 }
 .content {
   min-width: 0;
-}
-.visual {
-  position: relative;
-  height: 100%;
-  min-height: 360px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-  .visual {
-    order: -1;
-    min-height: 300px;
-    margin-bottom: 0.5rem;
-  }
+  max-width: 40rem;
 }
 .title {
   font-size: clamp(2.25rem, 5vw, 4.25rem);
@@ -82,8 +58,10 @@
 }
 .stats {
   display: flex;
-  gap: 2rem;
-  margin-top: 3rem;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
   flex-wrap: wrap;
 }
 .stat {

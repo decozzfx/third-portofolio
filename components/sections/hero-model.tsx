@@ -29,8 +29,10 @@ export function HeroModel() {
       if (camera) {
         const aspect = w / h;
         const s = refScale.current;
-        camera.left = -s * aspect;
-        camera.right = s * aspect;
+        const A = s * aspect;
+        const shift = A * 0.42; // push model toward the right of the canvas
+        camera.left = -A - shift;
+        camera.right = A - shift;
         camera.top = s;
         camera.bottom = -s;
         camera.updateProjectionMatrix();
@@ -41,6 +43,8 @@ export function HeroModel() {
   useEffect(() => {
     const container = refContainer.current;
     if (!container) return;
+    // guard against React StrictMode double-mount leaving two stacked canvases
+    container.replaceChildren();
 
     const scW = container.clientWidth;
     const scH = container.clientHeight;
@@ -60,14 +64,17 @@ export function HeroModel() {
       20 * Math.cos(0.2 * Math.PI),
     );
 
-    // vertical half-size of the frustum; x is widened by the container aspect
-    // ratio so the model keeps correct proportions (no "gepeng"/squish)
-    const scale = scW <= 480 ? scW * 0.0026 : scW * 0.0016;
+    // vertical half-size of the frustum drives model size; based on height so
+    // the full-bleed (wide) canvas doesn't shrink it. x widened by aspect to
+    // keep proportions (no "gepeng"), then frustum shifted right.
+    const scale = scH * 0.0009;
     const aspect = scW / scH;
     refScale.current = scale;
+    const A = scale * aspect;
+    const shift = A * 0.42;
     const camera = new THREE.OrthographicCamera(
-      -scale * aspect,
-      scale * aspect,
+      -A - shift,
+      A - shift,
       scale,
       -scale,
       0.01,
@@ -77,13 +84,11 @@ export function HeroModel() {
     camera.position.copy(initialCameraPosition);
     camera.lookAt(target);
 
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.7);
-    hemiLight.color.setHSL(0.6, 0.2, 0.25);
-    hemiLight.groundColor.setHSL(0.04, 1, 0.4);
-    hemiLight.position.set(0, -50, 0);
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0xbbbbbb, 0.7);
+    hemiLight.position.set(0, 50, 0);
     scene.add(hemiLight);
 
-    const dirLight = new THREE.DirectionalLight(0xc6f24d, 1.4);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.4);
     dirLight.position.set(-1, 0.75, 1).multiplyScalar(50);
     scene.add(dirLight);
 
@@ -120,7 +125,7 @@ export function HeroModel() {
       renderer.render(scene, camera);
     };
 
-    loadGLTFModel(scene, "/pochita.glb", {
+    loadGLTFModel(scene, "/model.glb", {
       receiveShadow: false,
       castShadow: false,
     })
@@ -138,6 +143,8 @@ export function HeroModel() {
       controls.dispose();
       renderer.domElement.remove();
       renderer.dispose();
+      refRenderer.current = null;
+      refCamera.current = null;
     };
   }, []);
 

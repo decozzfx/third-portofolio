@@ -16,7 +16,7 @@ export default function MainLayout({
       <Flex direction="column" minH="100vh">
         <Navbar />
         <Box as="main" pt="80px" flex="1">
-          <Box mx="auto" w="100%" maxW="var(--container)" px="1.5rem" py={8}>
+          <Box w="100%" px={{ base: "1.5rem", md: "3rem", xl: "5rem" }} py={8}>
             {children}
           </Box>
         </Box>

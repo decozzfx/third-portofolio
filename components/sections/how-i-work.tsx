@@ -27,7 +27,7 @@ export function HowIWork() {
   const ref = useScrollReveal<HTMLDivElement>({ selector: "[data-card]" });
   return (
     <section className={styles.section}>
-      <SectionEyebrow num="06" label="How I work" />
+      <SectionEyebrow num="05" label="How I work" />
       <DisplayHeading
         as="h2"
         text="From *idea* to *launch.*"

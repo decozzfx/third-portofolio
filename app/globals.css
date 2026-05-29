@@ -9,7 +9,7 @@
   --accent-soft: rgba(198, 242, 77, 0.12);
   --accent-ink: #0a0a0b;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --container: 1180px;
+  --container: 1380px;
 }
 
 * {

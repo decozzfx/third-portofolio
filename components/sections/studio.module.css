@@ -1,0 +1,208 @@
+.section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+  padding: 6rem 0;
+}
+
+/* ---------- left: big image + overlay card ---------- */
+.media {
+  position: relative;
+  align-self: stretch;
+}
+.bigImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+.card {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  max-width: 280px;
+  padding: 1.1rem 1.25rem;
+  background: rgba(10, 10, 11, 0.72);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.cardHead {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+.cardName {
+  font-family: var(--font-instrument-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+}
+.cardDivider {
+  color: var(--text-muted);
+}
+.cardTag {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.cardLine {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.cardCoords {
+  margin-top: 0.6rem;
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---------- right: heading + meta + portrait ---------- */
+.content {
+  min-width: 0;
+}
+.heading {
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  margin-bottom: 1.25rem;
+}
+.lead {
+  color: var(--text-muted);
+  max-width: 46ch;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.metaCell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.1rem 1.25rem 1.1rem 0;
+}
+.metaCell + .metaCell {
+  padding-left: 1.25rem;
+  border-left: 1px solid var(--border);
+}
+.metaLabel {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.metaValue {
+  font-family: var(--font-instrument-serif);
+  font-size: 1.5rem;
+}
+.availability {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.availValue {
+  font-weight: 600;
+  font-size: 1.0625rem;
+}
+
+/* ---------- stack marquee ---------- */
+.stack {
+  margin-top: 2.5rem;
+}
+.stackHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.stackCount {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.stackRow {
+  overflow: hidden;
+  padding: 0.55rem 0;
+  -webkit-mask: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  mask: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.stackRow + .stackRow {
+  border-top: 1px solid var(--border);
+}
+.track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  animation: marquee-left 28s linear infinite;
+}
+.trackRight {
+  animation-name: marquee-right;
+}
+.stackItem {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-instrument-serif);
+  font-size: 1.5rem;
+  color: var(--text);
+}
+.stackDot {
+  margin: 0 1.1rem;
+  font-size: 0.5rem;
+  color: var(--accent);
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 4rem 0;
+  }
+  .bigImg {
+    min-height: 360px;
+  }
+}

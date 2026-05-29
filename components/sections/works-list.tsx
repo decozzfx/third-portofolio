@@ -38,8 +38,9 @@ export function WorksList({ works }: { works: Work[] }) {
               <span className={styles.name}>
                 <TextRoll text={w.title} />
               </span>
-              <span className={styles.tag}>{w.platform}</span>
-              <span className={styles.year}>{w.year}</span>
+              <span className={styles.meta}>
+                {w.platform} · {w.year}
+              </span>
               <span className={styles.arrow} aria-hidden="true">
                 ↗
               </span>
