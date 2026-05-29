@@ -1,6 +1,23 @@
 import type { Metadata, Viewport } from 'next'
+import { Instrument_Serif, JetBrains_Mono, Inter } from 'next/font/google'
 import { Provider } from '@/components/ui/provider'
 import './globals.css'
+
+const instrumentSerif = Instrument_Serif({
+  weight: '400',
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-instrument-serif',
+})
+const jetbrainsMono = JetBrains_Mono({
+  weight: ['400', '500'],
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+})
+const switzer = Inter({
+  subsets: ['latin'],
+  variable: '--font-switzer',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -47,20 +64,17 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
-    { media: '(prefers-color-scheme: dark)', color: '#0A0A0A' },
-  ],
+  themeColor: '#0A0A0B',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${instrumentSerif.variable} ${jetbrainsMono.variable} ${switzer.variable}`}
+    >
+      <body style={{ fontFamily: 'var(--font-switzer), system-ui, sans-serif' }}>
         <Provider>{children}</Provider>
       </body>
     </html>
