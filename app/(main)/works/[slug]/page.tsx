@@ -1,324 +1,147 @@
-'use client'
-
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Text,
-  SimpleGrid,
-  Image,
-  Link as ChakraLink,
-  Button,
-} from '@chakra-ui/react'
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
-import { IoArrowBack, IoArrowForward } from 'react-icons/io5'
+import { notFound } from 'next/navigation'
 
-import { Section } from '@/components/common/section'
-import { Paragraph } from '@/components/common/paragraph'
-import { useColorModeValue } from '@/components/ui/color-mode'
+import { SectionEyebrow } from '@/components/common/section-eyebrow'
 import { getWorkBySlug, works } from '@/lib/works'
 
-export default function WorkDetailPage() {
-  const params = useParams()
-  const slug = params.slug as string
+export function generateStaticParams() {
+  return works.map((w) => ({ slug: w.slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+  const { slug } = await params
+  const work = getWorkBySlug(slug)
+  if (!work) return {}
+  return {
+    title: work.title,
+    description: work.description,
+  }
+}
+
+export default async function WorkDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
   const work = getWorkBySlug(slug)
 
-  const borderColor = useColorModeValue('#E5E5E5', '#262626')
-  const bgColor = useColorModeValue('#F5F5F5', '#171717')
+  if (!work) notFound()
 
-  // Check if this is a mobile app (portrait images)
-  const isMobileApp = work?.platform === 'Android' || work?.platform === 'iOS'
-
-  if (!work) {
-    return (
-      <Box textAlign="center" py={20}>
-        <Heading as="h1" mb={4}>
-          Work not found
-        </Heading>
-        <Link href="/works" passHref>
-          <Button>Back to Works</Button>
-        </Link>
-      </Box>
-    )
-  }
+  const links =
+    typeof work.website === 'string'
+      ? [{ label: 'Visit site', url: work.website }]
+      : work.website ?? []
 
   return (
-    <>
-      {/* Breadcrumb */}
-      <Section delay={0}>
-        <Flex align="center" gap={2} mb={6}>
-          <Link href="/works" passHref>
-            <Text
-              fontFamily="mono"
-              fontSize="sm"
-              color="textMuted"
-              textTransform="uppercase"
-              letterSpacing="0.05em"
-              _hover={{ color: 'accent' }}
-              transition="color 0.2s"
-            >
-              Works
-            </Text>
-          </Link>
-          <Text color="textMuted">/</Text>
-          <Text
-            fontFamily="mono"
-            fontSize="sm"
-            color="accent"
-            textTransform="uppercase"
-            letterSpacing="0.05em"
-          >
-            {work.title}
-          </Text>
-        </Flex>
-
-        {/* Title */}
-        <Flex align="center" gap={4} mb={6}>
-          <Heading
-            as="h1"
-            fontSize={{ base: 'h2', md: 'h1' }}
-            fontFamily="heading"
-            fontWeight="black"
-            lineHeight="tight"
-          >
-            {work.title}
-          </Heading>
-          <Box
-            bg="accent"
-            color="white"
-            px={3}
-            py={1}
-            fontFamily="mono"
-            fontSize="sm"
-            fontWeight="bold"
-          >
-            {work.year}
-          </Box>
-        </Flex>
-
-        {/* Hero Image */}
-        <Box
-          border="1px solid"
-          borderColor={borderColor}
-          mb={8}
-          overflow="hidden"
-          bg={bgColor}
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          p={isMobileApp ? 4 : 0}
+    <div style={{ paddingTop: '2rem', maxWidth: '860px' }}>
+      {/* Back link */}
+      <div style={{ marginBottom: '2.5rem' }}>
+        <Link
+          href="/works"
+          style={{
+            fontFamily: 'var(--font-jetbrains-mono)',
+            fontSize: '0.75rem',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            color: 'var(--text-muted)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+          }}
         >
-          <Image
-            src={work.images[0]}
-            alt={work.title}
-            maxH={isMobileApp ? '500px' : 'auto'}
-            w={isMobileApp ? 'auto' : '100%'}
-            objectFit="contain"
-          />
-        </Box>
-      </Section>
+          ← Works
+        </Link>
+      </div>
 
-      {/* Description */}
-      <Section delay={0.1}>
-        <Paragraph fontSize="lg" mb={8}>
-          {work.description}
-        </Paragraph>
-      </Section>
+      {/* Title block */}
+      <SectionEyebrow num="WORK" label={`${work.year} · ${work.platform}`} />
+      <h1
+        style={{
+          fontFamily: 'var(--font-instrument-serif)',
+          fontSize: 'clamp(2.5rem,6vw,4.5rem)',
+          lineHeight: 1.05,
+          margin: '0.5rem 0 1.5rem',
+        }}
+      >
+        {work.title}
+      </h1>
+      <p style={{ color: 'var(--text-muted)', maxWidth: '60ch', lineHeight: 1.7 }}>
+        {work.description}
+      </p>
 
-      {/* Metadata */}
-      <Section delay={0.15}>
-        <Box
-          border="1px solid"
-          borderColor={borderColor}
-          p={6}
-          mb={8}
-        >
-          <SimpleGrid columns={{ base: 1, sm: 2 }} gap={6}>
-            <Box>
-              <Text
-                fontFamily="mono"
-                fontSize="xs"
-                color="accent"
-                textTransform="uppercase"
-                letterSpacing="0.1em"
-                mb={1}
-              >
-                Platform
-              </Text>
-              <Text fontWeight="medium">{work.platform}</Text>
-            </Box>
-
-            <Box>
-              <Text
-                fontFamily="mono"
-                fontSize="xs"
-                color="accent"
-                textTransform="uppercase"
-                letterSpacing="0.1em"
-                mb={1}
-              >
-                Year
-              </Text>
-              <Text fontWeight="medium">{work.year}</Text>
-            </Box>
-
-            <Box gridColumn={{ sm: 'span 2' }}>
-              <Text
-                fontFamily="mono"
-                fontSize="xs"
-                color="accent"
-                textTransform="uppercase"
-                letterSpacing="0.1em"
-                mb={2}
-              >
-                Tech Stack
-              </Text>
-              <Flex gap={2} flexWrap="wrap">
-                {work.stack.map((tech) => (
-                  <Box
-                    key={tech}
-                    border="1px solid"
-                    borderColor={borderColor}
-                    px={3}
-                    py={1}
-                    fontFamily="mono"
-                    fontSize="xs"
-                    textTransform="uppercase"
-                  >
-                    {tech}
-                  </Box>
-                ))}
-              </Flex>
-            </Box>
-
-            {work.website && (
-              <Box gridColumn={{ sm: 'span 2' }}>
-                <Text
-                  fontFamily="mono"
-                  fontSize="xs"
-                  color="accent"
-                  textTransform="uppercase"
-                  letterSpacing="0.1em"
-                  mb={2}
-                >
-                  {Array.isArray(work.website) ? 'Websites' : 'Website'}
-                </Text>
-                {Array.isArray(work.website) ? (
-                  <Flex direction="column" gap={2}>
-                    {work.website.map((site) => (
-                      <ChakraLink
-                        key={site.url}
-                        href={site.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        color="text"
-                        _hover={{ color: 'accent' }}
-                        transition="color 0.2s"
-                      >
-                        <Flex align="center" gap={3} flexWrap="wrap">
-                          <Text
-                            fontFamily="mono"
-                            fontSize="xs"
-                            color="textMuted"
-                            textTransform="uppercase"
-                            letterSpacing="0.05em"
-                            minW="100px"
-                          >
-                            {site.label}
-                          </Text>
-                          <Text fontWeight="medium">{site.url}</Text>
-                          <IoArrowForward />
-                        </Flex>
-                      </ChakraLink>
-                    ))}
-                  </Flex>
-                ) : (
-                  <ChakraLink
-                    href={work.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    color="text"
-                    _hover={{ color: 'accent' }}
-                    transition="color 0.2s"
-                  >
-                    <Flex align="center" gap={2}>
-                      <Text fontWeight="medium">{work.website}</Text>
-                      <IoArrowForward />
-                    </Flex>
-                  </ChakraLink>
-                )}
-              </Box>
-            )}
-          </SimpleGrid>
-        </Box>
-      </Section>
-
-      {/* Screenshots */}
-      {work.images.length > 1 && (
-        <Section delay={0.2}>
-          <Heading
-            as="h2"
-            fontSize="h3"
-            fontFamily="heading"
-            fontWeight="bold"
-            mb={6}
-            display="flex"
-            alignItems="center"
-            gap={2}
-          >
-            <Box w="24px" h="3px" bg="accent" />
-            Screenshots
-          </Heading>
-          <SimpleGrid
-            columns={isMobileApp ? { base: 2, md: 3 } : { base: 1, md: 2 }}
-            gap={4}
-          >
-            {work.images.slice(1).map((image, index) => (
-              <Box
-                key={index}
-                border="1px solid"
-                borderColor={borderColor}
-                overflow="hidden"
-                bg={bgColor}
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                p={isMobileApp ? 2 : 0}
-              >
-                <Image
-                  src={image}
-                  alt={`${work.title} screenshot ${index + 2}`}
-                  maxH={isMobileApp ? '400px' : 'auto'}
-                  w={isMobileApp ? 'auto' : '100%'}
-                  objectFit="contain"
-                />
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Section>
-      )}
-
-      {/* Back Button */}
-      <Section delay={0.3}>
-        <Link href="/works" passHref>
-          <Button
-            variant="outline"
-            borderColor={borderColor}
-            fontFamily="mono"
-            textTransform="uppercase"
-            letterSpacing="0.05em"
-            _hover={{
-              borderColor: 'accent',
-              color: 'accent',
+      {/* Stack chips */}
+      <div
+        style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', margin: '1.5rem 0' }}
+      >
+        {work.stack.map((s) => (
+          <span
+            key={s}
+            style={{
+              border: '1px solid var(--border)',
+              padding: '0.35rem 0.75rem',
+              fontFamily: 'var(--font-jetbrains-mono)',
+              fontSize: '0.72rem',
+              textTransform: 'uppercase',
             }}
           >
-            <IoArrowBack style={{ marginRight: '8px' }} />
-            Back to Works
-          </Button>
-        </Link>
-      </Section>
-    </>
+            {s}
+          </span>
+        ))}
+      </div>
+
+      {/* Website link(s) */}
+      {work.website && (
+        <div
+          style={{
+            display: 'flex',
+            gap: '0.75rem',
+            flexWrap: 'wrap',
+            marginBottom: '2rem',
+          }}
+        >
+          {links.map((lnk) => (
+            <a
+              key={lnk.url}
+              href={lnk.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontFamily: 'var(--font-jetbrains-mono)',
+                fontSize: '0.8rem',
+                textTransform: 'uppercase',
+                padding: '0.7rem 1.1rem',
+                border: '1px solid var(--border)',
+              }}
+            >
+              {lnk.label} ↗
+            </a>
+          ))}
+        </div>
+      )}
+
+      {/* Images — full-width vertical stack */}
+      <div style={{ marginTop: '2.5rem' }}>
+        {work.images.map((image, index) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={index}
+            src={image}
+            alt={index === 0 ? work.title : `${work.title} screenshot ${index + 1}`}
+            style={{
+              width: '100%',
+              display: 'block',
+              marginBottom: '1.5rem',
+              border: '1px solid var(--border)',
+            }}
+          />
+        ))}
+      </div>
+    </div>
   )
 }
