@@ -1,0 +1,47 @@
+.roll {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.05;
+}
+
+.row {
+  display: inline-flex;
+}
+
+.clone {
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+.wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.letter {
+  display: inline-block;
+  white-space: pre;
+  transition: transform 0.4s var(--ease-out);
+  transition-delay: calc(var(--i) * 0.018s);
+}
+
+.wrap:hover .row .letter {
+  transform: translateY(-100%);
+}
+
+.wrap:hover .clone .letter {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter {
+    transition: none;
+  }
+
+  .wrap:hover .row .letter,
+  .wrap:hover .clone .letter {
+    transform: none;
+  }
+}
