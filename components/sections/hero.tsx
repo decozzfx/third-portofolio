@@ -1,10 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { RevealWords } from '@/components/motion/reveal-words'
 import { SectionEyebrow } from '@/components/common/section-eyebrow'
 import { ShinyCTA } from '@/components/motion/shiny-cta'
 import styles from './hero.module.css'
+
+const ShaderBg = dynamic(() => import('./shader-bg').then((m) => m.ShaderBg), { ssr: false })
 
 const WORDS = [
   { t: 'I', em: false },
@@ -24,6 +27,7 @@ const STATS = [
 export function Hero() {
   return (
     <header className={styles.hero}>
+      <ShaderBg />
       <div className={styles.glow} aria-hidden="true" />
       <div className={styles.content}>
         <SectionEyebrow num="01" label="Fullstack & Frontend Engineer" />
