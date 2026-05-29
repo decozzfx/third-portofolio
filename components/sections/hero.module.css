@@ -23,12 +23,18 @@
   width: 100%;
 }
 .title {
-  font-size: clamp(3rem, 9vw, 7rem);
+  font-size: clamp(2.75rem, 8vw, 6.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
   margin: 1.2rem 0;
+  max-width: 18ch;
 }
 .word {
   display: inline-block;
   overflow: hidden;
+  margin-right: 0.22em;
+  padding-bottom: 0.12em;
+  line-height: 1.1;
 }
 .sub {
   color: var(--text-muted);
