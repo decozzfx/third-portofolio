@@ -14,7 +14,7 @@ import Link from 'next/link'
 import { IoArrowForward, IoLogoGithub, IoLogoLinkedin, IoMail } from 'react-icons/io5'
 import Typewriter from 'typewriter-effect'
 
-import { HeroAnimation } from '@/components/layout/hero-animation'
+import { Hero } from '@/components/sections/hero'
 import { Section } from '@/components/common/section'
 import { Paragraph } from '@/components/common/paragraph'
 import { BioSection, BioYear, BioContainer } from '@/components/sections/bio-section'
@@ -35,8 +35,8 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
+      <Hero />
       <Section delay={0}>
-        <HeroAnimation />
 
         {/* Intro Box */}
         <Box
