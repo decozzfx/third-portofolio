@@ -1,0 +1,40 @@
+.section {
+  padding: 6rem 0;
+}
+
+.grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: var(--bg);
+  padding: 2rem;
+}
+
+.step {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.cardTitle {
+  font-family: var(--font-instrument-serif);
+  font-size: 1.6rem;
+  margin: 0.6rem 0;
+}
+
+.cardText {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
