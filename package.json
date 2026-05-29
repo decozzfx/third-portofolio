@@ -1,6 +1,6 @@
 {
   "name": "portofolio-3rd",
-  "description": "My 3rd Portofolio - Brutalist Modern Design",
+  "description": "Portfolio — dark editorial-premium design",
   "version": "2.0.0",
   "private": true,
   "author": "decozzfx",
@@ -22,8 +22,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
-    "three": "0.184.0",
-    "typewriter-effect": "^2.21.0"
+    "three": "0.184.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",

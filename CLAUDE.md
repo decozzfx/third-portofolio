@@ -14,7 +14,7 @@ npm run prettier # Format code with Prettier
 
 ## Architecture
 
-This is a **Next.js 15** portfolio with **App Router**, **TypeScript**, and **Chakra UI v3**. Uses a brutalist modern design aesthetic.
+This is a **Next.js 15** portfolio with **App Router**, **TypeScript**, and **Chakra UI v3**. Uses a dark editorial-premium design aesthetic.
 
 ### Tech Stack
 
@@ -22,6 +22,8 @@ This is a **Next.js 15** portfolio with **App Router**, **TypeScript**, and **Ch
 - TypeScript
 - Chakra UI v3 with custom theme system
 - Framer Motion for animations
+- GSAP + Lenis (smooth scroll + scroll animations)
+- three.js (hero shader)
 - next-themes for color mode
 
 ### Directory Structure
@@ -35,7 +37,7 @@ app/
 │   ├── layout.tsx          # Navbar + footer
 │   ├── page.tsx            # Home page
 │   ├── works/
-│   │   ├── page.tsx        # Works grid
+│   │   ├── page.tsx        # Works list
 │   │   └── [slug]/page.tsx # Dynamic work detail
 │   └── posts/page.tsx
 └── (cv)/                   # Route group - CV layout (wider)
@@ -44,24 +46,34 @@ app/
 
 components/
 ├── ui/                     # Chakra v3 providers
-│   ├── provider.tsx        # ChakraProvider + ThemeProvider
-│   └── color-mode.tsx      # Color mode hooks
+│   └── provider.tsx        # ChakraProvider + ThemeProvider
 ├── layout/                 # Layout components
 │   ├── navbar.tsx
-│   ├── footer.tsx
-│   └── hero-animation.tsx  # 2D geometric animation
+│   └── footer.tsx
+├── motion/                 # Animation / interaction primitives
+│   ├── smooth-scroll.tsx   # Lenis wrapper
+│   ├── text-roll.tsx       # Hover text-roll effect
+│   ├── reveal-words.tsx    # Scroll-triggered word reveal
+│   ├── shiny-cta.tsx       # Shiny button
+│   ├── custom-cursor.tsx   # Custom cursor
+│   └── magnetic.tsx        # Magnetic hover
 ├── sections/               # Page sections
-│   └── bio-section.tsx
-├── cards/
-│   └── work-card.tsx
+│   ├── hero.tsx
+│   ├── works-list.tsx
+│   ├── how-i-work.tsx
+│   ├── contact-cta.tsx
+│   └── shader-bg.tsx       # three.js hero shader background
 └── common/
     ├── section.tsx         # Animated section wrapper
-    ├── paragraph.tsx
-    └── theme-toggle.tsx
+    ├── section-eyebrow.tsx # Numbered eyebrow labels [01]…
+    ├── display-heading.tsx # Serif display headings
+    └── grain.tsx           # CSS grain overlay
 
 lib/
-├── theme.ts                # Chakra UI v3 theme (brutalist design)
-└── works.ts                # Works data array + helpers
+├── theme.ts                # Chakra UI v3 theme
+├── works.ts                # Works data array + helpers
+└── motion/
+    └── use-scroll-reveal.ts # GSAP scroll reveal hook
 
 types/
 └── index.ts                # TypeScript interfaces
@@ -75,26 +87,25 @@ types/
 
 - Uses `createSystem` API from Chakra UI v3
 - Semantic color tokens: `bg`, `surface`, `border`, `text`, `textMuted`, `accent`
-- Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (code)
-- Dark mode by default
-
-**Color Mode** (`components/ui/color-mode.tsx`):
-
-- Uses `next-themes` for SSR-safe color mode
-- Custom hooks: `useColorMode()`, `useColorModeValue()`
+- Fonts: Instrument Serif (display/emphasis), Inter as Switzer-fallback (body), JetBrains Mono (labels)
+- Dark-only (theme forced dark; toggle removed)
 
 **Works Data** (`lib/works.ts`):
 
 - Centralized work/project data
 - Helper functions: `getWorkBySlug()`, `getFeaturedWorks()`
 
-### Design System (Brutalist Modern)
+### Design System (Dark Editorial-Premium)
 
-- High contrast: black/white with orange-red accent (#FF3D00)
-- Sharp corners, no rounded borders
-- Bold typography with strong weight contrast
-- Grid-based layouts with geometric shapes
-- Monospace text for labels/metadata
+- Dark near-black background (#0A0A0B) with #FF3D00 accent
+- Numbered section eyebrows [01], [02]… as structural markers
+- Serif-italic emphasis words with hand-drawn underline
+- Text-roll hover effect on interactive text
+- Works displayed as a list with cursor-preview on hover
+- Smooth scroll (Lenis) + scroll-triggered reveals (GSAP)
+- Grain overlay for tactile texture
+- Fullscreen burger menu
+- Custom cursor
 
 ### Task Master AI
 
