@@ -1,29 +1,76 @@
-.list { list-style: none; }
-.item { border-top: 1px solid var(--border); }
-.item:last-child { border-bottom: 1px solid var(--border); }
+.list {
+  list-style: none;
+}
+.item {
+  border-top: 1px solid var(--border);
+}
+.item:last-child {
+  border-bottom: 1px solid var(--border);
+}
 .link {
   display: grid;
   grid-template-columns: 3rem 1fr auto auto;
   gap: 1.5rem;
   align-items: center;
   padding: 1.6rem 0.5rem;
-  transition: padding 0.4s var(--ease-out), background 0.3s;
+  transition:
+    padding 0.4s var(--ease-out),
+    background 0.3s;
 }
-.link:hover { padding-left: 1.2rem; background: var(--surface); }
-.num { font-family: var(--font-jetbrains-mono); color: var(--text-muted); font-size: 0.8rem; }
-.name { font-family: var(--font-instrument-serif); font-size: clamp(1.5rem, 3vw, 2.4rem); }
-.tag { font-family: var(--font-jetbrains-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; }
-.year { font-family: var(--font-jetbrains-mono); font-size: 0.72rem; color: var(--text-muted); }
-.arrow { color: var(--accent); }
+.link:hover {
+  padding-left: 1.2rem;
+  background: var(--surface);
+}
+.num {
+  font-family: var(--font-jetbrains-mono);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.name {
+  font-family: var(--font-instrument-serif);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+}
+.tag {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.year {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.arrow {
+  color: var(--accent);
+}
 .preview {
-  position: fixed; top: 0; left: 0; width: 240px; height: 150px;
-  pointer-events: none; z-index: 50; opacity: 0; object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 150px;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  object-fit: cover;
   transform: translate(-50%, -50%) scale(0.8);
-  transition: opacity 0.25s, transform 0.25s var(--ease-out);
+  transition:
+    opacity 0.25s,
+    transform 0.25s var(--ease-out);
 }
-.preview.visible { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.preview.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
 @media (max-width: 768px) {
-  .link { grid-template-columns: 2rem 1fr auto; }
-  .tag { display: none; }
-  .preview { display: none; }
+  .link {
+    grid-template-columns: 2rem 1fr auto;
+  }
+  .tag {
+    display: none;
+  }
+  .preview {
+    display: none;
+  }
 }

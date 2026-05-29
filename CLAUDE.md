@@ -17,6 +17,7 @@ npm run prettier # Format code with Prettier
 This is a **Next.js 15** portfolio with **App Router**, **TypeScript**, and **Chakra UI v3**. Uses a brutalist modern design aesthetic.
 
 ### Tech Stack
+
 - Next.js 15 (App Router)
 - TypeScript
 - Chakra UI v3 with custom theme system
@@ -71,20 +72,24 @@ types/
 **Route Groups**: `(main)` and `(cv)` provide different layouts without affecting URL structure.
 
 **Theme System** (`lib/theme.ts`):
+
 - Uses `createSystem` API from Chakra UI v3
 - Semantic color tokens: `bg`, `surface`, `border`, `text`, `textMuted`, `accent`
 - Fonts: Space Grotesk (headings), Inter (body), JetBrains Mono (code)
 - Dark mode by default
 
 **Color Mode** (`components/ui/color-mode.tsx`):
+
 - Uses `next-themes` for SSR-safe color mode
 - Custom hooks: `useColorMode()`, `useColorModeValue()`
 
 **Works Data** (`lib/works.ts`):
+
 - Centralized work/project data
 - Helper functions: `getWorkBySlug()`, `getFeaturedWorks()`
 
 ### Design System (Brutalist Modern)
+
 - High contrast: black/white with orange-red accent (#FF3D00)
 - Sharp corners, no rounded borders
 - Bold typography with strong weight contrast
@@ -92,4 +97,5 @@ types/
 - Monospace text for labels/metadata
 
 ### Task Master AI
+
 Configuration in `.taskmasterconfig`. Requires `PERPLEXITY_API_KEY` in `.env` file.

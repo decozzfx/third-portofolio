@@ -1,28 +1,30 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import { RevealWords } from '@/components/motion/reveal-words'
-import { SectionEyebrow } from '@/components/common/section-eyebrow'
-import { ShinyCTA } from '@/components/motion/shiny-cta'
-import styles from './hero.module.css'
+import Link from "next/link";
+import dynamic from "next/dynamic";
+import { RevealWords } from "@/components/motion/reveal-words";
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { ShinyCTA } from "@/components/motion/shiny-cta";
+import styles from "./hero.module.css";
 
-const ShaderBg = dynamic(() => import('./shader-bg').then((m) => m.ShaderBg), { ssr: false })
+const ShaderBg = dynamic(() => import("./shader-bg").then((m) => m.ShaderBg), {
+  ssr: false,
+});
 
 const WORDS = [
-  { t: 'I', em: false },
-  { t: 'build', em: false },
-  { t: 'digital', em: true },
-  { t: 'experiences', em: true },
-  { t: 'that', em: false },
-  { t: 'ship.', em: false },
-]
+  { t: "I", em: false },
+  { t: "build", em: false },
+  { t: "digital", em: true },
+  { t: "experiences", em: true },
+  { t: "that", em: false },
+  { t: "ship.", em: false },
+];
 
 const STATS = [
-  { num: '4+', label: 'Years experience' },
-  { num: '6', label: 'Companies' },
-  { num: '20+', label: 'Technologies' },
-]
+  { num: "4+", label: "Years experience" },
+  { num: "6", label: "Companies" },
+  { num: "20+", label: "Technologies" },
+];
 
 export function Hero() {
   return (
@@ -38,23 +40,23 @@ export function Hero() {
                 <span
                   data-word
                   style={{
-                    display: 'inline-block',
+                    display: "inline-block",
                     fontFamily: w.em
-                      ? 'var(--font-instrument-serif)'
-                      : 'var(--font-switzer)',
-                    fontStyle: w.em ? 'italic' : 'normal',
+                      ? "var(--font-instrument-serif)"
+                      : "var(--font-switzer)",
+                    fontStyle: w.em ? "italic" : "normal",
                     fontWeight: w.em ? 400 : 700,
                   }}
                 >
                   {w.t}
-                </span>{' '}
+                </span>{" "}
               </span>
             ))}
           </h1>
         </RevealWords>
         <p className={styles.sub}>
-          Moch Fathurrozi — Fullstack developer specializing in frontend, based in
-          Semarang, Indonesia. React, Next.js, React Native and beyond.
+          Moch Fathurrozi — Fullstack developer specializing in frontend, based
+          in Semarang, Indonesia. React, Next.js, React Native and beyond.
         </p>
         <div className={styles.actions}>
           <Link href="/works">
@@ -71,5 +73,5 @@ export function Hero() {
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import { Box, BoxProps } from '@chakra-ui/react'
-import { motion, MotionProps } from 'framer-motion'
+import { Box, BoxProps } from "@chakra-ui/react";
+import { motion, MotionProps } from "framer-motion";
 
 interface SectionProps extends Omit<BoxProps, keyof MotionProps> {
-  delay?: number
-  children: React.ReactNode
+  delay?: number;
+  children: React.ReactNode;
 }
 
 export function Section({ delay = 0, children, ...props }: SectionProps) {
@@ -16,12 +16,12 @@ export function Section({ delay = 0, children, ...props }: SectionProps) {
       transition={{
         duration: 0.5,
         delay,
-        ease: 'easeOut',
+        ease: "easeOut",
       }}
     >
       <Box mb={8} {...props}>
         {children}
       </Box>
     </motion.div>
-  )
+  );
 }

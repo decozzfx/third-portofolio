@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { Box, Flex, Text } from '@chakra-ui/react'
-import { useColorModeValue } from '@/components/ui/color-mode'
+import { Box, Flex, Text } from "@chakra-ui/react";
+import { useColorModeValue } from "@/components/ui/color-mode";
 
 interface BioYearProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function BioYear({ children }: BioYearProps) {
@@ -23,15 +23,15 @@ export function BioYear({ children }: BioYearProps) {
     >
       {children}
     </Text>
-  )
+  );
 }
 
 interface BioSectionProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function BioSection({ children }: BioSectionProps) {
-  const borderColor = useColorModeValue('#E5E5E5', '#262626')
+  const borderColor = useColorModeValue("#E5E5E5", "#262626");
 
   return (
     <Flex
@@ -39,27 +39,23 @@ export function BioSection({ children }: BioSectionProps) {
       borderBottom="1px solid"
       borderColor={borderColor}
       align="flex-start"
-      _last={{ borderBottom: 'none' }}
+      _last={{ borderBottom: "none" }}
     >
       {children}
     </Flex>
-  )
+  );
 }
 
 interface BioContainerProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function BioContainer({ children }: BioContainerProps) {
-  const borderColor = useColorModeValue('#E5E5E5', '#262626')
+  const borderColor = useColorModeValue("#E5E5E5", "#262626");
 
   return (
-    <Box
-      border="1px solid"
-      borderColor={borderColor}
-      p={4}
-    >
+    <Box border="1px solid" borderColor={borderColor} p={4}>
       {children}
     </Box>
-  )
+  );
 }

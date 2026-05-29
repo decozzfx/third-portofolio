@@ -1,12 +1,8 @@
-import { Box, Container, Flex } from '@chakra-ui/react'
-import { Navbar } from '@/components/layout/navbar'
-import { Footer } from '@/components/layout/footer'
+import { Box, Container, Flex } from "@chakra-ui/react";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
-export default function CvLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function CvLayout({ children }: { children: React.ReactNode }) {
   return (
     <Flex direction="column" minH="100vh">
       <Navbar />
@@ -17,5 +13,5 @@ export default function CvLayout({
       </Box>
       <Footer />
     </Flex>
-  )
+  );
 }

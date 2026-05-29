@@ -27,6 +27,7 @@ Commit after each task. Conventional Commits, no AI attribution.
 ## File structure (what gets created / modified)
 
 **New — motion layer (`lib/motion/`, `components/motion/`):**
+
 - `components/motion/smooth-scroll.tsx` — Lenis provider + GSAP↔Lenis sync.
 - `lib/motion/use-scroll-reveal.ts` — GSAP reveal hook (`opacity 0 + scale .85 → 1`).
 - `components/motion/text-roll.tsx` + `.module.css` — per-letter hover roll.
@@ -36,14 +37,17 @@ Commit after each task. Conventional Commits, no AI attribution.
 - `components/motion/custom-cursor.tsx` + `.module.css` — P5.
 
 **New — shared UI (`components/common/`):**
+
 - `components/common/section-eyebrow.tsx` + `.module.css` — `[01]` tag + accent bar.
 - `components/common/display-heading.tsx` + `.module.css` — sans + serif-italic `<em>` + SVG underline.
 - `components/common/grain.tsx` + `.module.css` — fixed grain overlay.
 
 **New — page sections (`components/sections/`):**
+
 - `hero.tsx` + `.module.css`, `works-list.tsx` + `.module.css`, `how-i-work.tsx` + `.module.css`, `contact-cta.tsx` + `.module.css`, `shader-bg.tsx` (P5).
 
 **Modified:**
+
 - `lib/theme.ts` — dark-only tokens, accent stays.
 - `app/globals.css` — replace brutalist base with dark base + CSS vars + fonts.
 - `app/layout.tsx` — fonts via next/font, `<Grain/>`, dark themeColor.
@@ -60,6 +64,7 @@ Commit after each task. Conventional Commits, no AI attribution.
 - `app/not-found.tsx` — on-brand.
 
 **Deleted:**
+
 - `components/layout/hero-animation.tsx` (2D geometric hero — replaced).
 - `components/common/theme-toggle.tsx` (dark-only).
 
@@ -74,9 +79,11 @@ Commit after each task. Conventional Commits, no AI attribution.
 - [ ] **Step 1: Install GSAP + Lenis**
 
 Run:
+
 ```bash
 npm install gsap@^3.12.5 lenis@^1.1.18
 ```
+
 Expected: both added to `dependencies`, no peer-dep errors.
 
 - [ ] **Step 2: Verify install**
@@ -102,61 +109,61 @@ git commit -m "chore: add gsap and lenis for motion layer"
 Replace the `colors`, `fonts`, and `semanticTokens` so dark is the only mode and fonts point at the new families. Full file:
 
 ```ts
-import { createSystem, defaultConfig, defineConfig } from '@chakra-ui/react'
+import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
 const customConfig = defineConfig({
   theme: {
     tokens: {
       colors: {
-        bg: { value: '#0A0A0B' },
-        surface: { value: '#141416' },
-        surfaceAlt: { value: '#1B1B1E' },
-        border: { value: 'rgba(255,255,255,0.08)' },
-        text: { value: '#FAFAFA' },
-        textMuted: { value: '#8A8A8E' },
-        accent: { value: '#FF3D00' },
-        accentSoft: { value: 'rgba(255,61,0,0.12)' },
+        bg: { value: "#0A0A0B" },
+        surface: { value: "#141416" },
+        surfaceAlt: { value: "#1B1B1E" },
+        border: { value: "rgba(255,255,255,0.08)" },
+        text: { value: "#FAFAFA" },
+        textMuted: { value: "#8A8A8E" },
+        accent: { value: "#FF3D00" },
+        accentSoft: { value: "rgba(255,61,0,0.12)" },
       },
       fonts: {
-        heading: { value: 'var(--font-instrument-serif), Georgia, serif' },
-        body: { value: 'var(--font-switzer), system-ui, sans-serif' },
-        mono: { value: 'var(--font-jetbrains-mono), monospace' },
+        heading: { value: "var(--font-instrument-serif), Georgia, serif" },
+        body: { value: "var(--font-switzer), system-ui, sans-serif" },
+        mono: { value: "var(--font-jetbrains-mono), monospace" },
       },
       fontSizes: {
-        display: { value: 'clamp(3rem, 9vw, 7rem)' },
-        h1: { value: 'clamp(2.5rem, 6vw, 4.5rem)' },
-        h2: { value: 'clamp(2rem, 4vw, 3.25rem)' },
-        h3: { value: 'clamp(1.5rem, 3vw, 2rem)' },
-        body: { value: '1.0625rem' },
-        small: { value: '0.875rem' },
-        xs: { value: '0.75rem' },
+        display: { value: "clamp(3rem, 9vw, 7rem)" },
+        h1: { value: "clamp(2.5rem, 6vw, 4.5rem)" },
+        h2: { value: "clamp(2rem, 4vw, 3.25rem)" },
+        h3: { value: "clamp(1.5rem, 3vw, 2rem)" },
+        body: { value: "1.0625rem" },
+        small: { value: "0.875rem" },
+        xs: { value: "0.75rem" },
       },
       radii: {
-        none: { value: '0' },
-        sm: { value: '4px' },
-        md: { value: '10px' },
-        lg: { value: '18px' },
+        none: { value: "0" },
+        sm: { value: "4px" },
+        md: { value: "10px" },
+        lg: { value: "18px" },
       },
     },
     semanticTokens: {
       colors: {
-        bg: { value: '{colors.bg}' },
-        surface: { value: '{colors.surface}' },
-        surfaceAlt: { value: '{colors.surfaceAlt}' },
-        border: { value: '{colors.border}' },
-        text: { value: '{colors.text}' },
-        textMuted: { value: '{colors.textMuted}' },
-        accent: { value: '{colors.accent}' },
-        accentSoft: { value: '{colors.accentSoft}' },
+        bg: { value: "{colors.bg}" },
+        surface: { value: "{colors.surface}" },
+        surfaceAlt: { value: "{colors.surfaceAlt}" },
+        border: { value: "{colors.border}" },
+        text: { value: "{colors.text}" },
+        textMuted: { value: "{colors.textMuted}" },
+        accent: { value: "{colors.accent}" },
+        accentSoft: { value: "{colors.accentSoft}" },
       },
     },
   },
   globalCss: {
-    'html, body': { bg: 'bg', color: 'text' },
+    "html, body": { bg: "bg", color: "text" },
   },
-})
+});
 
-export const system = createSystem(defaultConfig, customConfig)
+export const system = createSystem(defaultConfig, customConfig);
 ```
 
 - [ ] **Step 2: Verify**
@@ -197,21 +204,27 @@ Place `switzer-400.woff2` and `switzer-700.woff2` in `public/fonts/switzer/`. (D
 }
 
 @font-face {
-  font-family: 'Switzer';
-  src: url('/fonts/switzer/switzer-400.woff2') format('woff2');
+  font-family: "Switzer";
+  src: url("/fonts/switzer/switzer-400.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Switzer';
-  src: url('/fonts/switzer/switzer-700.woff2') format('woff2');
+  font-family: "Switzer";
+  src: url("/fonts/switzer/switzer-700.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-html { -webkit-font-smoothing: antialiased; }
+html {
+  -webkit-font-smoothing: antialiased;
+}
 /* Smooth scroll is handled by Lenis; do NOT set scroll-behavior here. */
 
 body {
@@ -220,16 +233,31 @@ body {
   min-height: 100vh;
 }
 
-a { color: inherit; text-decoration: none; }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-::selection { background: var(--accent); color: #fff; }
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
 
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
 
-::-webkit-scrollbar { width: 0; height: 0; }
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 ```
 
@@ -238,23 +266,23 @@ a { color: inherit; text-decoration: none; }
 Add imports + font loaders, attach the CSS-var classnames to `<html>`, set themeColor dark. Replace the top of the file and the `RootLayout` return:
 
 ```tsx
-import type { Metadata, Viewport } from 'next'
-import { Instrument_Serif, JetBrains_Mono } from 'next/font/google'
-import { Provider } from '@/components/ui/provider'
-import { Grain } from '@/components/common/grain'
-import './globals.css'
+import type { Metadata, Viewport } from "next";
+import { Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Provider } from "@/components/ui/provider";
+import { Grain } from "@/components/common/grain";
+import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
-  weight: '400',
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  variable: '--font-instrument-serif',
-})
+  weight: "400",
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+});
 const jetbrainsMono = JetBrains_Mono({
-  weight: ['400', '500'],
-  subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
-})
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
 ```
 
 Keep the existing `metadata` object. Replace `viewport.themeColor` with:
@@ -266,21 +294,27 @@ Keep the existing `metadata` object. Replace `viewport.themeColor` with:
 Replace `RootLayout`:
 
 ```tsx
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
       suppressHydrationWarning
       className={`${instrumentSerif.variable} ${jetbrainsMono.variable}`}
     >
-      <body style={{ fontFamily: 'var(--font-switzer), system-ui, sans-serif' }}>
+      <body
+        style={{ fontFamily: "var(--font-switzer), system-ui, sans-serif" }}
+      >
         <Provider>
           <Grain />
           {children}
         </Provider>
       </body>
     </html>
-  )
+  );
 }
 ```
 
@@ -324,10 +358,10 @@ git commit -m "feat: self-host fonts, dark global base, css variables"
 - [ ] **Step 2: Create `grain.tsx`**
 
 ```tsx
-import styles from './grain.module.css'
+import styles from "./grain.module.css";
 
 export function Grain() {
-  return <div className={styles.grain} aria-hidden="true" />
+  return <div className={styles.grain} aria-hidden="true" />;
 }
 ```
 
@@ -363,9 +397,11 @@ In `components/ui/provider.tsx`, change the `ThemeProvider` props to:
 - [ ] **Step 2: Remove the toggle file + references**
 
 Run:
+
 ```bash
 grep -rn "theme-toggle\|ThemeToggle" app components
 ```
+
 Delete `components/common/theme-toggle.tsx` and remove every import/usage found (navbar is recomposed in Task 16; if a reference remains before then, delete the JSX line).
 
 - [ ] **Step 3: Verify** — `npm run lint && npm run build`. Expected: no references to ThemeToggle remain.
@@ -386,33 +422,33 @@ git commit -m "feat: force dark mode, remove theme toggle"
 - [ ] **Step 1: Create `smooth-scroll.tsx`**
 
 ```tsx
-'use client'
+"use client";
 
-import { useEffect } from 'react'
-import Lenis from 'lenis'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect } from "react";
+import Lenis from "lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const lenis = new Lenis({ duration: 1.1, smoothWheel: true })
-    lenis.on('scroll', ScrollTrigger.update)
+    const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+    lenis.on("scroll", ScrollTrigger.update);
 
-    const raf = (time: number) => lenis.raf(time * 1000)
-    gsap.ticker.add(raf)
-    gsap.ticker.lagSmoothing(0)
+    const raf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(raf);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      gsap.ticker.remove(raf)
-      lenis.destroy()
-    }
-  }, [])
+      gsap.ticker.remove(raf);
+      lenis.destroy();
+    };
+  }, []);
 
-  return <>{children}</>
+  return <>{children}</>;
 }
 ```
 
@@ -421,12 +457,16 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 In `app/(main)/layout.tsx`, import `SmoothScroll` and wrap the `<Flex>`:
 
 ```tsx
-import { Box, Container, Flex } from '@chakra-ui/react'
-import { Navbar } from '@/components/layout/navbar'
-import { Footer } from '@/components/layout/footer'
-import { SmoothScroll } from '@/components/motion/smooth-scroll'
+import { Box, Container, Flex } from "@chakra-ui/react";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
 
-export default function MainLayout({ children }: { children: React.ReactNode }) {
+export default function MainLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <SmoothScroll>
       <Flex direction="column" minH="100vh">
@@ -439,7 +479,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <Footer />
       </Flex>
     </SmoothScroll>
-  )
+  );
 }
 ```
 
@@ -461,31 +501,31 @@ git commit -m "feat: lenis smooth scroll synced with gsap scrolltrigger"
 - [ ] **Step 1: Create the hook**
 
 ```ts
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Reveals direct children of the returned ref: opacity 0 + scale .85 -> 1,
  * staggered, once on scroll-in. Respects reduced motion.
  */
-export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
-  options?: { stagger?: number; selector?: string },
-) {
-  const ref = useRef<T>(null)
+export function useScrollReveal<
+  T extends HTMLElement = HTMLDivElement,
+>(options?: { stagger?: number; selector?: string }) {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const targets = options?.selector
       ? el.querySelectorAll(options.selector)
-      : el.children
+      : el.children;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -495,17 +535,17 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
           opacity: 1,
           scale: 1,
           duration: 0.8,
-          ease: 'power3.out',
+          ease: "power3.out",
           stagger: options?.stagger ?? 0.08,
-          scrollTrigger: { trigger: el, start: 'top 80%', once: true },
+          scrollTrigger: { trigger: el, start: "top 80%", once: true },
         },
-      )
-    }, el)
+      );
+    }, el);
 
-    return () => ctx.revert()
-  }, [options?.stagger, options?.selector])
+    return () => ctx.revert();
+  }, [options?.stagger, options?.selector]);
 
-  return ref
+  return ref;
 }
 ```
 
@@ -527,40 +567,70 @@ git commit -m "feat: useScrollReveal gsap hook"
 - [ ] **Step 1: Create `text-roll.module.css`**
 
 ```css
-.roll { display: inline-flex; overflow: hidden; vertical-align: top; line-height: 1.05; }
-.row { display: inline-flex; }
-.clone { position: absolute; left: 0; top: 100%; }
-.wrap { position: relative; display: inline-block; }
+.roll {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.05;
+}
+.row {
+  display: inline-flex;
+}
+.clone {
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+.wrap {
+  position: relative;
+  display: inline-block;
+}
 .letter {
   display: inline-block;
   white-space: pre;
   transition: transform 0.4s var(--ease-out);
   transition-delay: calc(var(--i) * 0.018s);
 }
-.wrap:hover .row .letter { transform: translateY(-100%); }
-.wrap:hover .clone .letter { transform: translateY(-100%); }
+.wrap:hover .row .letter {
+  transform: translateY(-100%);
+}
+.wrap:hover .clone .letter {
+  transform: translateY(-100%);
+}
 @media (prefers-reduced-motion: reduce) {
-  .letter { transition: none; }
-  .wrap:hover .row .letter, .wrap:hover .clone .letter { transform: none; }
+  .letter {
+    transition: none;
+  }
+  .wrap:hover .row .letter,
+  .wrap:hover .clone .letter {
+    transform: none;
+  }
 }
 ```
 
 - [ ] **Step 2: Create `text-roll.tsx`**
 
 ```tsx
-import styles from './text-roll.module.css'
+import styles from "./text-roll.module.css";
 
 export function TextRoll({ text }: { text: string }) {
-  const letters = text.split('')
+  const letters = text.split("");
   const render = (clone?: boolean) => (
-    <span className={`${styles.row} ${clone ? styles.clone : ''}`} aria-hidden={clone}>
+    <span
+      className={`${styles.row} ${clone ? styles.clone : ""}`}
+      aria-hidden={clone}
+    >
       {letters.map((ch, i) => (
-        <span key={i} className={styles.letter} style={{ ['--i' as string]: i }}>
-          {ch === ' ' ? ' ' : ch}
+        <span
+          key={i}
+          className={styles.letter}
+          style={{ ["--i" as string]: i }}
+        >
+          {ch === " " ? " " : ch}
         </span>
       ))}
     </span>
-  )
+  );
   return (
     <span className={styles.wrap}>
       <span className={styles.roll} aria-label={text}>
@@ -568,7 +638,7 @@ export function TextRoll({ text }: { text: string }) {
         {render(true)}
       </span>
     </span>
-  )
+  );
 }
 ```
 
@@ -601,14 +671,20 @@ git commit -m "feat: TextRoll per-letter hover component"
   color: var(--text-muted);
   margin-bottom: 1.25rem;
 }
-.bar { width: 28px; height: 2px; background: var(--accent); }
-.tag { color: var(--accent); }
+.bar {
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+}
+.tag {
+  color: var(--accent);
+}
 ```
 
 - [ ] **Step 2: Create `section-eyebrow.tsx`**
 
 ```tsx
-import styles from './section-eyebrow.module.css'
+import styles from "./section-eyebrow.module.css";
 
 export function SectionEyebrow({ num, label }: { num: string; label: string }) {
   return (
@@ -617,7 +693,7 @@ export function SectionEyebrow({ num, label }: { num: string; label: string }) {
       <span className={styles.tag}>[{num}]</span>
       {label}
     </p>
-  )
+  );
 }
 ```
 
@@ -667,9 +743,16 @@ git commit -m "feat: SectionEyebrow numbered label"
   animation: draw 0.9s var(--ease-out) forwards;
   animation-delay: 0.3s;
 }
-@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .underline path { animation: none; stroke-dashoffset: 0; }
+  .underline path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
 }
 ```
 
@@ -678,12 +761,17 @@ git commit -m "feat: SectionEyebrow numbered label"
 Parser: text segments split on `*emphasis*` markers; `*...*` renders as serif-italic with an underline SVG.
 
 ```tsx
-import { Fragment } from 'react'
-import styles from './display-heading.module.css'
+import { Fragment } from "react";
+import styles from "./display-heading.module.css";
 
 function Underline() {
   return (
-    <svg className={styles.underline} viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden="true">
+    <svg
+      className={styles.underline}
+      viewBox="0 0 200 14"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
       <path
         d="M3 9 Q 45 2 95 7 T 197 9"
         stroke="currentColor"
@@ -694,26 +782,26 @@ function Underline() {
         pathLength={100}
       />
     </svg>
-  )
+  );
 }
 
 /** Emphasis is marked with *asterisks*: "We build *digital products*." */
 export function DisplayHeading({
   text,
-  as: Tag = 'h2',
-  className = '',
+  as: Tag = "h2",
+  className = "",
   style,
 }: {
-  text: string
-  as?: 'h1' | 'h2' | 'h3'
-  className?: string
-  style?: React.CSSProperties
+  text: string;
+  as?: "h1" | "h2" | "h3";
+  className?: string;
+  style?: React.CSSProperties;
 }) {
-  const parts = text.split(/(\*[^*]+\*)/g).filter(Boolean)
+  const parts = text.split(/(\*[^*]+\*)/g).filter(Boolean);
   return (
     <Tag className={`${styles.h} ${className}`} style={style}>
       {parts.map((p, i) =>
-        p.startsWith('*') && p.endsWith('*') ? (
+        p.startsWith("*") && p.endsWith("*") ? (
           <em key={i} className={styles.em}>
             {p.slice(1, -1)}
             <Underline />
@@ -723,7 +811,7 @@ export function DisplayHeading({
         ),
       )}
     </Tag>
-  )
+  );
 }
 ```
 
@@ -763,30 +851,41 @@ git commit -m "feat: DisplayHeading sans + serif-italic emphasis with underline"
   transition: transform 0.3s var(--ease-out);
 }
 .cta::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
   transform: translateX(-120%);
   transition: transform 0.6s var(--ease-out);
 }
-.cta:hover { transform: translateY(-2px); }
-.cta:hover::after { transform: translateX(120%); }
+.cta:hover {
+  transform: translateY(-2px);
+}
+.cta:hover::after {
+  transform: translateX(120%);
+}
 ```
 
 - [ ] **Step 2: Create `shiny-cta.tsx`**
 
 ```tsx
-import styles from './shiny-cta.module.css'
+import styles from "./shiny-cta.module.css";
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & { children: React.ReactNode }
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: React.ReactNode;
+};
 
-export function ShinyCTA({ children, className = '', ...rest }: Props) {
+export function ShinyCTA({ children, className = "", ...rest }: Props) {
   return (
     <button className={`${styles.cta} ${className}`} {...rest}>
       {children}
     </button>
-  )
+  );
 }
 ```
 
@@ -812,49 +911,102 @@ git commit -m "feat: ShinyCTA button"
 - [ ] **Step 1: Create `reveal-words.tsx`**
 
 ```tsx
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
-import { gsap } from 'gsap'
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 /** Wraps a DisplayHeading-rendered node; animates its word spans in. Here we
  * accept plain children and animate top-level word spans by data attribute. */
 export function RevealWords({ children }: { children: React.ReactNode }) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const words = el.querySelectorAll('[data-word]')
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const words = el.querySelectorAll("[data-word]");
     gsap.fromTo(
       words,
       { yPercent: 110, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.9, ease: 'power3.out', stagger: 0.08, delay: 0.1 },
-    )
-  }, [])
-  return <div ref={ref}>{children}</div>
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: "power3.out",
+        stagger: 0.08,
+        delay: 0.1,
+      },
+    );
+  }, []);
+  return <div ref={ref}>{children}</div>;
 }
 ```
 
 - [ ] **Step 2: Create `hero.module.css`**
 
 ```css
-.hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; }
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
 .glow {
-  position: absolute; inset: 0; z-index: -1;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background:
     radial-gradient(40% 50% at 70% 30%, var(--accent-soft), transparent 70%),
-    radial-gradient(50% 60% at 20% 80%, rgba(255,61,0,0.06), transparent 70%);
+    radial-gradient(50% 60% at 20% 80%, rgba(255, 61, 0, 0.06), transparent 70%);
 }
-.content { max-width: var(--container); margin: 0 auto; padding: 0 1.5rem; width: 100%; }
-.title { font-size: var(--fs-display, clamp(3rem, 9vw, 7rem)); margin: 1.2rem 0; }
-.word { display: inline-block; overflow: hidden; }
-.sub { color: var(--text-muted); max-width: 48ch; font-size: 1.1rem; }
-.actions { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; align-items: center; }
-.stats { display: flex; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
-.stat { display: flex; flex-direction: column; }
-.statNum { font-family: var(--font-instrument-serif); font-size: 2rem; }
-.statLabel { font-family: var(--font-jetbrains-mono); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.content {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+.title {
+  font-size: var(--fs-display, clamp(3rem, 9vw, 7rem));
+  margin: 1.2rem 0;
+}
+.word {
+  display: inline-block;
+  overflow: hidden;
+}
+.sub {
+  color: var(--text-muted);
+  max-width: 48ch;
+  font-size: 1.1rem;
+}
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+.statNum {
+  font-family: var(--font-instrument-serif);
+  font-size: 2rem;
+}
+.statLabel {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
 ```
 
 - [ ] **Step 3: Create `hero.tsx`**
@@ -862,28 +1014,28 @@ export function RevealWords({ children }: { children: React.ReactNode }) {
 Hero headline uses per-word spans (each `data-word`) wrapped in overflow spans; emphasized words are serif-italic. Keep copy from current home.
 
 ```tsx
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { RevealWords } from '@/components/motion/reveal-words'
-import { SectionEyebrow } from '@/components/common/section-eyebrow'
-import { ShinyCTA } from '@/components/motion/shiny-cta'
-import styles from './hero.module.css'
+import Link from "next/link";
+import { RevealWords } from "@/components/motion/reveal-words";
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { ShinyCTA } from "@/components/motion/shiny-cta";
+import styles from "./hero.module.css";
 
 const WORDS = [
-  { t: 'I', em: false },
-  { t: 'build', em: false },
-  { t: 'digital', em: true },
-  { t: 'experiences', em: true },
-  { t: 'that', em: false },
-  { t: 'ship.', em: false },
-]
+  { t: "I", em: false },
+  { t: "build", em: false },
+  { t: "digital", em: true },
+  { t: "experiences", em: true },
+  { t: "that", em: false },
+  { t: "ship.", em: false },
+];
 
 const STATS = [
-  { num: '4+', label: 'Years experience' },
-  { num: '6', label: 'Companies' },
-  { num: '20+', label: 'Technologies' },
-]
+  { num: "4+", label: "Years experience" },
+  { num: "6", label: "Companies" },
+  { num: "20+", label: "Technologies" },
+];
 
 export function Hero() {
   return (
@@ -898,23 +1050,23 @@ export function Hero() {
                 <span
                   data-word
                   style={{
-                    display: 'inline-block',
+                    display: "inline-block",
                     fontFamily: w.em
-                      ? 'var(--font-instrument-serif)'
-                      : 'var(--font-switzer)',
-                    fontStyle: w.em ? 'italic' : 'normal',
+                      ? "var(--font-instrument-serif)"
+                      : "var(--font-switzer)",
+                    fontStyle: w.em ? "italic" : "normal",
                     fontWeight: w.em ? 400 : 700,
                   }}
                 >
                   {w.t}
-                </span>{' '}
+                </span>{" "}
               </span>
             ))}
           </h1>
         </RevealWords>
         <p className={styles.sub}>
-          Moch Fathurrozi — Fullstack developer specializing in frontend, based in
-          Semarang, Indonesia. React, Next.js, React Native and beyond.
+          Moch Fathurrozi — Fullstack developer specializing in frontend, based
+          in Semarang, Indonesia. React, Next.js, React Native and beyond.
         </p>
         <div className={styles.actions}>
           <Link href="/works">
@@ -931,7 +1083,7 @@ export function Hero() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 ```
 
@@ -957,29 +1109,49 @@ git commit -m "feat: kinetic hero with word reveal and accent glow"
 - [ ] **Step 1: Create `contact-cta.tsx` + `.module.css`**
 
 `contact-cta.module.css`:
+
 ```css
-.cta { padding: 6rem 0; }
-.title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 1rem 0 2rem; }
-.links { display: flex; gap: 1rem; flex-wrap: wrap; }
-.link {
-  font-family: var(--font-jetbrains-mono); font-size: 0.8rem; text-transform: uppercase;
-  letter-spacing: 0.06em; padding: 0.8rem 1.2rem; border: 1px solid var(--border);
-  transition: border-color 0.3s, color 0.3s;
+.cta {
+  padding: 6rem 0;
 }
-.link:hover { border-color: var(--accent); color: var(--accent); }
+.title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin: 1rem 0 2rem;
+}
+.links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.link {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--border);
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+.link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 ```
 
 `contact-cta.tsx`:
+
 ```tsx
-import { SectionEyebrow } from '@/components/common/section-eyebrow'
-import { DisplayHeading } from '@/components/common/display-heading'
-import styles from './contact-cta.module.css'
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { DisplayHeading } from "@/components/common/display-heading";
+import styles from "./contact-cta.module.css";
 
 const LINKS = [
-  { label: 'GitHub', href: 'https://github.com/decozzfx' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/decozzfx' },
-  { label: 'Email', href: 'mailto:decozzfx@gmail.com' },
-]
+  { label: "GitHub", href: "https://github.com/decozzfx" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/decozzfx" },
+  { label: "Email", href: "mailto:decozzfx@gmail.com" },
+];
 
 export function ContactCTA() {
   return (
@@ -988,13 +1160,19 @@ export function ContactCTA() {
       <DisplayHeading as="h2" text="Let's *talk.*" className={styles.title} />
       <div className={styles.links}>
         {LINKS.map((l) => (
-          <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className={styles.link}>
+          <a
+            key={l.label}
+            href={l.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.link}
+          >
             {l.label} ↗
           </a>
         ))}
       </div>
     </section>
-  )
+  );
 }
 ```
 
@@ -1003,38 +1181,76 @@ export function ContactCTA() {
 Compose: Hero, About, Experience (Partnerships), Skills, Works (WorksList — built Task 14; import and use), How I Work (Task 15), Contact. Each non-hero block uses `SectionEyebrow` + `useScrollReveal`. About/Experience/Skills reuse existing copy. Full file:
 
 ```tsx
-'use client'
+"use client";
 
-import { Box } from '@chakra-ui/react'
-import { Hero } from '@/components/sections/hero'
-import { SectionEyebrow } from '@/components/common/section-eyebrow'
-import { DisplayHeading } from '@/components/common/display-heading'
-import { WorksList } from '@/components/sections/works-list'
-import { HowIWork } from '@/components/sections/how-i-work'
-import { ContactCTA } from '@/components/sections/contact-cta'
-import { useScrollReveal } from '@/lib/motion/use-scroll-reveal'
-import { getFeaturedWorks } from '@/lib/works'
+import { Box } from "@chakra-ui/react";
+import { Hero } from "@/components/sections/hero";
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { DisplayHeading } from "@/components/common/display-heading";
+import { WorksList } from "@/components/sections/works-list";
+import { HowIWork } from "@/components/sections/how-i-work";
+import { ContactCTA } from "@/components/sections/contact-cta";
+import { useScrollReveal } from "@/lib/motion/use-scroll-reveal";
+import { getFeaturedWorks } from "@/lib/works";
 
 const PARTNERSHIPS = [
-  { role: 'Frontend Engineer · PT Veritask', detail: 'Legal AI Platform — Next.js 15, React 19, TypeScript' },
-  { role: 'Frontend Engineer · PT MFI', detail: 'React Native, Next.js, Tailwind CSS' },
-  { role: 'Frontend Engineer · PT Xprogroup', detail: 'Next.js, Tailwind CSS, Rizzui' },
-  { role: 'Frontend Engineer · Ismaya Group', detail: 'React Native, Next.js, Material UI' },
-  { role: 'Frontend Engineer · PT Javan Cipta Solusi', detail: 'Next.js, Tailwind CSS, Material UI' },
-  { role: 'Frontend Engineer · PT Infosys Solusi Terpadu', detail: 'React.js, Tailwind CSS, Material UI' },
-]
+  {
+    role: "Frontend Engineer · PT Veritask",
+    detail: "Legal AI Platform — Next.js 15, React 19, TypeScript",
+  },
+  {
+    role: "Frontend Engineer · PT MFI",
+    detail: "React Native, Next.js, Tailwind CSS",
+  },
+  {
+    role: "Frontend Engineer · PT Xprogroup",
+    detail: "Next.js, Tailwind CSS, Rizzui",
+  },
+  {
+    role: "Frontend Engineer · Ismaya Group",
+    detail: "React Native, Next.js, Material UI",
+  },
+  {
+    role: "Frontend Engineer · PT Javan Cipta Solusi",
+    detail: "Next.js, Tailwind CSS, Material UI",
+  },
+  {
+    role: "Frontend Engineer · PT Infosys Solusi Terpadu",
+    detail: "React.js, Tailwind CSS, Material UI",
+  },
+];
 
 const SKILLS = [
-  'React.js','Next.js','Astro','Remix','Solid','Svelte','React Native','Flutter',
-  'Express.js','NestJs','AdonisJs','Hono','TypeScript','JavaScript','Tailwind CSS',
-  'PostgreSQL','MySQL','MongoDB','Git','AI/LLM Integration',
-]
+  "React.js",
+  "Next.js",
+  "Astro",
+  "Remix",
+  "Solid",
+  "Svelte",
+  "React Native",
+  "Flutter",
+  "Express.js",
+  "NestJs",
+  "AdonisJs",
+  "Hono",
+  "TypeScript",
+  "JavaScript",
+  "Tailwind CSS",
+  "PostgreSQL",
+  "MySQL",
+  "MongoDB",
+  "Git",
+  "AI/LLM Integration",
+];
 
 export default function HomePage() {
-  const aboutRef = useScrollReveal<HTMLDivElement>()
-  const expRef = useScrollReveal<HTMLDivElement>({ selector: '[data-row]' })
-  const skillRef = useScrollReveal<HTMLDivElement>({ selector: '[data-chip]', stagger: 0.03 })
-  const featured = getFeaturedWorks().slice(0, 4)
+  const aboutRef = useScrollReveal<HTMLDivElement>();
+  const expRef = useScrollReveal<HTMLDivElement>({ selector: "[data-row]" });
+  const skillRef = useScrollReveal<HTMLDivElement>({
+    selector: "[data-chip]",
+    stagger: 0.03,
+  });
+  const featured = getFeaturedWorks().slice(0, 4);
 
   return (
     <>
@@ -1042,13 +1258,27 @@ export default function HomePage() {
 
       <Box as="section" py="6rem" ref={aboutRef}>
         <SectionEyebrow num="02" label="About" />
-        <DisplayHeading as="h2" text="A developer who *cares* about the last pixel." style={{ fontSize: 'clamp(2rem,4vw,3.25rem)', marginBottom: '1.5rem' }} />
-        <p style={{ color: 'var(--text-muted)', maxWidth: '60ch', fontSize: '1.0625rem', lineHeight: 1.7 }}>
-          A Fullstack Developer specializing in Frontend with React.js, Next.js, Astro,
-          Remix, Solid and Svelte. Mobile with React Native and Flutter; backend with
-          Express.js, NestJs, AdonisJs and Hono. 4+ years building responsive,
-          user-friendly interfaces, REST APIs and database-backed apps, with hands-on
-          AI/LLM integration experience.
+        <DisplayHeading
+          as="h2"
+          text="A developer who *cares* about the last pixel."
+          style={{
+            fontSize: "clamp(2rem,4vw,3.25rem)",
+            marginBottom: "1.5rem",
+          }}
+        />
+        <p
+          style={{
+            color: "var(--text-muted)",
+            maxWidth: "60ch",
+            fontSize: "1.0625rem",
+            lineHeight: 1.7,
+          }}
+        >
+          A Fullstack Developer specializing in Frontend with React.js, Next.js,
+          Astro, Remix, Solid and Svelte. Mobile with React Native and Flutter;
+          backend with Express.js, NestJs, AdonisJs and Hono. 4+ years building
+          responsive, user-friendly interfaces, REST APIs and database-backed
+          apps, with hands-on AI/LLM integration experience.
         </p>
       </Box>
 
@@ -1056,9 +1286,18 @@ export default function HomePage() {
         <SectionEyebrow num="03" label="Partnerships" />
         <div ref={expRef}>
           {PARTNERSHIPS.map((p) => (
-            <div key={p.role} data-row style={{ padding: '1.1rem 0', borderTop: '1px solid var(--border)' }}>
+            <div
+              key={p.role}
+              data-row
+              style={{
+                padding: "1.1rem 0",
+                borderTop: "1px solid var(--border)",
+              }}
+            >
               <p style={{ fontWeight: 600 }}>{p.role}</p>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{p.detail}</p>
+              <p style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>
+                {p.detail}
+              </p>
             </div>
           ))}
         </div>
@@ -1066,15 +1305,21 @@ export default function HomePage() {
 
       <Box as="section" py="6rem">
         <SectionEyebrow num="04" label="Skills" />
-        <div ref={skillRef} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+        <div
+          ref={skillRef}
+          style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}
+        >
           {SKILLS.map((s) => (
             <span
               key={s}
               data-chip
               style={{
-                border: '1px solid var(--border)', padding: '0.4rem 0.8rem',
-                fontFamily: 'var(--font-jetbrains-mono)', fontSize: '0.72rem',
-                textTransform: 'uppercase', letterSpacing: '0.05em',
+                border: "1px solid var(--border)",
+                padding: "0.4rem 0.8rem",
+                fontFamily: "var(--font-jetbrains-mono)",
+                fontSize: "0.72rem",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
               }}
             >
               {s}
@@ -1092,7 +1337,7 @@ export default function HomePage() {
 
       <ContactCTA />
     </>
-  )
+  );
 }
 ```
 
@@ -1116,34 +1361,81 @@ git commit -m "feat: recompose home with numbered sections and reveals"
 - [ ] **Step 1: Create `works-list.module.css`**
 
 ```css
-.list { list-style: none; }
-.item { border-top: 1px solid var(--border); }
-.item:last-child { border-bottom: 1px solid var(--border); }
+.list {
+  list-style: none;
+}
+.item {
+  border-top: 1px solid var(--border);
+}
+.item:last-child {
+  border-bottom: 1px solid var(--border);
+}
 .link {
   display: grid;
   grid-template-columns: 3rem 1fr auto auto;
   gap: 1.5rem;
   align-items: center;
   padding: 1.6rem 0.5rem;
-  transition: padding 0.4s var(--ease-out), background 0.3s;
+  transition:
+    padding 0.4s var(--ease-out),
+    background 0.3s;
 }
-.link:hover { padding-left: 1.2rem; background: var(--surface); }
-.num { font-family: var(--font-jetbrains-mono); color: var(--text-muted); font-size: 0.8rem; }
-.name { font-family: var(--font-instrument-serif); font-size: clamp(1.5rem, 3vw, 2.4rem); }
-.tag { font-family: var(--font-jetbrains-mono); font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; }
-.year { font-family: var(--font-jetbrains-mono); font-size: 0.72rem; color: var(--text-muted); }
-.arrow { color: var(--accent); }
+.link:hover {
+  padding-left: 1.2rem;
+  background: var(--surface);
+}
+.num {
+  font-family: var(--font-jetbrains-mono);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.name {
+  font-family: var(--font-instrument-serif);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+}
+.tag {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.year {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.arrow {
+  color: var(--accent);
+}
 .preview {
-  position: fixed; top: 0; left: 0; width: 240px; height: 150px;
-  pointer-events: none; z-index: 50; opacity: 0; object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 150px;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  object-fit: cover;
   transform: translate(-50%, -50%) scale(0.8);
-  transition: opacity 0.25s, transform 0.25s var(--ease-out);
+  transition:
+    opacity 0.25s,
+    transform 0.25s var(--ease-out);
 }
-.preview.visible { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.preview.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
 @media (max-width: 768px) {
-  .link { grid-template-columns: 2rem 1fr auto; }
-  .tag { display: none; }
-  .preview { display: none; }
+  .link {
+    grid-template-columns: 2rem 1fr auto;
+  }
+  .tag {
+    display: none;
+  }
+  .preview {
+    display: none;
+  }
 }
 ```
 
@@ -1152,25 +1444,25 @@ git commit -m "feat: recompose home with numbered sections and reveals"
 Floating preview follows the cursor on row hover.
 
 ```tsx
-'use client'
+"use client";
 
-import { useRef, useState } from 'react'
-import Link from 'next/link'
-import type { Work } from '@/types'
-import { TextRoll } from '@/components/motion/text-roll'
-import styles from './works-list.module.css'
+import { useRef, useState } from "react";
+import Link from "next/link";
+import type { Work } from "@/types";
+import { TextRoll } from "@/components/motion/text-roll";
+import styles from "./works-list.module.css";
 
 export function WorksList({ works }: { works: Work[] }) {
-  const previewRef = useRef<HTMLImageElement>(null)
-  const [src, setSrc] = useState<string>('')
-  const [visible, setVisible] = useState(false)
+  const previewRef = useRef<HTMLImageElement>(null);
+  const [src, setSrc] = useState<string>("");
+  const [visible, setVisible] = useState(false);
 
   const move = (e: React.MouseEvent) => {
-    const el = previewRef.current
-    if (!el) return
-    el.style.left = `${e.clientX}px`
-    el.style.top = `${e.clientY}px`
-  }
+    const el = previewRef.current;
+    if (!el) return;
+    el.style.left = `${e.clientX}px`;
+    el.style.top = `${e.clientY}px`;
+  };
 
   return (
     <>
@@ -1180,14 +1472,23 @@ export function WorksList({ works }: { works: Work[] }) {
             <Link
               href={`/works/${w.slug}`}
               className={styles.link}
-              onMouseEnter={() => { setSrc(w.images[0]); setVisible(true) }}
+              onMouseEnter={() => {
+                setSrc(w.images[0]);
+                setVisible(true);
+              }}
               onMouseLeave={() => setVisible(false)}
             >
-              <span className={styles.num}>{String(i + 1).padStart(2, '0')}</span>
-              <span className={styles.name}><TextRoll text={w.title} /></span>
+              <span className={styles.num}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className={styles.name}>
+                <TextRoll text={w.title} />
+              </span>
               <span className={styles.tag}>{w.platform}</span>
               <span className={styles.year}>{w.year}</span>
-              <span className={styles.arrow} aria-hidden="true">↗</span>
+              <span className={styles.arrow} aria-hidden="true">
+                ↗
+              </span>
             </Link>
           </li>
         ))}
@@ -1198,10 +1499,10 @@ export function WorksList({ works }: { works: Work[] }) {
         src={src}
         alt=""
         aria-hidden="true"
-        className={`${styles.preview} ${visible ? styles.visible : ''}`}
+        className={`${styles.preview} ${visible ? styles.visible : ""}`}
       />
     </>
-  )
+  );
 }
 ```
 
@@ -1223,37 +1524,80 @@ git commit -m "feat: works list with text-roll names and cursor preview"
 - [ ] **Step 1: Create `how-i-work.module.css`**
 
 ```css
-.section { padding: 6rem 0; }
-.grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 2rem; }
-@media (min-width: 768px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-.card { background: var(--bg); padding: 2rem; }
-.step { font-family: var(--font-jetbrains-mono); font-size: 0.72rem; color: var(--accent); }
-.cardTitle { font-family: var(--font-instrument-serif); font-size: 1.6rem; margin: 0.6rem 0; }
-.cardText { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+.section {
+  padding: 6rem 0;
+}
+.grid {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.card {
+  background: var(--bg);
+  padding: 2rem;
+}
+.step {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+.cardTitle {
+  font-family: var(--font-instrument-serif);
+  font-size: 1.6rem;
+  margin: 0.6rem 0;
+}
+.cardText {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
 ```
 
 - [ ] **Step 2: Create `how-i-work.tsx`**
 
 ```tsx
-'use client'
+"use client";
 
-import { SectionEyebrow } from '@/components/common/section-eyebrow'
-import { DisplayHeading } from '@/components/common/display-heading'
-import { useScrollReveal } from '@/lib/motion/use-scroll-reveal'
-import styles from './how-i-work.module.css'
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { DisplayHeading } from "@/components/common/display-heading";
+import { useScrollReveal } from "@/lib/motion/use-scroll-reveal";
+import styles from "./how-i-work.module.css";
 
 const STEPS = [
-  { n: '01', title: 'Understand', text: 'Clarify the goal, users and constraints before writing code. Cheap decisions first.' },
-  { n: '02', title: 'Build', text: 'Type-safe, component-driven, performance-first. Clean code that survives.' },
-  { n: '03', title: 'Ship & iterate', text: 'Deploy, measure, refine. The first release is the start, not the finish.' },
-]
+  {
+    n: "01",
+    title: "Understand",
+    text: "Clarify the goal, users and constraints before writing code. Cheap decisions first.",
+  },
+  {
+    n: "02",
+    title: "Build",
+    text: "Type-safe, component-driven, performance-first. Clean code that survives.",
+  },
+  {
+    n: "03",
+    title: "Ship & iterate",
+    text: "Deploy, measure, refine. The first release is the start, not the finish.",
+  },
+];
 
 export function HowIWork() {
-  const ref = useScrollReveal<HTMLDivElement>({ selector: '[data-card]' })
+  const ref = useScrollReveal<HTMLDivElement>({ selector: "[data-card]" });
   return (
     <section className={styles.section}>
       <SectionEyebrow num="05b" label="How I work" />
-      <DisplayHeading as="h2" text="From *idea* to *launch.*" style={{ fontSize: 'clamp(2rem,4vw,3.25rem)' }} />
+      <DisplayHeading
+        as="h2"
+        text="From *idea* to *launch.*"
+        style={{ fontSize: "clamp(2rem,4vw,3.25rem)" }}
+      />
       <div className={styles.grid} ref={ref}>
         {STEPS.map((s) => (
           <div key={s.n} className={styles.card} data-card>
@@ -1264,7 +1608,7 @@ export function HowIWork() {
         ))}
       </div>
     </section>
-  )
+  );
 }
 ```
 
@@ -1298,30 +1642,34 @@ Run: `cat "app/(main)/works/page.tsx"` to preserve metadata/category grouping lo
 Replace the grid with the eyebrow + `WorksList`. Keep any freelance/learning split as two labeled lists. Full file:
 
 ```tsx
-import type { Metadata } from 'next'
-import { SectionEyebrow } from '@/components/common/section-eyebrow'
-import { DisplayHeading } from '@/components/common/display-heading'
-import { WorksList } from '@/components/sections/works-list'
-import { works } from '@/lib/works'
+import type { Metadata } from "next";
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { DisplayHeading } from "@/components/common/display-heading";
+import { WorksList } from "@/components/sections/works-list";
+import { works } from "@/lib/works";
 
-export const metadata: Metadata = { title: 'Works' }
+export const metadata: Metadata = { title: "Works" };
 
 export default function WorksPage() {
-  const freelance = works.filter((w) => w.category === 'freelance')
-  const learning = works.filter((w) => w.category === 'learning')
+  const freelance = works.filter((w) => w.category === "freelance");
+  const learning = works.filter((w) => w.category === "learning");
   return (
-    <div style={{ paddingTop: '2rem' }}>
+    <div style={{ paddingTop: "2rem" }}>
       <SectionEyebrow num="01" label="Selected Work / 2021 — 2026" />
-      <DisplayHeading as="h1" text="What I've *built.*" style={{ fontSize: 'clamp(2.5rem,6vw,4.5rem)', marginBottom: '2.5rem' }} />
+      <DisplayHeading
+        as="h1"
+        text="What I've *built.*"
+        style={{ fontSize: "clamp(2.5rem,6vw,4.5rem)", marginBottom: "2.5rem" }}
+      />
       <WorksList works={freelance} />
       {learning.length > 0 && (
-        <div style={{ marginTop: '4rem' }}>
+        <div style={{ marginTop: "4rem" }}>
           <SectionEyebrow num="02" label="Learning & experiments" />
           <WorksList works={learning} />
         </div>
       )}
     </div>
-  )
+  );
 }
 ```
 
@@ -1408,20 +1756,26 @@ git commit -m "feat: restyle work detail page"
 Run `cat "app/(main)/posts/page.tsx"`. Add `SectionEyebrow num="01" label="Writing"` + a `DisplayHeading` title; if it's an empty/placeholder page, render an on-brand empty state:
 
 ```tsx
-import type { Metadata } from 'next'
-import { SectionEyebrow } from '@/components/common/section-eyebrow'
-import { DisplayHeading } from '@/components/common/display-heading'
+import type { Metadata } from "next";
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { DisplayHeading } from "@/components/common/display-heading";
 
-export const metadata: Metadata = { title: 'Posts' }
+export const metadata: Metadata = { title: "Posts" };
 
 export default function PostsPage() {
   return (
-    <div style={{ paddingTop: '2rem' }}>
+    <div style={{ paddingTop: "2rem" }}>
       <SectionEyebrow num="01" label="Writing" />
-      <DisplayHeading as="h1" text="Notes & *thoughts.*" style={{ fontSize: 'clamp(2.5rem,6vw,4.5rem)' }} />
-      <p style={{ color: 'var(--text-muted)', marginTop: '1.5rem' }}>Coming soon.</p>
+      <DisplayHeading
+        as="h1"
+        text="Notes & *thoughts.*"
+        style={{ fontSize: "clamp(2.5rem,6vw,4.5rem)" }}
+      />
+      <p style={{ color: "var(--text-muted)", marginTop: "1.5rem" }}>
+        Coming soon.
+      </p>
     </div>
-  )
+  );
 }
 ```
 
@@ -1473,35 +1827,61 @@ Run: `cat components/layout/navbar.tsx` (note any ThemeToggle usage to remove �
 
 ```css
 .overlay {
-  position: fixed; inset: 0; z-index: 100; background: var(--bg);
-  display: flex; flex-direction: column; justify-content: center; padding: 2rem 1.5rem;
-  transform: translateY(-100%); transition: transform 0.6s var(--ease-out);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  transform: translateY(-100%);
+  transition: transform 0.6s var(--ease-out);
 }
-.overlay.open { transform: translateY(0); }
-.list { list-style: none; }
-.item { font-family: var(--font-instrument-serif); font-size: clamp(2.5rem, 8vw, 5rem); padding: 0.4rem 0; }
-.item a:hover { color: var(--accent); }
+.overlay.open {
+  transform: translateY(0);
+}
+.list {
+  list-style: none;
+}
+.item {
+  font-family: var(--font-instrument-serif);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  padding: 0.4rem 0;
+}
+.item a:hover {
+  color: var(--accent);
+}
 ```
 
 - [ ] **Step 3: Create `menu-overlay.tsx`**
 
 ```tsx
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { TextRoll } from '@/components/motion/text-roll'
-import styles from './menu-overlay.module.css'
+import Link from "next/link";
+import { TextRoll } from "@/components/motion/text-roll";
+import styles from "./menu-overlay.module.css";
 
 const ITEMS = [
-  { label: 'Home', href: '/' },
-  { label: 'Works', href: '/works' },
-  { label: 'Posts', href: '/posts' },
-  { label: 'CV', href: '/cv' },
-]
+  { label: "Home", href: "/" },
+  { label: "Works", href: "/works" },
+  { label: "Posts", href: "/posts" },
+  { label: "CV", href: "/cv" },
+];
 
-export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function MenuOverlay({
+  open,
+  onClose,
+}: {
+  open: boolean;
+  onClose: () => void;
+}) {
   return (
-    <div className={`${styles.overlay} ${open ? styles.open : ''}`} aria-hidden={!open}>
+    <div
+      className={`${styles.overlay} ${open ? styles.open : ""}`}
+      aria-hidden={!open}
+    >
       <ul className={styles.list}>
         {ITEMS.map((it) => (
           <li key={it.href} className={styles.item}>
@@ -1512,7 +1892,7 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
         ))}
       </ul>
     </div>
-  )
+  );
 }
 ```
 
@@ -1521,36 +1901,68 @@ export function MenuOverlay({ open, onClose }: { open: boolean; onClose: () => v
 Logo/name (link to `/`) + `ShinyCTA` ("Start a project" → `mailto:`) + a burger button toggling `MenuOverlay`. Use local state. Replace `components/layout/navbar.tsx`:
 
 ```tsx
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { ShinyCTA } from '@/components/motion/shiny-cta'
-import { MenuOverlay } from './menu-overlay'
+import { useState } from "react";
+import Link from "next/link";
+import { ShinyCTA } from "@/components/motion/shiny-cta";
+import { MenuOverlay } from "./menu-overlay";
 
 export function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   return (
     <>
-      <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, height: 80, zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 1.5rem', background: 'rgba(10,10,11,0.6)', backdropFilter: 'blur(10px)', borderBottom: '1px solid var(--border)' }}>
-        <Link href="/" style={{ fontFamily: 'var(--font-instrument-serif)', fontSize: '1.4rem' }}>
+      <nav
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 80,
+          zIndex: 200,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 1.5rem",
+          background: "rgba(10,10,11,0.6)",
+          backdropFilter: "blur(10px)",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <Link
+          href="/"
+          style={{
+            fontFamily: "var(--font-instrument-serif)",
+            fontSize: "1.4rem",
+          }}
+        >
           Moch Fathurrozi
         </Link>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <a href="mailto:decozzfx@gmail.com"><ShinyCTA>Start a project &nbsp;→</ShinyCTA></a>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <a href="mailto:decozzfx@gmail.com">
+            <ShinyCTA>Start a project &nbsp;→</ShinyCTA>
+          </a>
           <button
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            style={{ background: 'none', border: 'none', color: 'var(--text)', cursor: 'pointer', fontFamily: 'var(--font-jetbrains-mono)', fontSize: '0.8rem', textTransform: 'uppercase' }}
+            style={{
+              background: "none",
+              border: "none",
+              color: "var(--text)",
+              cursor: "pointer",
+              fontFamily: "var(--font-jetbrains-mono)",
+              fontSize: "0.8rem",
+              textTransform: "uppercase",
+            }}
           >
-            {open ? 'Close' : 'Menu'}
+            {open ? "Close" : "Menu"}
           </button>
         </div>
       </nav>
       <MenuOverlay open={open} onClose={() => setOpen(false)} />
     </>
-  )
+  );
 }
 ```
 
@@ -1574,30 +1986,89 @@ git commit -m "feat: navbar with fullscreen burger overlay"
 - [ ] **Step 2: Rewrite to multi-col + serif tagline**
 
 ```tsx
-import Link from 'next/link'
+import Link from "next/link";
 
 const COLS = [
-  { title: 'Sitemap', links: [['Home','/'],['Works','/works'],['Posts','/posts'],['CV','/cv']] },
-  { title: 'Social', links: [['GitHub','https://github.com/decozzfx'],['LinkedIn','https://linkedin.com/in/decozzfx']] },
-]
+  {
+    title: "Sitemap",
+    links: [
+      ["Home", "/"],
+      ["Works", "/works"],
+      ["Posts", "/posts"],
+      ["CV", "/cv"],
+    ],
+  },
+  {
+    title: "Social",
+    links: [
+      ["GitHub", "https://github.com/decozzfx"],
+      ["LinkedIn", "https://linkedin.com/in/decozzfx"],
+    ],
+  },
+];
 
 export function Footer() {
   return (
-    <footer style={{ borderTop: '1px solid var(--border)', padding: '4rem 1.5rem 2rem' }}>
-      <div style={{ maxWidth: 'var(--container)', margin: '0 auto', display: 'flex', flexWrap: 'wrap', gap: '3rem', justifyContent: 'space-between' }}>
-        <p style={{ fontFamily: 'var(--font-instrument-serif)', fontSize: '2rem', lineHeight: 1.1 }}>
-          Fullstack<br />developer from<br /><em>Semarang.</em>
+    <footer
+      style={{
+        borderTop: "1px solid var(--border)",
+        padding: "4rem 1.5rem 2rem",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "var(--container)",
+          margin: "0 auto",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "3rem",
+          justifyContent: "space-between",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "var(--font-instrument-serif)",
+            fontSize: "2rem",
+            lineHeight: 1.1,
+          }}
+        >
+          Fullstack
+          <br />
+          developer from
+          <br />
+          <em>Semarang.</em>
         </p>
-        <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap' }}>
+        <div style={{ display: "flex", gap: "3rem", flexWrap: "wrap" }}>
           {COLS.map((c) => (
             <div key={c.title}>
-              <p style={{ fontFamily: 'var(--font-jetbrains-mono)', fontSize: '0.7rem', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '0.8rem' }}>{c.title}</p>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+              <p
+                style={{
+                  fontFamily: "var(--font-jetbrains-mono)",
+                  fontSize: "0.7rem",
+                  textTransform: "uppercase",
+                  color: "var(--text-muted)",
+                  marginBottom: "0.8rem",
+                }}
+              >
+                {c.title}
+              </p>
+              <ul
+                style={{
+                  listStyle: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.4rem",
+                }}
+              >
                 {c.links.map(([label, href]) => (
                   <li key={href}>
-                    {href.startsWith('http')
-                      ? <a href={href} target="_blank" rel="noopener noreferrer">{label} ↗</a>
-                      : <Link href={href}>{label}</Link>}
+                    {href.startsWith("http") ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer">
+                        {label} ↗
+                      </a>
+                    ) : (
+                      <Link href={href}>{label}</Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -1605,11 +2076,19 @@ export function Footer() {
           ))}
         </div>
       </div>
-      <p style={{ maxWidth: 'var(--container)', margin: '3rem auto 0', fontFamily: 'var(--font-jetbrains-mono)', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+      <p
+        style={{
+          maxWidth: "var(--container)",
+          margin: "3rem auto 0",
+          fontFamily: "var(--font-jetbrains-mono)",
+          fontSize: "0.72rem",
+          color: "var(--text-muted)",
+        }}
+      >
         © 2026 Moch Fathurrozi
       </p>
     </footer>
-  )
+  );
 }
 ```
 
@@ -1631,18 +2110,36 @@ git commit -m "feat: restyle footer"
 - [ ] **Step 1: Rewrite on-brand**
 
 ```tsx
-import Link from 'next/link'
-import { DisplayHeading } from '@/components/common/display-heading'
-import { ShinyCTA } from '@/components/motion/shiny-cta'
+import Link from "next/link";
+import { DisplayHeading } from "@/components/common/display-heading";
+import { ShinyCTA } from "@/components/motion/shiny-cta";
 
 export default function NotFound() {
   return (
-    <div style={{ minHeight: '70vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '2rem' }}>
-      <DisplayHeading as="h1" text="Page *not found.*" style={{ fontSize: 'clamp(2.5rem,8vw,6rem)' }} />
-      <p style={{ color: 'var(--text-muted)', margin: '1rem 0 2rem' }}>The page you're looking for doesn't exist.</p>
-      <Link href="/"><ShinyCTA>Back home &nbsp;→</ShinyCTA></Link>
+    <div
+      style={{
+        minHeight: "70vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        padding: "2rem",
+      }}
+    >
+      <DisplayHeading
+        as="h1"
+        text="Page *not found.*"
+        style={{ fontSize: "clamp(2.5rem,8vw,6rem)" }}
+      />
+      <p style={{ color: "var(--text-muted)", margin: "1rem 0 2rem" }}>
+        The page you're looking for doesn't exist.
+      </p>
+      <Link href="/">
+        <ShinyCTA>Back home &nbsp;→</ShinyCTA>
+      </Link>
     </div>
-  )
+  );
 }
 ```
 
@@ -1670,63 +2167,124 @@ git commit -m "feat: on-brand 404 page"
 - [ ] **Step 1: Create `custom-cursor.module.css`**
 
 ```css
-.dot { position: fixed; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s; }
-.ring { position: fixed; top: 0; left: 0; width: 34px; height: 34px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: transform 0.12s var(--ease-out); }
-@media (max-width: 768px) { .dot, .ring { display: none; } }
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.2s,
+    height 0.2s;
+}
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.12s var(--ease-out);
+}
+@media (max-width: 768px) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}
 ```
 
 - [ ] **Step 2: Create `custom-cursor.tsx`**
 
 ```tsx
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
-import styles from './custom-cursor.module.css'
+import { useEffect, useRef } from "react";
+import styles from "./custom-cursor.module.css";
 
 export function CustomCursor() {
-  const dot = useRef<HTMLDivElement>(null)
-  const ring = useRef<HTMLDivElement>(null)
+  const dot = useRef<HTMLDivElement>(null);
+  const ring = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (window.matchMedia('(pointer: coarse)').matches) return
-    let rx = 0, ry = 0, x = 0, y = 0, raf = 0
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    let rx = 0,
+      ry = 0,
+      x = 0,
+      y = 0,
+      raf = 0;
     const move = (e: MouseEvent) => {
-      x = e.clientX; y = e.clientY
-      if (dot.current) { dot.current.style.left = `${x}px`; dot.current.style.top = `${y}px` }
-    }
+      x = e.clientX;
+      y = e.clientY;
+      if (dot.current) {
+        dot.current.style.left = `${x}px`;
+        dot.current.style.top = `${y}px`;
+      }
+    };
     const loop = () => {
-      rx += (x - rx) * 0.18; ry += (y - ry) * 0.18
-      if (ring.current) { ring.current.style.left = `${rx}px`; ring.current.style.top = `${ry}px` }
-      raf = requestAnimationFrame(loop)
-    }
-    window.addEventListener('mousemove', move)
-    raf = requestAnimationFrame(loop)
-    return () => { window.removeEventListener('mousemove', move); cancelAnimationFrame(raf) }
-  }, [])
-  return (<><div ref={dot} className={styles.dot} aria-hidden /><div ref={ring} className={styles.ring} aria-hidden /></>)
+      rx += (x - rx) * 0.18;
+      ry += (y - ry) * 0.18;
+      if (ring.current) {
+        ring.current.style.left = `${rx}px`;
+        ring.current.style.top = `${ry}px`;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    window.addEventListener("mousemove", move);
+    raf = requestAnimationFrame(loop);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+  return (
+    <>
+      <div ref={dot} className={styles.dot} aria-hidden />
+      <div ref={ring} className={styles.ring} aria-hidden />
+    </>
+  );
 }
 ```
 
 - [ ] **Step 3: Create `magnetic.tsx`**
 
 ```tsx
-'use client'
+"use client";
 
-import { useRef } from 'react'
+import { useRef } from "react";
 
 export function Magnetic({ children }: { children: React.ReactElement }) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null);
   const onMove = (e: React.MouseEvent) => {
-    const el = ref.current
-    if (!el) return
-    const r = el.getBoundingClientRect()
-    el.style.transform = `translate(${(e.clientX - (r.left + r.width / 2)) * 0.3}px, ${(e.clientY - (r.top + r.height / 2)) * 0.3}px)`
-  }
-  const reset = () => { if (ref.current) ref.current.style.transform = 'translate(0,0)' }
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.transform = `translate(${(e.clientX - (r.left + r.width / 2)) * 0.3}px, ${(e.clientY - (r.top + r.height / 2)) * 0.3}px)`;
+  };
+  const reset = () => {
+    if (ref.current) ref.current.style.transform = "translate(0,0)";
+  };
   return (
-    <div ref={ref} onMouseMove={onMove} onMouseLeave={reset} style={{ display: 'inline-block', transition: 'transform 0.3s var(--ease-out)' }}>
+    <div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={reset}
+      style={{
+        display: "inline-block",
+        transition: "transform 0.3s var(--ease-out)",
+      }}
+    >
       {children}
     </div>
-  )
+  );
 }
 ```
 
@@ -1752,30 +2310,37 @@ git commit -m "feat: custom cursor and magnetic hover"
 A lightweight full-bleed plane with an animated gradient fragment shader in the accent color. Dynamically imported, `ssr:false`. Falls back to the existing CSS `.glow` if WebGL unavailable.
 
 ```tsx
-'use client'
+"use client";
 
-import { useEffect, useRef } from 'react'
-import * as THREE from 'three'
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 export function ShaderBg() {
-  const mount = useRef<HTMLDivElement>(null)
+  const mount = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const el = mount.current
-    if (!el) return
-    let gl: WebGLRenderingContext | null = null
-    try { gl = document.createElement('canvas').getContext('webgl') } catch { gl = null }
-    if (!gl) return // CSS .glow fallback remains
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const el = mount.current;
+    if (!el) return;
+    let gl: WebGLRenderingContext | null = null;
+    try {
+      gl = document.createElement("canvas").getContext("webgl");
+    } catch {
+      gl = null;
+    }
+    if (!gl) return; // CSS .glow fallback remains
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const scene = new THREE.Scene()
-    const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2))
-    const resize = () => renderer.setSize(el.clientWidth, el.clientHeight)
-    resize()
-    el.appendChild(renderer.domElement)
+    const scene = new THREE.Scene();
+    const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    const resize = () => renderer.setSize(el.clientWidth, el.clientHeight);
+    resize();
+    el.appendChild(renderer.domElement);
 
-    const uniforms = { u_time: { value: 0 }, u_res: { value: new THREE.Vector2(el.clientWidth, el.clientHeight) } }
+    const uniforms = {
+      u_time: { value: 0 },
+      u_res: { value: new THREE.Vector2(el.clientWidth, el.clientHeight) },
+    };
     const mat = new THREE.ShaderMaterial({
       uniforms,
       transparent: true,
@@ -1789,29 +2354,42 @@ export function ShaderBg() {
           float a = smoothstep(0.4, 1.0, w) * 0.18;
           gl_FragColor = vec4(accent, a);
         }`,
-    })
-    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat))
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), mat));
 
-    let raf = 0
-    const t0 = performance.now()
+    let raf = 0;
+    const t0 = performance.now();
     const loop = () => {
-      uniforms.u_time.value = (performance.now() - t0) / 1000
-      renderer.render(scene, cam)
-      raf = requestAnimationFrame(loop)
-    }
-    loop()
-    window.addEventListener('resize', resize)
-    return () => { cancelAnimationFrame(raf); window.removeEventListener('resize', resize); renderer.dispose(); el.removeChild(renderer.domElement) }
-  }, [])
-  return <div ref={mount} style={{ position: 'absolute', inset: 0, zIndex: -1 }} aria-hidden="true" />
+      uniforms.u_time.value = (performance.now() - t0) / 1000;
+      renderer.render(scene, cam);
+      raf = requestAnimationFrame(loop);
+    };
+    loop();
+    window.addEventListener("resize", resize);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+      renderer.dispose();
+      el.removeChild(renderer.domElement);
+    };
+  }, []);
+  return (
+    <div
+      ref={mount}
+      style={{ position: "absolute", inset: 0, zIndex: -1 }}
+      aria-hidden="true"
+    />
+  );
 }
 ```
 
 - [ ] **Step 2: Mount in hero** — in `hero.tsx`, dynamically import to avoid SSR:
 
 ```tsx
-import dynamic from 'next/dynamic'
-const ShaderBg = dynamic(() => import('./shader-bg').then((m) => m.ShaderBg), { ssr: false })
+import dynamic from "next/dynamic";
+const ShaderBg = dynamic(() => import("./shader-bg").then((m) => m.ShaderBg), {
+  ssr: false,
+});
 ```
 
 Render `<ShaderBg />` just before the `.glow` div (glow stays as fallback/extra).
@@ -1834,9 +2412,11 @@ git commit -m "feat: three.js shader glow behind hero with css fallback"
 - [ ] **Step 1: Reduced-motion audit**
 
 Confirm every motion component early-returns on `prefers-reduced-motion`. Run:
+
 ```bash
 grep -rn "prefers-reduced-motion" components lib app
 ```
+
 Expected: SmoothScroll, useScrollReveal, RevealWords, CustomCursor, ShaderBg, and CSS files all covered. Add guards where missing.
 
 - [ ] **Step 2: Image audit**

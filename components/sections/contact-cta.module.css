@@ -1,9 +1,27 @@
-.cta { padding: 6rem 0; }
-.title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 1rem 0 2rem; }
-.links { display: flex; gap: 1rem; flex-wrap: wrap; }
-.link {
-  font-family: var(--font-jetbrains-mono); font-size: 0.8rem; text-transform: uppercase;
-  letter-spacing: 0.06em; padding: 0.8rem 1.2rem; border: 1px solid var(--border);
-  transition: border-color 0.3s, color 0.3s;
+.cta {
+  padding: 6rem 0;
 }
-.link:hover { border-color: var(--accent); color: var(--accent); }
+.title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin: 1rem 0 2rem;
+}
+.links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.link {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid var(--border);
+  transition:
+    border-color 0.3s,
+    color 0.3s;
+}
+.link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

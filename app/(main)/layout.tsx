@@ -1,10 +1,14 @@
-import { Box, Container, Flex } from '@chakra-ui/react'
-import { Navbar } from '@/components/layout/navbar'
-import { Footer } from '@/components/layout/footer'
-import { SmoothScroll } from '@/components/motion/smooth-scroll'
-import { CustomCursor } from '@/components/motion/custom-cursor'
+import { Box, Container, Flex } from "@chakra-ui/react";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
+import { CustomCursor } from "@/components/motion/custom-cursor";
 
-export default function MainLayout({ children }: { children: React.ReactNode }) {
+export default function MainLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <SmoothScroll>
       <CustomCursor />
@@ -18,5 +22,5 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <Footer />
       </Flex>
     </SmoothScroll>
-  )
+  );
 }

@@ -1,17 +1,13 @@
-import { Text, TextProps } from '@chakra-ui/react'
+import { Text, TextProps } from "@chakra-ui/react";
 
 interface ParagraphProps extends TextProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function Paragraph({ children, ...props }: ParagraphProps) {
   return (
-    <Text
-      textAlign="justify"
-      lineHeight="relaxed"
-      {...props}
-    >
+    <Text textAlign="justify" lineHeight="relaxed" {...props}>
       {children}
     </Text>
-  )
+  );
 }

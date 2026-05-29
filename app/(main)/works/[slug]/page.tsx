@@ -1,58 +1,58 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-import { SectionEyebrow } from '@/components/common/section-eyebrow'
-import { getWorkBySlug, works } from '@/lib/works'
+import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { getWorkBySlug, works } from "@/lib/works";
 
 export function generateStaticParams() {
-  return works.map((w) => ({ slug: w.slug }))
+  return works.map((w) => ({ slug: w.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params
-  const work = getWorkBySlug(slug)
-  if (!work) return {}
+  const { slug } = await params;
+  const work = getWorkBySlug(slug);
+  if (!work) return {};
   return {
     title: work.title,
     description: work.description,
-  }
+  };
 }
 
 export default async function WorkDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params
-  const work = getWorkBySlug(slug)
+  const { slug } = await params;
+  const work = getWorkBySlug(slug);
 
-  if (!work) notFound()
+  if (!work) notFound();
 
   const links =
-    typeof work.website === 'string'
-      ? [{ label: 'Visit site', url: work.website }]
-      : work.website ?? []
+    typeof work.website === "string"
+      ? [{ label: "Visit site", url: work.website }]
+      : (work.website ?? []);
 
   return (
-    <div style={{ paddingTop: '2rem', maxWidth: '860px' }}>
+    <div style={{ paddingTop: "2rem", maxWidth: "860px" }}>
       {/* Back link */}
-      <div style={{ marginBottom: '2.5rem' }}>
+      <div style={{ marginBottom: "2.5rem" }}>
         <Link
           href="/works"
           style={{
-            fontFamily: 'var(--font-jetbrains-mono)',
-            fontSize: '0.75rem',
-            textTransform: 'uppercase',
-            letterSpacing: '0.08em',
-            color: 'var(--text-muted)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.4rem',
+            fontFamily: "var(--font-jetbrains-mono)",
+            fontSize: "0.75rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            color: "var(--text-muted)",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "0.4rem",
           }}
         >
           ← Works
@@ -63,31 +63,42 @@ export default async function WorkDetailPage({
       <SectionEyebrow num="WORK" label={`${work.year} · ${work.platform}`} />
       <h1
         style={{
-          fontFamily: 'var(--font-instrument-serif)',
-          fontSize: 'clamp(2.5rem,6vw,4.5rem)',
+          fontFamily: "var(--font-instrument-serif)",
+          fontSize: "clamp(2.5rem,6vw,4.5rem)",
           lineHeight: 1.05,
-          margin: '0.5rem 0 1.5rem',
+          margin: "0.5rem 0 1.5rem",
         }}
       >
         {work.title}
       </h1>
-      <p style={{ color: 'var(--text-muted)', maxWidth: '60ch', lineHeight: 1.7 }}>
+      <p
+        style={{
+          color: "var(--text-muted)",
+          maxWidth: "60ch",
+          lineHeight: 1.7,
+        }}
+      >
         {work.description}
       </p>
 
       {/* Stack chips */}
       <div
-        style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', margin: '1.5rem 0' }}
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "0.5rem",
+          margin: "1.5rem 0",
+        }}
       >
         {work.stack.map((s) => (
           <span
             key={s}
             style={{
-              border: '1px solid var(--border)',
-              padding: '0.35rem 0.75rem',
-              fontFamily: 'var(--font-jetbrains-mono)',
-              fontSize: '0.72rem',
-              textTransform: 'uppercase',
+              border: "1px solid var(--border)",
+              padding: "0.35rem 0.75rem",
+              fontFamily: "var(--font-jetbrains-mono)",
+              fontSize: "0.72rem",
+              textTransform: "uppercase",
             }}
           >
             {s}
@@ -99,10 +110,10 @@ export default async function WorkDetailPage({
       {work.website && (
         <div
           style={{
-            display: 'flex',
-            gap: '0.75rem',
-            flexWrap: 'wrap',
-            marginBottom: '2rem',
+            display: "flex",
+            gap: "0.75rem",
+            flexWrap: "wrap",
+            marginBottom: "2rem",
           }}
         >
           {links.map((lnk) => (
@@ -112,11 +123,11 @@ export default async function WorkDetailPage({
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                fontFamily: 'var(--font-jetbrains-mono)',
-                fontSize: '0.8rem',
-                textTransform: 'uppercase',
-                padding: '0.7rem 1.1rem',
-                border: '1px solid var(--border)',
+                fontFamily: "var(--font-jetbrains-mono)",
+                fontSize: "0.8rem",
+                textTransform: "uppercase",
+                padding: "0.7rem 1.1rem",
+                border: "1px solid var(--border)",
               }}
             >
               {lnk.label} ↗
@@ -126,22 +137,24 @@ export default async function WorkDetailPage({
       )}
 
       {/* Images — full-width vertical stack */}
-      <div style={{ marginTop: '2.5rem' }}>
+      <div style={{ marginTop: "2.5rem" }}>
         {work.images.map((image, index) => (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             key={index}
             src={image}
-            alt={index === 0 ? work.title : `${work.title} screenshot ${index + 1}`}
+            alt={
+              index === 0 ? work.title : `${work.title} screenshot ${index + 1}`
+            }
             style={{
-              width: '100%',
-              display: 'block',
-              marginBottom: '1.5rem',
-              border: '1px solid var(--border)',
+              width: "100%",
+              display: "block",
+              marginBottom: "1.5rem",
+              border: "1px solid var(--border)",
             }}
           />
         ))}
       </div>
     </div>
-  )
+  );
 }

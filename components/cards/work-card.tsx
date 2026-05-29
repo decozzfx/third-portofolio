@@ -1,24 +1,24 @@
-'use client'
+"use client";
 
-import { Box, Flex, Heading, Text, Image } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { Work } from '@/types'
-import { useColorModeValue } from '@/components/ui/color-mode'
+import { Box, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Work } from "@/types";
+import { useColorModeValue } from "@/components/ui/color-mode";
 
-const MotionBox = motion.create(Box)
+const MotionBox = motion.create(Box);
 
 interface WorkCardProps {
-  work: Work
+  work: Work;
 }
 
 export function WorkCard({ work }: WorkCardProps) {
-  const borderColor = useColorModeValue('#E5E5E5', '#262626')
-  const hoverBg = useColorModeValue('#F5F5F5', '#171717')
-  const imageBg = useColorModeValue('#F5F5F5', '#171717')
+  const borderColor = useColorModeValue("#E5E5E5", "#262626");
+  const hoverBg = useColorModeValue("#F5F5F5", "#171717");
+  const imageBg = useColorModeValue("#F5F5F5", "#171717");
 
   // Check if this is a mobile app (portrait images)
-  const isMobileApp = work.platform === 'Android' || work.platform === 'iOS'
+  const isMobileApp = work.platform === "Android" || work.platform === "iOS";
 
   return (
     <Link href={`/works/${work.slug}`} passHref>
@@ -31,7 +31,7 @@ export function WorkCard({ work }: WorkCardProps) {
         whileHover={{ y: -4 }}
         transition={{ duration: 0.2 }}
         _hover={{
-          borderColor: 'accent',
+          borderColor: "accent",
           bg: hoverBg,
         }}
       >
@@ -48,12 +48,12 @@ export function WorkCard({ work }: WorkCardProps) {
           <Image
             src={work.images[0]}
             alt={work.title}
-            objectFit={isMobileApp ? 'contain' : 'cover'}
-            w={isMobileApp ? 'auto' : '100%'}
+            objectFit={isMobileApp ? "contain" : "cover"}
+            w={isMobileApp ? "auto" : "100%"}
             h="100%"
             maxH="100%"
             transition="transform 0.3s ease"
-            _groupHover={{ transform: 'scale(1.05)' }}
+            _groupHover={{ transform: "scale(1.05)" }}
           />
           {/* Year badge */}
           <Box
@@ -90,10 +90,10 @@ export function WorkCard({ work }: WorkCardProps) {
             color="textMuted"
             mb={3}
             css={{
-              display: '-webkit-box',
+              display: "-webkit-box",
               WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden',
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
             }}
           >
             {work.description}
@@ -114,11 +114,7 @@ export function WorkCard({ work }: WorkCardProps) {
               </Text>
             ))}
             {work.stack.length > 3 && (
-              <Text
-                fontFamily="mono"
-                fontSize="xs"
-                color="textMuted"
-              >
+              <Text fontFamily="mono" fontSize="xs" color="textMuted">
                 +{work.stack.length - 3}
               </Text>
             )}
@@ -126,5 +122,5 @@ export function WorkCard({ work }: WorkCardProps) {
         </Box>
       </MotionBox>
     </Link>
-  )
+  );
 }

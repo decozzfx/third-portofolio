@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import { ChakraProvider } from '@chakra-ui/react'
-import { ThemeProvider } from 'next-themes'
-import { system } from '@/lib/theme'
+import { ChakraProvider } from "@chakra-ui/react";
+import { ThemeProvider } from "next-themes";
+import { system } from "@/lib/theme";
 
 interface ProviderProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function Provider({ children }: ProviderProps) {
@@ -17,9 +17,7 @@ export function Provider({ children }: ProviderProps) {
       enableSystem={false}
       disableTransitionOnChange
     >
-      <ChakraProvider value={system}>
-        {children}
-      </ChakraProvider>
+      <ChakraProvider value={system}>{children}</ChakraProvider>
     </ThemeProvider>
-  )
+  );
 }

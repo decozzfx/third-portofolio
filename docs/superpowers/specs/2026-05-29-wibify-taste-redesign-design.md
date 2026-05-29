@@ -6,7 +6,7 @@
 
 ## Goal
 
-Re-skin the existing Next.js 15 portfolio to carry the *taste* of
+Re-skin the existing Next.js 15 portfolio to carry the _taste_ of
 [wibify.de](https://wibify.de/en) (Awwwards-grade dark editorial-premium agency
 site) while keeping the owner's own brand color. Same engineer content —
 agency-grade presentation. This is a **full visual pivot** away from the current
@@ -27,7 +27,7 @@ Signature "taste" moves (the things that MUST be reproduced):
 
 1. Numbered sections `[01]…[07]` — mono tag + accent bar eyebrow.
 2. Serif-italic emphasis words inside sans headlines (`We build <em>digital
-   products</em>`) + hand-drawn SVG underline on emphasized words.
+products</em>`) + hand-drawn SVG underline on emphasized words.
 3. Hero headline reveals **word-by-word**.
 4. **text-roll** — letters roll/flip up on hover (every link, work name, menu item).
 5. Works = **vertical list** (not grid); hovering a row shows a floating
@@ -41,14 +41,14 @@ Signature "taste" moves (the things that MUST be reproduced):
 
 ## Decisions (locked)
 
-| Topic | Decision |
-|-------|----------|
-| Direction | Full pivot to Wibify taste |
-| Palette | Dark premium + owner accent `#FF3D00` (Wibify *structure*, owner *color*) |
-| Type | Instrument Serif (display) + Switzer (body) + JetBrains Mono (labels) |
-| Motion | GSAP + ScrollTrigger + Lenis + Framer Motion (micro) + three.js shader |
-| Scope | Everything: Home, Works, Work detail, Posts, CV, navbar, footer, 404 |
-| Styling | Chakra v3 provider + dark theme tokens retained; signature sections built as CSS-Module components driven by CSS custom-properties |
+| Topic     | Decision                                                                                                                           |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Direction | Full pivot to Wibify taste                                                                                                         |
+| Palette   | Dark premium + owner accent `#FF3D00` (Wibify _structure_, owner _color_)                                                          |
+| Type      | Instrument Serif (display) + Switzer (body) + JetBrains Mono (labels)                                                              |
+| Motion    | GSAP + ScrollTrigger + Lenis + Framer Motion (micro) + three.js shader                                                             |
+| Scope     | Everything: Home, Works, Work detail, Posts, CV, navbar, footer, 404                                                               |
+| Styling   | Chakra v3 provider + dark theme tokens retained; signature sections built as CSS-Module components driven by CSS custom-properties |
 
 ## Design tokens
 
@@ -123,12 +123,12 @@ independently shippable and reviewable.
   custom cursor, magnetic hover, performance + Lighthouse pass, reduced-motion
   audit.
 
-three.js shader is a P5 *optional* flourish; fall back to animated CSS gradient
+three.js shader is a P5 _optional_ flourish; fall back to animated CSS gradient
 blobs if it costs too much bundle/perf.
 
 ## Open decisions (resolve during implementation)
 
-1. **"How I work" / pinned-cards section** — owner has no agency *process*.
+1. **"How I work" / pinned-cards section** — owner has no agency _process_.
    Options: repurpose as a "How I work" (discovery → build → ship) or a career
    timeline, OR drop the pinned-cards section entirely. Default: include a light
    "How I work" in P2/P5; drop if it feels like filler.

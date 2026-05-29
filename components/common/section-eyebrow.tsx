@@ -1,4 +1,4 @@
-import styles from './section-eyebrow.module.css'
+import styles from "./section-eyebrow.module.css";
 
 export function SectionEyebrow({ num, label }: { num: string; label: string }) {
   return (
@@ -7,5 +7,5 @@ export function SectionEyebrow({ num, label }: { num: string; label: string }) {
       <span className={styles.tag}>[{num}]</span>
       {label}
     </p>
-  )
+  );
 }
