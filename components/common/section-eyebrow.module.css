@@ -1,0 +1,21 @@
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.bar {
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.tag {
+  color: var(--accent);
+}
