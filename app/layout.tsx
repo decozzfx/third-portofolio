@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Instrument_Serif, JetBrains_Mono, Inter } from 'next/font/google'
 import { Provider } from '@/components/ui/provider'
+import { Grain } from '@/components/common/grain'
 import './globals.css'
 
 const instrumentSerif = Instrument_Serif({
@@ -75,7 +76,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${instrumentSerif.variable} ${jetbrainsMono.variable} ${switzer.variable}`}
     >
       <body style={{ fontFamily: 'var(--font-switzer), system-ui, sans-serif' }}>
-        <Provider>{children}</Provider>
+        <Provider>
+          <Grain />
+          {children}
+        </Provider>
       </body>
     </html>
   )
