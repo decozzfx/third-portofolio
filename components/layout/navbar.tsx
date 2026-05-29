@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { IoClose, IoLogoGithub, IoMenu } from 'react-icons/io5'
-import { ThemeToggle } from '@/components/common/theme-toggle'
 import { useColorMode, useColorModeValue } from '@/components/ui/color-mode'
 
 const MotionBox = motion.create(Box)
@@ -119,8 +118,6 @@ export function Navbar() {
                 <IoLogoGithub size={20} />
               </IconButton>
             </ChakraLink>
-
-            <ThemeToggle />
 
             {/* Mobile menu button */}
             <IconButton
