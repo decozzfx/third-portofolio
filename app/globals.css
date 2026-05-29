@@ -5,8 +5,9 @@
   --border: rgba(255, 255, 255, 0.08);
   --text: #fafafa;
   --text-muted: #8a8a8e;
-  --accent: #ff3d00;
-  --accent-soft: rgba(255, 61, 0, 0.12);
+  --accent: #c6f24d;
+  --accent-soft: rgba(198, 242, 77, 0.12);
+  --accent-ink: #0a0a0b;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --container: 1180px;
 }
@@ -26,6 +27,7 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  font-family: var(--font-switzer), system-ui, sans-serif;
 }
 
 a {
@@ -35,7 +37,7 @@ a {
 
 ::selection {
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-ink);
 }
 
 :focus-visible {

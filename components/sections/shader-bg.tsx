@@ -44,7 +44,7 @@ export function ShaderBg() {
         void main(){
           vec2 uv = gl_FragCoord.xy/u_res;
           float w = 0.5 + 0.5*sin(uv.x*4.0 + u_time*0.4) * cos(uv.y*3.0 - u_time*0.3);
-          vec3 accent = vec3(1.0, 0.239, 0.0);
+          vec3 accent = vec3(0.776, 0.949, 0.302);
           float a = smoothstep(0.4, 1.0, w) * 0.18;
           gl_FragColor = vec4(accent, a);
         }`,

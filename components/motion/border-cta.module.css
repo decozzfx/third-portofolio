@@ -1,0 +1,63 @@
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.cta {
+  position: relative;
+  display: inline-flex;
+  padding: 1px;
+  border: none;
+  cursor: pointer;
+  background: var(--border);
+  isolation: isolate;
+}
+
+/* Rotating accent line that travels around the border */
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0%,
+    transparent 60%,
+    var(--accent) 80%,
+    #e3ff8a 90%,
+    transparent 100%
+  );
+  animation: border-spin 3s linear infinite;
+}
+
+.inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--surface);
+  transition: background 0.3s var(--ease-out);
+}
+
+.cta:hover .inner {
+  background: var(--surface-alt);
+}
+
+@keyframes border-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta::before {
+    animation: none;
+    background: var(--accent);
+  }
+}

@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { CustomCursor } from "@/components/motion/custom-cursor";
+import { QuickContact } from "@/components/layout/quick-contact";
 
 export default function MainLayout({
   children,
@@ -21,6 +22,7 @@ export default function MainLayout({
         </Box>
         <Footer />
       </Flex>
+      <QuickContact />
     </SmoothScroll>
   );
 }

@@ -1,13 +1,16 @@
 .hero {
   position: relative;
-  min-height: 92vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  margin-top: -2rem;
+  /* pull up past main's 80px top pad + inner 2rem so the bg/glow reaches
+     the very top, bleeding behind the floating navbar */
+  margin-top: -112px;
+  padding-top: 96px;
 }
 .glow {
   position: absolute;
@@ -15,20 +18,48 @@
   z-index: -1;
   background:
     radial-gradient(40% 50% at 70% 30%, var(--accent-soft), transparent 70%),
-    radial-gradient(50% 60% at 20% 80%, rgba(255, 61, 0, 0.06), transparent 70%);
+    radial-gradient(50% 60% at 20% 80%, rgba(198, 242, 77, 0.06), transparent 70%);
 }
-.content {
-  max-width: var(--container);
+.grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1480px;
   width: 100%;
   margin-inline: auto;
   padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.75rem;
+}
+.content {
+  min-width: 0;
+}
+.visual {
+  position: relative;
+  height: 100%;
+  min-height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .visual {
+    order: -1;
+    min-height: 300px;
+    margin-bottom: 0.5rem;
+  }
 }
 .title {
-  font-size: clamp(2.75rem, 8vw, 6.5rem);
-  line-height: 1.04;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  line-height: 1.02;
   letter-spacing: -0.02em;
-  margin: 1.2rem 0;
-  max-width: 18ch;
+  margin: 1rem 0;
+  max-width: 16ch;
 }
 .word {
   display: inline-block;

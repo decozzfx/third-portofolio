@@ -1,0 +1,79 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  padding: 1.1rem 1.5rem;
+  pointer-events: none;
+}
+
+.bar {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: linear-gradient(180deg, var(--surface), var(--bg));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.9rem;
+}
+.logoMark {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: var(--accent);
+  -webkit-mask: url(/images/decoz-logo-black.png) center / contain no-repeat;
+  mask: url(/images/decoz-logo-black.png) center / contain no-repeat;
+  transition: background 0.3s var(--ease-out);
+}
+
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 48px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition:
+    border-color 0.3s var(--ease-out),
+    background 0.3s var(--ease-out);
+}
+.burger:hover {
+  border-color: var(--accent);
+}
+.burger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform 0.3s var(--ease-out);
+}
+.burger[data-open="true"] span:nth-child(1) {
+  transform: translateY(3.25px) rotate(45deg);
+}
+.burger[data-open="true"] span:nth-child(2) {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+@media (max-width: 600px) {
+  .nav {
+    padding: 0.75rem 0.85rem;
+  }
+  .bar {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

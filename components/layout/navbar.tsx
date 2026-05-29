@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ShinyCTA } from "@/components/motion/shiny-cta";
+import { BorderCTA } from "@/components/motion/border-cta";
 import { Magnetic } from "@/components/motion/magnetic";
 import { MenuOverlay } from "./menu-overlay";
+import styles from "./navbar.module.css";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -24,53 +25,26 @@ export function Navbar() {
 
   return (
     <>
-      <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 80,
-          zIndex: 200,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 1.5rem",
-          background: "rgba(10,10,11,0.6)",
-          backdropFilter: "blur(10px)",
-          borderBottom: "1px solid var(--border)",
-        }}
-      >
-        <Link
-          href="/"
-          style={{
-            fontFamily: "var(--font-instrument-serif)",
-            fontSize: "1.4rem",
-          }}
-        >
-          Moch Fathurrozi
-        </Link>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+      <nav className={styles.nav}>
+        <div className={styles.bar}>
+          <Link href="/" className={styles.logo} aria-label="Home">
+            <span className={styles.logoMark} />
+          </Link>
           <Magnetic>
             <a href="mailto:decozzfx@gmail.com">
-              <ShinyCTA>Start a project &nbsp;→</ShinyCTA>
+              <BorderCTA>Start a project &nbsp;→</BorderCTA>
             </a>
           </Magnetic>
           <button
+            type="button"
+            className={styles.burger}
             aria-label="Toggle menu"
             aria-expanded={open}
+            data-open={open}
             onClick={() => setOpen((v) => !v)}
-            style={{
-              background: "none",
-              border: "none",
-              color: "var(--text)",
-              cursor: "pointer",
-              fontFamily: "var(--font-jetbrains-mono)",
-              fontSize: "0.8rem",
-              textTransform: "uppercase",
-            }}
           >
-            {open ? "Close" : "Menu"}
+            <span />
+            <span />
           </button>
         </div>
       </nav>

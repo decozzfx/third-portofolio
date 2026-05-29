@@ -79,9 +79,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${instrumentSerif.variable} ${jetbrainsMono.variable} ${switzer.variable}`}
     >
-      <body
-        style={{ fontFamily: "var(--font-switzer), system-ui, sans-serif" }}
-      >
+      <body>
         <Provider>
           <Grain />
           {children}

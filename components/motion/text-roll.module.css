@@ -1,4 +1,5 @@
 .roll {
+  position: relative;
   display: inline-flex;
   overflow: hidden;
   vertical-align: top;

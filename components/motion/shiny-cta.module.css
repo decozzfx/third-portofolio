@@ -8,7 +8,7 @@
   font-size: 0.8rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--accent-ink);
   background: var(--accent);
   border: none;
   cursor: pointer;
