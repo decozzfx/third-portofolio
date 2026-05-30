@@ -206,3 +206,32 @@
     min-height: 360px;
   }
 }
+
+@media (max-width: 640px) {
+  .section {
+    padding: 3rem 0;
+  }
+  .meta {
+    grid-template-columns: 1fr;
+  }
+  .metaCell {
+    padding: 1rem 0;
+  }
+  .metaCell + .metaCell {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+  .card {
+    max-width: 220px;
+    left: 1rem;
+    bottom: 1rem;
+    padding: 0.9rem 1rem;
+  }
+  .stackItem {
+    font-size: 1.2rem;
+  }
+  .stackDot {
+    margin: 0 0.8rem;
+  }
+}

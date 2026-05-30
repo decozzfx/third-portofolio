@@ -92,3 +92,15 @@
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .section {
+    padding: 4rem 0;
+  }
+  .row {
+    padding: 1rem 0.5rem;
+  }
+  .stack {
+    font-size: 0.66rem;
+  }
+}

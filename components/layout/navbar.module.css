@@ -68,7 +68,7 @@
   transform: translateY(-3.25px) rotate(-45deg);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .nav {
     padding: 0.75rem 0.85rem;
   }

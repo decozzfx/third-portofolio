@@ -39,6 +39,9 @@ export function HeroModel() {
   useEffect(() => {
     const container = refContainer.current;
     if (!container) return;
+    // skip the 3D entirely on mobile — it's hidden via CSS and would only
+    // overlap the headline + waste GPU/memory on phones
+    if (window.matchMedia("(max-width: 768px)").matches) return;
     // guard against React StrictMode double-mount leaving two stacked canvases
     container.replaceChildren();
 

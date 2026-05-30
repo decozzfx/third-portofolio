@@ -18,3 +18,9 @@
 .model canvas {
   touch-action: none;
 }
+
+@media (max-width: 768px) {
+  .model {
+    display: none;
+  }
+}

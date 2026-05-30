@@ -79,3 +79,26 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 80px;
+  }
+  .sub {
+    font-size: 1rem;
+  }
+  .stats {
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+  .statNum {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats {
+    gap: 1.25rem 1.5rem;
+  }
+}

@@ -166,6 +166,26 @@
   }
 }
 
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 0;
+  }
+  .heading {
+    margin-bottom: 2rem;
+  }
+  /* drop the sticky pin on phones — normal stacked flow reads better */
+  .card {
+    position: relative;
+    top: auto;
+  }
+  .viz {
+    min-height: 160px;
+  }
+  .stack {
+    gap: 2.5vh;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .orbit,
   .orbit2,

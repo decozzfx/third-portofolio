@@ -134,3 +134,10 @@
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .link {
+    grid-template-columns: 1.5rem minmax(0, 1fr) auto;
+    padding: 1.25rem 0.25rem;
+  }
+}

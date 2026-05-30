@@ -181,6 +181,19 @@
   }
 }
 
+@media (max-width: 640px) {
+  .cta {
+    padding: 4rem 0;
+  }
+  .title {
+    margin: 0.5rem 0 1rem;
+  }
+  .detailRow {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
 @media (max-width: 480px) {
   .row2 {
     grid-template-columns: 1fr;
