@@ -47,10 +47,12 @@ const PARTNERS: Partner[] = [
 export function Partnerships() {
   return (
     <section className={styles.section}>
-      <SectionEyebrow num="03" label="Partnerships" />
+      <div data-reveal>
+        <SectionEyebrow num="03" label="Partnerships" />
+      </div>
       <div className={styles.list}>
         {PARTNERS.map((p, i) => (
-          <div key={p.company} data-row className={styles.row}>
+          <div key={p.company} data-reveal className={styles.row}>
             <span className={styles.index}>
               {String(i + 1).padStart(2, "0")}
             </span>

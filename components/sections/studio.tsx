@@ -55,7 +55,7 @@ function StackTrack({ items, dir }: { items: string[]; dir: "left" | "right" }) 
 export function Studio() {
   return (
     <section className={styles.section}>
-      <div className={styles.media}>
+      <div className={styles.media} data-reveal>
         <img
           src="/images/contents/youtube-my-desk-setup.jpg"
           alt="My desk and coding setup in Semarang"
@@ -75,19 +75,23 @@ export function Studio() {
       </div>
 
       <div className={styles.content}>
-        <SectionEyebrow num="02" label="The Studio" />
-        <DisplayHeading
-          as="h2"
-          text="My desk in Semarang is my *place to build*."
-          className={styles.heading}
-        />
-        <p className={styles.lead}>
+        <div data-reveal>
+          <SectionEyebrow num="02" label="The Studio" />
+        </div>
+        <div data-reveal>
+          <DisplayHeading
+            as="h2"
+            text="My desk in Semarang is my *place to build*."
+            className={styles.heading}
+          />
+        </div>
+        <p className={styles.lead} data-reveal>
           This is where websites, apps and digital products come together — no
           bloated agency process, no handoffs. Just direct collaboration, tight
           feedback loops, and short decision paths.
         </p>
 
-        <div className={styles.meta}>
+        <div className={styles.meta} data-reveal>
           {META.map((m) => (
             <div key={m.label} className={styles.metaCell}>
               <span className={styles.metaLabel}>{m.label}</span>
@@ -95,12 +99,12 @@ export function Studio() {
             </div>
           ))}
         </div>
-        <div className={styles.availability}>
+        <div className={styles.availability} data-reveal>
           <span className={styles.metaLabel}>Availability</span>
           <span className={styles.availValue}>Remote · Worldwide</span>
         </div>
 
-        <div className={styles.stack}>
+        <div className={styles.stack} data-reveal>
           <div className={styles.stackHead}>
             <span className={styles.metaLabel}>Stack</span>
             <span className={styles.stackCount}>20+ technologies</span>

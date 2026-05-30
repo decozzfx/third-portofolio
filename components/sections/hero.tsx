@@ -85,9 +85,6 @@ export function Hero() {
             ))}
           </div>
         </div>
-        <div className={styles.visual}>
-          <HeroModel />
-        </div>
       </div>
     </header>
   );

@@ -1,40 +1,175 @@
 .section {
   padding: 6rem 0;
 }
-
-.grid {
-  display: grid;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 2rem;
+.heading {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  margin-bottom: 3rem;
 }
 
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
+/* ---------- pinned stacked cards ---------- */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+}
+.card {
+  position: sticky;
+  top: calc(120px + var(--i) * 28px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 64vh;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* left: abstract visual */
+.viz {
+  position: relative;
+  min-height: 280px;
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+  background: radial-gradient(120% 120% at 30% 20%, #16161a, var(--bg));
+}
+.vizGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    45% 45% at 50% 58%,
+    var(--accent-soft),
+    transparent 70%
+  );
+}
+.orbit,
+.orbit2 {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: min(70%, 360px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  scale: 1 0.42;
+  animation: spin 22s linear infinite;
+}
+.orbit2 {
+  width: min(48%, 240px);
+  scale: 1 0.55;
+  border-color: rgba(198, 242, 77, 0.25);
+  animation-duration: 14s;
+  animation-direction: reverse;
+}
+.diamond {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 78px;
+  height: 78px;
+  translate: -50% -50%;
+  rotate: 45deg;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 0 30px rgba(198, 242, 77, 0.45),
+    inset 0 0 18px rgba(255, 255, 255, 0.15);
+  animation: float 6s ease-in-out infinite;
+}
+.vizNum {
+  position: absolute;
+  left: 1.5rem;
+  bottom: 1rem;
+  font-family: var(--font-instrument-serif);
+  font-size: clamp(4rem, 9vw, 8rem);
+  line-height: 0.8;
+  color: rgba(255, 255, 255, 0.06);
+}
+
+/* right: text */
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 4vw, 4rem);
+}
+.count {
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+.cardTitle {
+  font-family: var(--font-switzer);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 1rem 0;
+}
+.cardText {
+  color: var(--text-muted);
+  max-width: 42ch;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.tag {
+  position: relative;
+  font-family: var(--font-jetbrains-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-left: 1rem;
+}
+.tag::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  translate: 0 -50%;
+  background: var(--accent);
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    translate: -50% -58%;
+  }
+  50% {
+    translate: -50% -46%;
   }
 }
 
-.card {
-  background: var(--bg);
-  padding: 2rem;
+@media (max-width: 860px) {
+  .card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    top: calc(90px + var(--i) * 22px);
+  }
+  .viz {
+    min-height: 220px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
 }
 
-.step {
-  font-family: var(--font-jetbrains-mono);
-  font-size: 0.72rem;
-  color: var(--accent);
-}
-
-.cardTitle {
-  font-family: var(--font-instrument-serif);
-  font-size: 1.6rem;
-  margin: 0.6rem 0;
-}
-
-.cardText {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
+@media (prefers-reduced-motion: reduce) {
+  .orbit,
+  .orbit2,
+  .diamond {
+    animation: none;
+  }
 }

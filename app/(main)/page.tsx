@@ -28,12 +28,14 @@ export default function HomePage() {
 
       <Reveal full>
         <Box as="section" py="6rem">
-          <SectionEyebrow num="04" label="Selected Work" />
+          <div data-reveal>
+            <SectionEyebrow num="04" label="Selected Work" />
+          </div>
           <WorksList works={featured} />
         </Box>
       </Reveal>
 
-      <Reveal full>
+      <Reveal>
         <HowIWork />
       </Reveal>
 

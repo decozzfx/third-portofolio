@@ -3,7 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { SectionEyebrow } from "@/components/common/section-eyebrow";
+import { ShinyCTA } from "@/components/motion/shiny-cta";
+import { Reveal } from "@/components/motion/reveal";
 import { getWorkBySlug, works } from "@/lib/works";
+import styles from "./work-detail.module.css";
 
 export function generateStaticParams() {
   return works.map((w) => ({ slug: w.slug }));
@@ -17,10 +20,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const work = getWorkBySlug(slug);
   if (!work) return {};
-  return {
-    title: work.title,
-    description: work.description,
-  };
+  return { title: work.title, description: work.description };
 }
 
 export default async function WorkDetailPage({
@@ -30,131 +30,125 @@ export default async function WorkDetailPage({
 }) {
   const { slug } = await params;
   const work = getWorkBySlug(slug);
-
   if (!work) notFound();
+
+  const idx = works.findIndex((w) => w.slug === slug);
+  const next = works[(idx + 1) % works.length];
 
   const links =
     typeof work.website === "string"
       ? [{ label: "Visit site", url: work.website }]
       : (work.website ?? []);
 
+  const showcase = work.images.slice(1);
+
+  const meta = [
+    { label: "Type", value: work.platform },
+    { label: "Year", value: work.year },
+    {
+      label: "Engagement",
+      value: work.category === "freelance" ? "Client work" : "Personal build",
+    },
+    { label: "Stack", value: work.stack.join(" · ") },
+  ];
+
   return (
-    <div style={{ paddingTop: "2rem", maxWidth: "860px" }}>
-      {/* Back link */}
-      <div style={{ marginBottom: "2.5rem" }}>
-        <Link
-          href="/works"
-          style={{
-            fontFamily: "var(--font-jetbrains-mono)",
-            fontSize: "0.75rem",
-            textTransform: "uppercase",
-            letterSpacing: "0.08em",
-            color: "var(--text-muted)",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.4rem",
-          }}
-        >
-          ← Works
-        </Link>
-      </div>
+    <article className={styles.page}>
+      <Link href="/works" className={styles.back}>
+        ← All works
+      </Link>
 
-      {/* Title block */}
-      <SectionEyebrow num="WORK" label={`${work.year} · ${work.platform}`} />
-      <h1
-        style={{
-          fontFamily: "var(--font-instrument-serif)",
-          fontSize: "clamp(2.5rem,6vw,4.5rem)",
-          lineHeight: 1.05,
-          margin: "0.5rem 0 1.5rem",
-        }}
-      >
-        {work.title}
-      </h1>
-      <p
-        style={{
-          color: "var(--text-muted)",
-          maxWidth: "60ch",
-          lineHeight: 1.7,
-        }}
-      >
-        {work.description}
-      </p>
-
-      {/* Stack chips */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "0.5rem",
-          margin: "1.5rem 0",
-        }}
-      >
-        {work.stack.map((s) => (
-          <span
-            key={s}
-            style={{
-              border: "1px solid var(--border)",
-              padding: "0.35rem 0.75rem",
-              fontFamily: "var(--font-jetbrains-mono)",
-              fontSize: "0.72rem",
-              textTransform: "uppercase",
-            }}
-          >
-            {s}
-          </span>
-        ))}
-      </div>
-
-      {/* Website link(s) */}
-      {work.website && (
-        <div
-          style={{
-            display: "flex",
-            gap: "0.75rem",
-            flexWrap: "wrap",
-            marginBottom: "2rem",
-          }}
-        >
-          {links.map((lnk) => (
-            <a
-              key={lnk.url}
-              href={lnk.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontFamily: "var(--font-jetbrains-mono)",
-                fontSize: "0.8rem",
-                textTransform: "uppercase",
-                padding: "0.7rem 1.1rem",
-                border: "1px solid var(--border)",
-              }}
-            >
-              {lnk.label} ↗
+      {/* ---------- hero ---------- */}
+      <section className={styles.hero}>
+        <div className={styles.heroText}>
+          <SectionEyebrow num="01" label={`${work.platform} · ${work.year}`} />
+          <h1 className={styles.title}>{work.title}</h1>
+          <p className={styles.lead}>{work.description}</p>
+          <div className={styles.actions}>
+            {links.map((lnk) => (
+              <a
+                key={lnk.url}
+                href={lnk.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.linkBtn}
+              >
+                {lnk.label} ↗
+              </a>
+            ))}
+            <a href="mailto:decozzfx@gmail.com">
+              <ShinyCTA>Start a project &nbsp;→</ShinyCTA>
             </a>
-          ))}
+          </div>
         </div>
+
+        <div className={styles.media}>
+          <span className={styles.badge}>
+            {String(idx + 1).padStart(2, "0")} · {work.year}
+          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={work.images[0]} alt={work.title} className={styles.frame} />
+        </div>
+      </section>
+
+      {/* ---------- meta bar ---------- */}
+      <dl className={styles.metaBar}>
+        {meta.map((m) => (
+          <div key={m.label} className={styles.metaCell}>
+            <dt className={styles.metaLabel}>{m.label}</dt>
+            <dd className={styles.metaValue}>{m.value}</dd>
+          </div>
+        ))}
+      </dl>
+
+      {/* ---------- showcase ---------- */}
+      {showcase.length > 0 && (
+        <Reveal>
+          <section className={styles.showcase}>
+            <div data-reveal>
+              <SectionEyebrow num="02" label="Showcase" />
+            </div>
+            <h2 className={styles.showHeading} data-reveal>
+              Inside the build.
+            </h2>
+            <div className={styles.grid}>
+              {showcase.map((image, i) => (
+                <figure key={i} className={styles.shot} data-reveal>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={image} alt={`${work.title} screenshot ${i + 2}`} />
+                </figure>
+              ))}
+            </div>
+          </section>
+        </Reveal>
       )}
 
-      {/* Images — full-width vertical stack */}
-      <div style={{ marginTop: "2.5rem" }}>
-        {work.images.map((image, index) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={index}
-            src={image}
-            alt={
-              index === 0 ? work.title : `${work.title} screenshot ${index + 1}`
-            }
-            style={{
-              width: "100%",
-              display: "block",
-              marginBottom: "1.5rem",
-              border: "1px solid var(--border)",
-            }}
-          />
-        ))}
-      </div>
-    </div>
+      {/* ---------- next project ---------- */}
+      <Reveal>
+        <section className={styles.next}>
+          <div data-reveal>
+            <SectionEyebrow num="03" label="Next project" />
+          </div>
+          <Link
+            href={`/works/${next.slug}`}
+            className={styles.nextTitle}
+            data-reveal
+          >
+            {next.title} ↗
+          </Link>
+          <p className={styles.nextLead} data-reveal>
+            {next.description}
+          </p>
+          <div className={styles.actions} data-reveal>
+            <Link href="/works" className={styles.linkBtn}>
+              All works ↗
+            </Link>
+            <a href="mailto:decozzfx@gmail.com">
+              <ShinyCTA>Start a project &nbsp;→</ShinyCTA>
+            </a>
+          </div>
+        </section>
+      </Reveal>
+    </article>
   );
 }

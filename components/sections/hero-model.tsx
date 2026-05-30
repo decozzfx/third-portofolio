@@ -6,10 +6,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { loadGLTFModel } from "@/lib/load-model";
 import styles from "./hero-model.module.css";
 
-function easeOutCirc(x: number) {
-  return Math.sqrt(1 - Math.pow(x - 1, 4));
-}
-
 export function HeroModel() {
   const [loading, setLoading] = useState(true);
   const refContainer = useRef<HTMLDivElement>(null);
@@ -30,7 +26,7 @@ export function HeroModel() {
         const aspect = w / h;
         const s = refScale.current;
         const A = s * aspect;
-        const shift = A * 0.42; // push model toward the right of the canvas
+        const shift = A * 0.58; // push model toward the right of the canvas
         camera.left = -A - shift;
         camera.right = A - shift;
         camera.top = s;
@@ -67,11 +63,11 @@ export function HeroModel() {
     // vertical half-size of the frustum drives model size; based on height so
     // the full-bleed (wide) canvas doesn't shrink it. x widened by aspect to
     // keep proportions (no "gepeng"), then frustum shifted right.
-    const scale = scH * 0.0009;
+    const scale = scH * 0.0006;
     const aspect = scW / scH;
     refScale.current = scale;
     const A = scale * aspect;
-    const shift = A * 0.42;
+    const shift = A * 0.58;
     const camera = new THREE.OrthographicCamera(
       -A - shift,
       A - shift,
@@ -97,8 +93,7 @@ export function HeroModel() {
     scene.add(keyLight);
 
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 1.2;
+    controls.autoRotate = false;
     controls.enablePan = false;
     controls.enableRotate = true;
     controls.enableZoom = false;
@@ -108,20 +103,13 @@ export function HeroModel() {
     controls.target = target;
 
     let req = 0;
-    let frame = 0;
+    let model: THREE.Group | null = null;
     const animate = () => {
       req = requestAnimationFrame(animate);
-      frame = frame <= 100 ? frame + 1 : frame;
-      if (frame <= 100) {
-        const p = initialCameraPosition;
-        const rotSpeed = -easeOutCirc(frame / 120) * Math.PI * 26;
-        camera.position.y = 10;
-        camera.position.x = p.x * Math.cos(rotSpeed) + p.z * Math.sin(rotSpeed);
-        camera.position.z = p.z * Math.cos(rotSpeed) - p.x * Math.sin(rotSpeed);
-        camera.lookAt(target);
-      } else {
-        controls.update();
-      }
+      // spin the model in place (not an orbiting camera); user can still
+      // grab/drag to rotate the view via OrbitControls
+      if (model) model.rotation.y += 0.006;
+      controls.update();
       renderer.render(scene, camera);
     };
 
@@ -129,7 +117,8 @@ export function HeroModel() {
       receiveShadow: false,
       castShadow: false,
     })
-      .then(() => {
+      .then((obj) => {
+        model = obj;
         animate();
         setLoading(false);
       })

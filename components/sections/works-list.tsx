@@ -22,7 +22,7 @@ export function WorksList({ works }: { works: Work[] }) {
     <>
       <ul className={styles.list} onMouseMove={move}>
         {works.map((w, i) => (
-          <li key={w.slug} className={styles.item}>
+          <li key={w.slug} className={styles.item} data-reveal>
             <Link
               href={`/works/${w.slug}`}
               className={styles.link}
