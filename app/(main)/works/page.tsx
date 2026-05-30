@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { SectionEyebrow } from "@/components/common/section-eyebrow";
 import { DisplayHeading } from "@/components/common/display-heading";
-import { WorksList } from "@/components/sections/works-list";
+import { WorksGrid } from "@/components/sections/works-grid";
+import { Reveal } from "@/components/motion/reveal";
 import { works } from "@/lib/works";
 
 export const metadata: Metadata = {
@@ -20,11 +21,15 @@ export default function WorksPage() {
         text="What I've *built.*"
         style={{ fontSize: "clamp(2.5rem,6vw,4.5rem)", marginBottom: "2.5rem" }}
       />
-      <WorksList works={freelance} />
+      <Reveal>
+        <WorksGrid works={freelance} />
+      </Reveal>
       {learning.length > 0 && (
         <div style={{ marginTop: "4rem" }}>
           <SectionEyebrow num="02" label="Learning & experiments" />
-          <WorksList works={learning} />
+          <Reveal>
+            <WorksGrid works={learning} />
+          </Reveal>
         </div>
       )}
     </div>

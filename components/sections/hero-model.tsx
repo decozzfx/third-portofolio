@@ -66,7 +66,7 @@ export function HeroModel() {
     // vertical half-size of the frustum drives model size; based on height so
     // the full-bleed (wide) canvas doesn't shrink it. x widened by aspect to
     // keep proportions (no "gepeng"), then frustum shifted right.
-    const scale = scH * 0.0006;
+    const scale = scH * 0.0007;
     const aspect = scW / scH;
     refScale.current = scale;
     const A = scale * aspect;

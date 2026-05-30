@@ -174,6 +174,24 @@ export const works: Work[] = [
     featured: true,
   },
   {
+    slug: "kurir-pulsa",
+    title: "Kurir Pulsa",
+    year: "2025",
+    description:
+      "Pulsa-convert and digital payments platform by PT Kurir Pulsa Digitech — a trusted service to convert and cash out pulsa to money or e-wallet quickly and safely, available on web and Android. Built the marketing site and transaction flows.",
+    platform: "Website & Mobile",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    website: "https://www.kurirpulsa.com/",
+    images: [
+      "/images/works/kurir-pulsa/1.png",
+      "/images/works/kurir-pulsa/2.png",
+      "/images/works/kurir-pulsa/3.png",
+      "/images/works/kurir-pulsa/4.png",
+    ],
+    category: "freelance",
+    featured: true,
+  },
+  {
     slug: "grip-os",
     title: "Grip OS",
     year: "2023",

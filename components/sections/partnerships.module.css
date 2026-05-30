@@ -9,7 +9,7 @@
 .row {
   position: relative;
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  grid-template-columns: 3rem minmax(0, 1fr);
   align-items: center;
   gap: 1.5rem;
   padding: 1.6rem 0.75rem;
@@ -60,36 +60,23 @@
   line-height: 1.15;
   font-weight: 400;
 }
-.stack {
-  margin-top: 0.35rem;
+.projects {
+  margin-top: 0.4rem;
   font-family: var(--font-jetbrains-mono);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--text-muted);
+  transition: color 0.3s var(--ease-out);
 }
-.note {
+.row:hover .projects {
   color: var(--text);
-}
-
-.role {
-  font-family: var(--font-jetbrains-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  padding: 0.35rem 0.65rem;
-  white-space: nowrap;
 }
 
 @media (max-width: 720px) {
   .row {
     grid-template-columns: 2rem minmax(0, 1fr);
     gap: 1rem;
-  }
-  .role {
-    display: none;
   }
 }
 
@@ -100,7 +87,7 @@
   .row {
     padding: 1rem 0.5rem;
   }
-  .stack {
-    font-size: 0.66rem;
+  .projects {
+    font-size: 0.68rem;
   }
 }
