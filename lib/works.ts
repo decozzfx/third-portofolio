@@ -2,6 +2,23 @@ import { Work } from "@/types";
 
 export const works: Work[] = [
   {
+    slug: "shellq",
+    title: "ShellQ",
+    year: "2025",
+    description:
+      "Official Garena Shell top-up platform — buy Shell vouchers with auto-delivered codes sent straight to WhatsApp in seconds. Covers Free Fire, COD Mobile, Garena AOV and more, with multiple payment methods (QRIS, e-wallet, bank VA, retail). Built the storefront, checkout drawer, and an admin dashboard for managing products, vouchers, orders, services, payment logs, and support tickets.",
+    platform: "Website",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    website: "https://shellq.id/",
+    images: [
+      "/images/works/shellq/1.png",
+      "/images/works/shellq/2.png",
+      "/images/works/shellq/3.png",
+    ],
+    category: "freelance",
+    featured: true,
+  },
+  {
     slug: "veritask-ai",
     title: "Veritask AI",
     year: "2025",
