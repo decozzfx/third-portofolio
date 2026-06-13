@@ -103,7 +103,7 @@ export default async function WorkDetailPage({
 
       {/* ---------- showcase ---------- */}
       {showcase.length > 0 && (
-        <Reveal>
+        <Reveal out={false}>
           <section className={styles.showcase}>
             <div data-reveal>
               <SectionEyebrow num="02" label="Showcase" />
@@ -124,7 +124,7 @@ export default async function WorkDetailPage({
       )}
 
       {/* ---------- next project ---------- */}
-      <Reveal>
+      <Reveal out={false}>
         <section className={styles.next}>
           <div data-reveal>
             <SectionEyebrow num="03" label="Next project" />

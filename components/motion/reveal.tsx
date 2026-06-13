@@ -17,10 +17,12 @@ export function Reveal({
   children,
   className,
   full = false,
+  out = true,
 }: {
   children: React.ReactNode;
   className?: string;
   full?: boolean;
+  out?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -63,13 +65,13 @@ export function Reveal({
         end: "bottom 20%",
         onEnter: animIn,
         onEnterBack: animIn,
-        onLeave: () => animOut(-40),
-        onLeaveBack: () => animOut(40),
+        onLeave: out ? () => animOut(-40) : undefined,
+        onLeaveBack: out ? () => animOut(40) : undefined,
       });
     }, el);
 
     return () => ctx.revert();
-  }, []);
+  }, [out]);
 
   return (
     <div
