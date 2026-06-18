@@ -3,6 +3,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { CustomCursor } from "@/components/motion/custom-cursor";
+import SplashCursor from "@/components/motion/splash-cursor";
 import { QuickContact } from "@/components/layout/quick-contact";
 
 export default function MainLayout({
@@ -12,6 +13,7 @@ export default function MainLayout({
 }) {
   return (
     <SmoothScroll>
+      <SplashCursor />
       <CustomCursor />
       <Flex direction="column" minH="100vh">
         <Navbar />
