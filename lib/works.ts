@@ -2,18 +2,18 @@ import { Work } from "@/types";
 
 export const works: Work[] = [
   {
-    slug: "shellq",
-    title: "ShellQ",
-    year: "2025",
+    slug: "kurir-vocer",
+    title: "Kurir Voucher",
+    year: "2026",
     description:
-      "Official Garena Shell top-up platform — buy Shell vouchers with auto-delivered codes sent straight to WhatsApp in seconds. Covers Free Fire, COD Mobile, Garena AOV and more, with multiple payment methods (QRIS, e-wallet, bank VA, retail). Built the storefront, checkout drawer, and an admin dashboard for managing products, vouchers, orders, services, payment logs, and support tickets.",
+      "Official Garena Shell top-up platform — buy Shell vouchers with codes auto-delivered to email and WhatsApp in seconds, no admin chat needed. Covers Free Fire, COD Mobile, Garena AOV, Undawn, Delta Force and more, with QRIS, e-wallet, bank VA and retail payments. Built the storefront, instant-checkout drawer, and an admin dashboard for managing products, vouchers, orders, services, payment logs, and support tickets.",
     platform: "Website",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    website: "https://shellq.id/",
+    website: "https://kurirvocer.id/",
     images: [
-      "/images/works/shellq/1.png",
-      "/images/works/shellq/2.png",
-      "/images/works/shellq/3.png",
+      "/images/works/kurir-vocer/1.png",
+      "/images/works/kurir-vocer/2.png",
+      "/images/works/kurir-vocer/3.png",
     ],
     category: "freelance",
     featured: true,
