@@ -1,5 +1,6 @@
 "use client";
 
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { SectionEyebrow } from "@/components/common/section-eyebrow";
 import { DisplayHeading } from "@/components/common/display-heading";
 import styles from "./how-i-work.module.css";
@@ -10,24 +11,28 @@ const STEPS = [
     title: "Discover",
     text: "Map the goal, users and constraints across the whole product — not just the screen. Cheap decisions first, expensive mistakes avoided.",
     tags: ["Discovery", "Requirements", "Scope", "Roadmap"],
+    lottie: "/lottie/step-01.lottie",
   },
   {
     n: "02",
     title: "Architect",
     text: "Design the system end to end — data models, API contracts, UI structure. Decisions that keep frontend and backend honest.",
     tags: ["System Design", "Data Modeling", "API Contracts", "UI / UX"],
+    lottie: "/lottie/step-02.lottie",
   },
   {
     n: "03",
     title: "Build",
     text: "Ship frontend and backend together: typed interfaces, REST and realtime APIs, database-backed logic. One developer, full stack.",
     tags: ["Frontend", "Backend", "APIs", "Database"],
+    lottie: "/lottie/step-03.lottie",
   },
   {
     n: "04",
     title: "Test & ship",
     text: "Verify, deploy, observe. Manual and automated QA, CI/CD pipelines, then measure and iterate in production.",
     tags: ["QA & Testing", "CI / CD", "Deploy", "Monitor"],
+    lottie: "/lottie/step-04.lottie",
   },
 ];
 
@@ -54,9 +59,12 @@ export function HowIWork() {
           >
             <div className={styles.viz} aria-hidden>
               <span className={styles.vizGlow} />
-              <span className={styles.orbit} />
-              <span className={styles.orbit2} />
-              <span className={styles.diamond} />
+              <DotLottieReact
+                src={s.lottie}
+                loop
+                autoplay
+                className={styles.lottie}
+              />
               <span className={styles.vizNum}>{s.n}</span>
             </div>
             <div className={styles.body}>
