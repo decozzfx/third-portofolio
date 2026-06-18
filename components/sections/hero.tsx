@@ -17,6 +17,11 @@ const HeroModel = dynamic(
   { ssr: false },
 );
 
+const SplashCursor = dynamic(
+  () => import("@/components/motion/splash-cursor"),
+  { ssr: false },
+);
+
 const WORDS = [
   { t: "I", em: false },
   { t: "build", em: false },
@@ -37,6 +42,7 @@ export function Hero() {
     <header className={styles.hero}>
       <ShaderBg />
       <div className={styles.glow} aria-hidden="true" />
+      <SplashCursor DENSITY_DISSIPATION={4} VELOCITY_DISSIPATION={2.5} />
       <HeroModel />
       <div className={styles.grid}>
         <div className={styles.content}>

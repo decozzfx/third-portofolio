@@ -1425,22 +1425,24 @@ function SplashCursor({
 			}
 		};
 
-		// Attach event listeners to container
-		container.addEventListener('mousedown', handleMouseDown);
-		container.addEventListener('mousemove', handleMouseMove);
-		container.addEventListener('touchstart', handleTouchStart);
-		container.addEventListener('touchmove', handleTouchMove, false);
-		container.addEventListener('touchend', handleTouchEnd);
+		// Attach to host section — overlay/canvas are pointer-events:none,
+		// so the parent element receives the pointer events (scopes effect to hero).
+		const host: HTMLElement | Window = container.parentElement ?? window;
+		host.addEventListener('mousedown', handleMouseDown as EventListener);
+		host.addEventListener('mousemove', handleMouseMove as EventListener);
+		host.addEventListener('touchstart', handleTouchStart as EventListener);
+		host.addEventListener('touchmove', handleTouchMove as EventListener, false);
+		host.addEventListener('touchend', handleTouchEnd as EventListener);
 
 		updateFrame();
 
 		// Cleanup
 		return () => {
-			container.removeEventListener('mousedown', handleMouseDown);
-			container.removeEventListener('mousemove', handleMouseMove);
-			container.removeEventListener('touchstart', handleTouchStart);
-			container.removeEventListener('touchmove', handleTouchMove);
-			container.removeEventListener('touchend', handleTouchEnd);
+			host.removeEventListener('mousedown', handleMouseDown as EventListener);
+			host.removeEventListener('mousemove', handleMouseMove as EventListener);
+			host.removeEventListener('touchstart', handleTouchStart as EventListener);
+			host.removeEventListener('touchmove', handleTouchMove as EventListener);
+			host.removeEventListener('touchend', handleTouchEnd as EventListener);
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [
@@ -1466,10 +1468,10 @@ function SplashCursor({
 			ref={containerRef}
 			aria-hidden
 			style={{
-				position: 'fixed',
+				position: 'absolute',
 				inset: 0,
 				pointerEvents: 'none',
-				zIndex: 1,
+				zIndex: 0,
 			}}
 		>
 			<canvas
