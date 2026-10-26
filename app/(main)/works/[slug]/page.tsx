@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { SectionEyebrow } from "@/components/common/section-eyebrow";
-import { ShinyCTA } from "@/components/motion/shiny-cta";
 import { Reveal } from "@/components/motion/reveal";
+import { ShowcaseGallery } from "@/components/work/showcase-gallery";
 import { getWorkBySlug, works } from "@/lib/works";
 import styles from "./work-detail.module.css";
 
@@ -76,9 +76,6 @@ export default async function WorkDetailPage({
                 {lnk.label} ↗
               </a>
             ))}
-            <a href="mailto:decozzfx@gmail.com">
-              <ShinyCTA>Start a project &nbsp;→</ShinyCTA>
-            </a>
           </div>
         </div>
 
@@ -111,14 +108,7 @@ export default async function WorkDetailPage({
             <h2 className={styles.showHeading} data-reveal>
               Inside the build.
             </h2>
-            <div className={styles.grid}>
-              {showcase.map((image, i) => (
-                <figure key={i} className={styles.shot} data-reveal>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={image} alt={`${work.title} screenshot ${i + 2}`} />
-                </figure>
-              ))}
-            </div>
+            <ShowcaseGallery images={showcase} title={work.title} />
           </section>
         </Reveal>
       )}
@@ -143,9 +133,6 @@ export default async function WorkDetailPage({
             <Link href="/works" className={styles.linkBtn}>
               All works ↗
             </Link>
-            <a href="mailto:decozzfx@gmail.com">
-              <ShinyCTA>Start a project &nbsp;→</ShinyCTA>
-            </a>
           </div>
         </section>
       </Reveal>
