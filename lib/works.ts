@@ -33,6 +33,8 @@ export const works: Work[] = [
       "/images/works/laundry-pos/3.png",
       "/images/works/laundry-pos/4.png",
       "/images/works/laundry-pos/5.png",
+      "/images/works/laundry-pos/6.png",
+      "/images/works/laundry-pos/7.png",
     ],
     category: "freelance",
     featured: false,
