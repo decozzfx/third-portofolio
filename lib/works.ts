@@ -2,6 +2,42 @@ import { Work } from "@/types";
 
 export const works: Work[] = [
   {
+    slug: "pusatexcell",
+    title: "Pusat Excell",
+    year: "2026",
+    description:
+      "A marketplace for ready-to-use Excel templates, free to download with no sign-up, plus a custom-Excel request service and a free HPP calculator tool.",
+    platform: "Website",
+    stack: ["SvelteKit", "Tailwind CSS"],
+    website: "https://pusatexcell.id/",
+    images: [
+      "/images/works/pusatexcell/1.png",
+      "/images/works/pusatexcell/2.png",
+      "/images/works/pusatexcell/3.png",
+      "/images/works/pusatexcell/4.png",
+    ],
+    category: "freelance",
+    featured: true,
+  },
+  {
+    slug: "laundry-pos",
+    title: "Laundry POS & Management",
+    year: "2026",
+    description:
+      "A multi-outlet point-of-sale and management app for laundry businesses, covering order handling, pricing, branch management, and WhatsApp notifications.",
+    platform: "Mobile App",
+    stack: ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle ORM", "Docker"],
+    images: [
+      "/images/works/laundry-pos/1.png",
+      "/images/works/laundry-pos/2.png",
+      "/images/works/laundry-pos/3.png",
+      "/images/works/laundry-pos/4.png",
+      "/images/works/laundry-pos/5.png",
+    ],
+    category: "freelance",
+    featured: false,
+  },
+  {
     slug: "kurir-vocer",
     title: "Kurir Voucher",
     year: "2026",
@@ -240,42 +276,6 @@ export const works: Work[] = [
       "React Redux",
     ],
     images: ["/images/works/grip-force/1.jpg"],
-    category: "freelance",
-    featured: false,
-  },
-  {
-    slug: "pusatexcell",
-    title: "Pusat Excell",
-    year: "2026",
-    description:
-      "A marketplace for ready-to-use Excel templates, free to download with no sign-up, plus a custom-Excel request service and a free HPP calculator tool.",
-    platform: "Website",
-    stack: ["SvelteKit", "Tailwind CSS"],
-    website: "https://pusatexcell.id/",
-    images: [
-      "/images/works/pusatexcell/1.png",
-      "/images/works/pusatexcell/2.png",
-      "/images/works/pusatexcell/3.png",
-      "/images/works/pusatexcell/4.png",
-    ],
-    category: "freelance",
-    featured: true,
-  },
-  {
-    slug: "laundry-pos",
-    title: "Laundry POS & Management",
-    year: "2026",
-    description:
-      "A multi-outlet point-of-sale and management app for laundry businesses, covering order handling, pricing, branch management, and WhatsApp notifications.",
-    platform: "Mobile App",
-    stack: ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle ORM", "Docker"],
-    images: [
-      "/images/works/laundry-pos/1.png",
-      "/images/works/laundry-pos/2.png",
-      "/images/works/laundry-pos/3.png",
-      "/images/works/laundry-pos/4.png",
-      "/images/works/laundry-pos/5.png",
-    ],
     category: "freelance",
     featured: false,
   },
