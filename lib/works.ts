@@ -2,6 +2,41 @@ import { Work } from "@/types";
 
 export const works: Work[] = [
   {
+    slug: "dasboraiku",
+    title: "Dasboraiku",
+    year: "2026",
+    description:
+      "An AI-assisted ERP for a distribution business that routes goods through warehouses and partner workshops. Owners and warehouse staff talk to an AI admin by text, voice, or a photo of a supplier receipt; it checks stock across locations, then drafts delivery notes, invoices, and stock movements as proposals that only save after a human confirms. Covers purchase orders with per-PO profit, multi-location stock, receivables, and monthly profit reports exported in the owner's Excel layout. Product name, screens, and illustrations use pseudonymized data.",
+    platform: "Website & Mobile",
+    stack: [
+      "React Router",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "SQLite",
+      "Drizzle ORM",
+      "Vercel AI SDK",
+      "Claude Haiku",
+      "Groq Whisper",
+    ],
+    images: [
+      "/images/works/dasboraiku/1.png",
+      "/images/works/dasboraiku/2.png",
+      "/images/works/dasboraiku/3.png",
+      "/images/works/dasboraiku/4.png",
+      "/images/works/dasboraiku/5.png",
+      "/images/works/dasboraiku/6.png",
+      "/images/works/dasboraiku/7.png",
+      "/images/works/dasboraiku/8.png",
+      "/images/works/dasboraiku/9.png",
+      "/images/works/dasboraiku/10.png",
+      "/images/works/dasboraiku/11.png",
+      "/images/works/dasboraiku/12.png",
+    ],
+    category: "freelance",
+    featured: true,
+  },
+  {
     slug: "pusatexcell",
     title: "Pusat Excell",
     year: "2026",
