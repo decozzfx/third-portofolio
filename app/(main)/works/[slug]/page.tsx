@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { SectionEyebrow } from "@/components/common/section-eyebrow";
 import { Reveal } from "@/components/motion/reveal";
+import { HeroFilm } from "@/components/work/hero-film";
 import { ShowcaseGallery } from "@/components/work/showcase-gallery";
 import { getWorkBySlug, works } from "@/lib/works";
 import styles from "./work-detail.module.css";
@@ -83,8 +84,21 @@ export default async function WorkDetailPage({
           <span className={styles.badge}>
             {String(idx + 1).padStart(2, "0")} · {work.year}
           </span>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={work.images[0]} alt={work.title} className={styles.frame} />
+          {work.video ? (
+            <HeroFilm
+              src={work.video}
+              poster={work.images[0]}
+              title={work.title}
+              className={`${styles.frame} ${styles.film}`}
+            />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={work.images[0]}
+              alt={work.title}
+              className={styles.frame}
+            />
+          )}
         </div>
       </section>
 

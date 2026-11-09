@@ -93,6 +93,11 @@
   object-fit: cover;
   object-position: top center;
 }
+.film {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
 .badge {
   position: absolute;
   top: 0.85rem;

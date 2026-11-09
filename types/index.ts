@@ -7,6 +7,7 @@ export interface Work {
   stack: string[];
   website?: string | { label: string; url: string }[];
   images: string[];
+  video?: string;
   category: "freelance" | "learning";
   featured: boolean;
 }

@@ -33,6 +33,7 @@ export const works: Work[] = [
       "/images/works/dasboraiku/11.png",
       "/images/works/dasboraiku/12.png",
     ],
+    video: "/images/works/dasboraiku/film.mp4",
     category: "freelance",
     featured: true,
   },
