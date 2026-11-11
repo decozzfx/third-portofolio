@@ -60,7 +60,7 @@ export const works: Work[] = [
     title: "Laundry POS & Management",
     year: "2026",
     description:
-      "A multi-outlet point-of-sale and management app for laundry businesses, covering order handling, pricing, branch management, and WhatsApp notifications.",
+      "A multi-outlet point-of-sale and management app for laundry businesses. Cashiers take orders by weight or piece, print receipts, and find orders by scanning the QR tag; owners track revenue and deadlines across every outlet from one dashboard, manage prices (including special prices for partner customers), branches, and cashier accounts, and pair a WhatsApp number per outlet for automatic order notifications. Customers check their order status on a public page. Screens show the 2026 UI redesign, which also adds a delivery-trip flow with COD settlement.",
     platform: "Mobile App",
     stack: ["SvelteKit", "TypeScript", "PostgreSQL", "Drizzle ORM", "Docker"],
     images: [
@@ -71,6 +71,9 @@ export const works: Work[] = [
       "/images/works/laundry-pos/5.png",
       "/images/works/laundry-pos/6.png",
       "/images/works/laundry-pos/7.png",
+      "/images/works/laundry-pos/8.png",
+      "/images/works/laundry-pos/9.png",
+      "/images/works/laundry-pos/10.png",
     ],
     category: "freelance",
     featured: false,
